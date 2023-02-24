@@ -132,6 +132,9 @@ public class TagProcessor {
             dataModelService.fillCommon(context, dataModel, preference);
             dataModelService.fillFaviconURL(dataModel, preference);
             dataModelService.fillUsite(dataModel);
+
+            String stack = Arrays.toString(Thread.currentThread().getStackTrace());
+            LOGGER.log(Level.INFO,"[stackTraceInfo="+stack+"],event=/unpkg.com/vditor/dist/images/emoji/");
         } catch (final Exception e) {
             String stack1 = Arrays.toString(Thread.currentThread().getStackTrace());
             LOGGER.log(Level.ERROR, "[stackTraceInfo="+stack1+"],event="+e.getMessage(), e);
@@ -167,5 +170,7 @@ public class TagProcessor {
         dataModel.put(Pagination.PAGINATION_LAST_PAGE_NUM, pageNums.get(pageNums.size() - 1));
         dataModel.put(Pagination.PAGINATION_PAGE_COUNT, pageCount);
         dataModel.put(Pagination.PAGINATION_PAGE_NUMS, pageNums);
+        String stack1 = Arrays.toString(Thread.currentThread().getStackTrace());
+        LOGGER.log(Level.INFO,"[stackTraceInfo="+stack1+"],event=fill pagination");
     }
 }

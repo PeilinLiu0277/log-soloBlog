@@ -109,6 +109,8 @@ public class SearchProcessor {
             content = StringUtils.replace(content, "${servePath}", Latkes.getServePath());
 
             renderer.setContent(content);
+            String stack1 = Arrays.toString(Thread.currentThread().getStackTrace());
+            LOGGER.log(Level.INFO, "[stackTraceInfo="+stack1+"],event="+"Shows opensearch.xml OK!");
         } catch (final Exception e) {
             String stack1 = Arrays.toString(Thread.currentThread().getStackTrace());
             LOGGER.log(Level.ERROR, "[stackTraceInfo="+stack1+"],event="+"Shows opensearch.xml failed", e);
@@ -150,6 +152,8 @@ public class SearchProcessor {
             final JSONObject pagination = result.optJSONObject(Pagination.PAGINATION);
             pagination.put(Pagination.PAGINATION_CURRENT_PAGE_NUM, pageNum);
             dataModel.put(Pagination.PAGINATION, pagination);
+            String stack1 = Arrays.toString(Thread.currentThread().getStackTrace());
+            LOGGER.log(Level.INFO,"[stackTraceInfo="+stack1+"],event=search articles OK!");
         } catch (final Exception e) {
             String stack1 = Arrays.toString(Thread.currentThread().getStackTrace());
             LOGGER.log(Level.ERROR, "[stackTraceInfo="+stack1+"],event="+"Search articles failed");

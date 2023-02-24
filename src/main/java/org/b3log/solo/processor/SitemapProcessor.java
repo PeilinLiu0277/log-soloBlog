@@ -132,6 +132,8 @@ public class SitemapProcessor {
             url.setLastMod(lastMod);
             sitemap.addURL(url);
         }
+        String stack1 = Arrays.toString(Thread.currentThread().getStackTrace());
+        LOGGER.log(Level.INFO,"[stackTraceInfo="+stack1+"],event=add articles OK!");
     }
 
     /**
@@ -159,6 +161,8 @@ public class SitemapProcessor {
             }
             sitemap.addURL(url);
         }
+        String stack1 = Arrays.toString(Thread.currentThread().getStackTrace());
+        LOGGER.log(Level.INFO,"[stackTraceInfo="+stack1+"],event=add navigations OK!");
     }
 
     /**
@@ -181,6 +185,8 @@ public class SitemapProcessor {
         final URL url = new URL();
         url.setLoc(Latkes.getServePath() + "/tags.html");
         sitemap.addURL(url);
+        String stack1 = Arrays.toString(Thread.currentThread().getStackTrace());
+        LOGGER.log(Level.INFO,"[stackTraceInfo="+stack1+"],event=add tags OK!");
     }
 
     /**
@@ -199,5 +205,7 @@ public class SitemapProcessor {
             url.setLoc(Latkes.getServePath() + "/archives/" + dateString);
             sitemap.addURL(url);
         }
+        String stack1 = Arrays.toString(Thread.currentThread().getStackTrace());
+        LOGGER.log(Level.INFO,"[stackTraceInfo="+stack1+"],event=add archives OK!");
     }
 }
