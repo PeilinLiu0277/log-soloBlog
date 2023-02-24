@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+    Solo - A small and beautiful blogging system written in Java.
+    Copyright (c) 2010-present, b3log.org
+    Solo is licensed under Mulan PSL v2.
+    You can use this software according to the terms and conditions of the Mulan PSL v2.
+    You may obtain a copy of Mulan PSL v2 at:
+            http://license.coscl.org.cn/MulanPSL2
+    THIS SOFTWARE IS PROVIDED ON AN "AS IS" BASIS, WITHOUT WARRANTIES OF ANY KIND, EITHER EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO NON-INFRINGEMENT, MERCHANTABILITY OR FIT FOR A PARTICULAR PURPOSE.
+    See the Mulan PSL v2 for more details.
+-->
+<!--
+    Description: log4j2 configuration.
+    Version: 1.0.0.0, Jan 16, 2020
+    Author: Liang Ding
+-->
+<Configuration status="WARN">
+    <!--变量配置-->
+    <Properties>
+        <!-- 定义日志存储的路径，不要配置相对路径 -->
+        <property name="FILE_PATH" value="E:\JavaProject\solo-master\logs" />
+        <!--项目名称-->
+        <!--        <property name="FILE_NAME" value="solo" />-->
+        <!--log输出格式-->
+        <property name="LOG_PATTERN" value="[%d{yyyy-MM-dd HH:mm:ss.SSS}],[%-5p],[traceID-%thread],[class=%class],[method=%M],[cost=%-4r ms],%msg,[exception=%exception]%n"/>
+    </Properties>
+
+    <Appenders>
+        <Console name="Console" target="SYSTEM_OUT">
+            <PatternLayout>
+                <pattern>[%d{yyyy-MM-dd HH:mm:ss.SSS}],[%-5p],[traceID-%thread],[class=%class],[method=%M],[cost=%-4r ms],%msg,[exception=%exception]%n</pattern>
+            </PatternLayout>
+        </Console>
+
+        <Console name="Console" target="SYSTEM_OUT">
+            <!--输出日志的格式-->
+            <PatternLayout pattern="${LOG_PATTERN}"/>
+            <!--控制台只输出level及其以上级别的信息（onMatch），其他的直接拒绝（onMismatch）-->
+            <ThresholdFilter level="info" onMatch="ACCEPT" onMismatch="DENY"/>
+        </Console>
+
+        <!--文件会打印出所有信息，这个log每次运行程序会自动清空，由append属性决定，适合临时测试用-->
+        <!--        <File name="Filelog" fileName="${FILE_NAME}/solo-%d{yyyy-MM-dd-HH-mm}.log" append="false">-->
+        <!--            <PatternLayout pattern="${LOG_PATTERN}"/>-->
+        <!--        </File>-->
+
+        <!-- 这个会打印出所有的info及以下级别的信息，每次大小超过size，则这size大小的日志会自动存入按年份-月份建立的文件夹下面并进行压缩，作为存档-->
+        <RollingFile name="RollingFileInfo" fileName="${FILE_PATH}/solo-log.log" filePattern="${FILE_PATH}/${FILE_NAME}-INFO-%d{yyyy-MM-dd}_%i.log.gz">
+            <!--控制台只输出level及以上级别的信息（onMatch），其他的直接拒绝（onMismatch）-->
+            <ThresholdFilter level="info" onMatch="ACCEPT" onMismatch="DENY"/>
+            <PatternLayout pattern="${LOG_PATTERN}"/>
+            <Policies>
+                <!--interval属性用来指定多久滚动一次，默认是1 hour-->
+                <TimeBasedTriggeringPolicy interval="1"/>
+                <SizeBasedTriggeringPolicy size="1MB"/>
+            </Policies>
+            <!-- DefaultRolloverStrategy属性如不设置，则默认为最多同一文件夹下7个文件开始覆盖-->
+            <DefaultRolloverStrategy max="15"/>
+        </RollingFile>
+    </Appenders>
+
+    <Loggers>
+        <!--过滤掉spring和mybatis的一些无用的DEBUG信息-->
+        <logger name="org.mybatis" level="info" additivity="false">
+            <AppenderRef ref="Console"/>
+        </logger>
+        <!--监控系统信息-->
+        <!--若是additivity设为false，则 子Logger 只会在自己的appender里输出，而不会在 父Logger 的appender里输出。-->
+        <Logger name="org.springframework" level="info" additivity="false">
+            <AppenderRef ref="Console"/>
+        </Logger>
+
+        <Root level="Info">
+            <appender-ref ref="Console"/>
+            <appender-ref ref="RollingFileInfo"/>
+        </Root>
+
+        <Logger name="org.b3log.solo" level="Info"/>
+        <Logger name="org.b3log.latke" level="Warn"/>
+        <Logger name="org.b3log.latke.util.freemarker.Templates" level="Error"/>
+        <Logger name="org.b3log.latke.repository.jdbc.util" level="WARN"/>
+        <Logger name="org.b3log.latke.util.Crypts" level="Error"/>
+        <Logger name="io.netty" level="Warn"/>
+        <Logger name="freemarker" level="Warn"/>
+        <Logger name="com.zaxxer" level="Warn"/>
+
+    </Loggers>
+</Configuration>
