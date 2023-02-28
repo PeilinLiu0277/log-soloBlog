@@ -109,7 +109,7 @@ public final class Images {
             return COMMUNITY_FILE_URL + "/bing/" + DateFormatUtils.format(time, "yyyyMMdd") + ".jpg";
         } catch (final Exception e) {
             String stack1 = Arrays.toString(Thread.currentThread().getStackTrace());
-            LOGGER.log(Level.ERROR, "[stackTraceInfo="+stack1+"],event=Generates random image URL failed", e);
+            LOGGER.log(Level.ERROR, "[stackTraceInfo="+stack1+"];event=Generates random image URL failed", e);
             return COMMUNITY_FILE_URL + "/bing/20171104.jpg";
         }
     }

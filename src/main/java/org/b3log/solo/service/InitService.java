@@ -149,13 +149,13 @@ public class InitService {
             inited = null != optionRepository.get(Option.ID_C_VERSION);
             if (!inited && !printedInitMsg) {
                 String stack1 = Arrays.toString(Thread.currentThread().getStackTrace());
-                LOGGER.log(Level.WARN, "[stackTraceInfo="+stack1+"],event=Solo has not been initialized, please open your browser to init Solo");
+                LOGGER.log(Level.WARN, "[stackTraceInfo="+stack1+"];event=Solo has not been initialized, please open your browser to init Solo");
                 printedInitMsg = true;
             }
             return inited;
         } catch (final Exception e) {
             String stack1 = Arrays.toString(Thread.currentThread().getStackTrace());
-            LOGGER.log(Level.ERROR, "[stackTraceInfo="+stack1+"],event=Check init failed", e);
+            LOGGER.log(Level.ERROR, "[stackTraceInfo="+stack1+"];event=Check init failed", e);
             System.exit(-1);
             return false;
         }
@@ -174,7 +174,7 @@ public class InitService {
             }
         } catch (final Exception e) {
             String stack1 = Arrays.toString(Thread.currentThread().getStackTrace());
-            LOGGER.log(Level.ERROR, "[stackTraceInfo="+stack1+"],event=Check tables failed, please make sure database existed and database configuration [jdbc.*] in local.props is correct [msg=" + e.getMessage() + "]");
+            LOGGER.log(Level.ERROR, "[stackTraceInfo="+stack1+"];event=Check tables failed, please make sure database existed and database configuration [jdbc.*] in local.props is correct [msg=" + e.getMessage() + "]");
             System.exit(-1);
         }
 
@@ -184,14 +184,14 @@ public class InitService {
             String dataDir = Latkes.getLocalProperty("jdbc.URL");
             dataDir = dataDir.replace("~", System.getProperty("user.home"));
             String stack1 = Arrays.toString(Thread.currentThread().getStackTrace());
-            LOGGER.log(Level.INFO, "[stackTraceInfo="+stack1+"],event=Your DATA will be stored in directory [" + dataDir + "], "
+            LOGGER.log(Level.INFO, "[stackTraceInfo="+stack1+"];event=Your DATA will be stored in directory [" + dataDir + "]; "
                     + "please pay more attention on it!");
         }
 
         final List<CreateTableResult> createTableResults = JdbcRepositories.initAllTables();
         for (final CreateTableResult createTableResult : createTableResults) {
             String stack1 = Arrays.toString(Thread.currentThread().getStackTrace());
-            LOGGER.log(Level.DEBUG, "[stackTraceInfo="+stack1+"],event=Creates table result [tableName={}, isSuccess={}]",
+            LOGGER.log(Level.DEBUG, "[stackTraceInfo="+stack1+"];event=Creates table result [tableName={}, isSuccess={}]",
                     createTableResult.getName(), createTableResult.isSuccess());
         }
     }
@@ -222,7 +222,7 @@ public class InitService {
             transaction.commit();
         } catch (final Throwable e) {
             String stack1 = Arrays.toString(Thread.currentThread().getStackTrace());
-            LOGGER.log(Level.ERROR, "[stackTraceInfo="+stack1+"],event=Initializes Solo failed", e);
+            LOGGER.log(Level.ERROR, "[stackTraceInfo="+stack1+"];event=Initializes Solo failed", e);
             System.exit(-1);
         } finally {
             if (transaction.isActive()) {
@@ -286,7 +286,7 @@ public class InitService {
             articleRepository.add(article);
         } catch (final RepositoryException e) {
             String stack1 = Arrays.toString(Thread.currentThread().getStackTrace());
-            LOGGER.log(Level.ERROR, "[stackTraceInfo="+stack1+"],event=Adds an article failed", e);
+            LOGGER.log(Level.ERROR, "[stackTraceInfo="+stack1+"];event=Adds an article failed", e);
             throw new RepositoryException(e);
         }
         return ret;
@@ -314,7 +314,7 @@ public class InitService {
             archiveDateRepository.add(archiveDate);
         } catch (final ParseException e) {
             String stack1 = Arrays.toString(Thread.currentThread().getStackTrace());
-            LOGGER.log(Level.ERROR, "[stackTraceInfo="+stack1+"],event="+e.getMessage(), e);
+            LOGGER.log(Level.ERROR, "[stackTraceInfo="+stack1+"];event="+e.getMessage(), e);
             throw new RepositoryException(e);
         }
 
@@ -356,7 +356,7 @@ public class InitService {
             final String tagTitle = tagTitle1.trim();
             final JSONObject tag = new JSONObject();
             String stack1 = Arrays.toString(Thread.currentThread().getStackTrace());
-            LOGGER.log(Level.TRACE, "[stackTraceInfo="+stack1+"],event=Found a new tag[title={}] in article[title={}]", tagTitle, article.optString(Article.ARTICLE_TITLE));
+            LOGGER.log(Level.TRACE, "[stackTraceInfo="+stack1+"];event=Found a new tag[title={}] in article[title={}]", tagTitle, article.optString(Article.ARTICLE_TITLE));
             tag.put(Tag.TAG_TITLE, tagTitle);
             final String tagId = tagRepository.add(tag);
             tag.put(Keys.OBJECT_ID, tagId);

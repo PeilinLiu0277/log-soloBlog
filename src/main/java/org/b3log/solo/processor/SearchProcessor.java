@@ -110,10 +110,10 @@ public class SearchProcessor {
 
             renderer.setContent(content);
             String stack1 = Arrays.toString(Thread.currentThread().getStackTrace());
-            LOGGER.log(Level.INFO, "[stackTraceInfo="+stack1+"],event="+"Shows opensearch.xml OK!");
+            LOGGER.log(Level.INFO, "[stackTraceInfo="+stack1+"];event="+"Shows opensearch.xml OK!");
         } catch (final Exception e) {
             String stack1 = Arrays.toString(Thread.currentThread().getStackTrace());
-            LOGGER.log(Level.ERROR, "[stackTraceInfo="+stack1+"],event="+"Shows opensearch.xml failed", e);
+            LOGGER.log(Level.ERROR, "[stackTraceInfo="+stack1+"];event="+"Shows opensearch.xml failed", e);
         }
     }
 
@@ -153,10 +153,10 @@ public class SearchProcessor {
             pagination.put(Pagination.PAGINATION_CURRENT_PAGE_NUM, pageNum);
             dataModel.put(Pagination.PAGINATION, pagination);
             String stack1 = Arrays.toString(Thread.currentThread().getStackTrace());
-            LOGGER.log(Level.INFO,"[stackTraceInfo="+stack1+"],event=search articles OK!");
+            LOGGER.log(Level.INFO,"[stackTraceInfo="+stack1+"];event=search articles OK!");
         } catch (final Exception e) {
             String stack1 = Arrays.toString(Thread.currentThread().getStackTrace());
-            LOGGER.log(Level.ERROR, "[stackTraceInfo="+stack1+"],event="+"Search articles failed");
+            LOGGER.log(Level.ERROR, "[stackTraceInfo="+stack1+"];event="+"Search articles failed");
 
             dataModel.put(Article.ARTICLES, Collections.emptyList());
         }

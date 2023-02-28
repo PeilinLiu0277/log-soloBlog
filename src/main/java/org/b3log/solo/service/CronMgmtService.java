@@ -85,7 +85,7 @@ public class CronMgmtService {
                 StatisticMgmtService.removeExpiredOnlineVisitor();
             } catch (final Exception e) {
                 String stack1 = Arrays.toString(Thread.currentThread().getStackTrace());
-                LOGGER.log(Level.ERROR, "[stackTraceInfo="+stack1+"],event=Executes cron failed", e);
+                LOGGER.log(Level.ERROR, "[stackTraceInfo="+stack1+"];event=Executes cron failed", e);
             } finally {
                 Stopwatchs.release();
             }
@@ -98,7 +98,7 @@ public class CronMgmtService {
                 articleMgmtService.updateArticlesRandomValue(20);
             } catch (final Exception e) {
                 String stack1 = Arrays.toString(Thread.currentThread().getStackTrace());
-                LOGGER.log(Level.ERROR, "[stackTraceInfo="+stack1+"],event=Executes cron failed", e);
+                LOGGER.log(Level.ERROR, "[stackTraceInfo="+stack1+"];event=Executes cron failed", e);
             } finally {
                 Stopwatchs.release();
             }
@@ -113,7 +113,7 @@ public class CronMgmtService {
                 exportService.exportGitHub();
             } catch (final Exception e) {
                 String stack1 = Arrays.toString(Thread.currentThread().getStackTrace());
-                LOGGER.log(Level.ERROR, "[stackTraceInfo="+stack1+"],event=Executes cron failed", e);
+                LOGGER.log(Level.ERROR, "[stackTraceInfo="+stack1+"];event=Executes cron failed", e);
             } finally {
                 Stopwatchs.release();
             }

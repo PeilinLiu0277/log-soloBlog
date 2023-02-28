@@ -99,7 +99,7 @@ public class TagProcessor {
             String tagTitle = context.pathVar("tagTitle");
             final int currentPageNum = Paginator.getPage(context);
             String stack1 = Arrays.toString(Thread.currentThread().getStackTrace());
-            LOGGER.log(Level.DEBUG, "[stackTraceInfo="+stack1+"],event="+"Tag [title={}, currentPageNum={}]", tagTitle, currentPageNum);
+            LOGGER.log(Level.DEBUG, "[stackTraceInfo="+stack1+"];event="+"Tag [title={}, currentPageNum={}]", tagTitle, currentPageNum);
             final JSONObject result = tagQueryService.getTagByTitle(tagTitle);
             if (null == result) {
                 context.sendError(404);
@@ -134,10 +134,10 @@ public class TagProcessor {
             dataModelService.fillUsite(dataModel);
 
             String stack = Arrays.toString(Thread.currentThread().getStackTrace());
-            LOGGER.log(Level.INFO,"[stackTraceInfo="+stack+"],event=/unpkg.com/vditor/dist/images/emoji/");
+            LOGGER.log(Level.INFO,"[stackTraceInfo="+stack+"];event=/unpkg.com/vditor/dist/images/emoji/");
         } catch (final Exception e) {
             String stack1 = Arrays.toString(Thread.currentThread().getStackTrace());
-            LOGGER.log(Level.ERROR, "[stackTraceInfo="+stack1+"],event="+e.getMessage(), e);
+            LOGGER.log(Level.ERROR, "[stackTraceInfo="+stack1+"];event="+e.getMessage(), e);
 
             context.sendError(404);
         }
@@ -171,6 +171,6 @@ public class TagProcessor {
         dataModel.put(Pagination.PAGINATION_PAGE_COUNT, pageCount);
         dataModel.put(Pagination.PAGINATION_PAGE_NUMS, pageNums);
         String stack1 = Arrays.toString(Thread.currentThread().getStackTrace());
-        LOGGER.log(Level.INFO,"[stackTraceInfo="+stack1+"],event=fill pagination");
+        LOGGER.log(Level.INFO,"[stackTraceInfo="+stack1+"];event=fill pagination");
     }
 }

@@ -90,7 +90,7 @@ public class PluginConsole {
         renderer.setJSONObject(result);
         Statics.clear();
         String stack1 = Arrays.toString(Thread.currentThread().getStackTrace());
-        LOGGER.log(Level.ERROR, "[stackTraceInfo="+stack1+"],event="+"set plugin status OK!");
+        LOGGER.log(Level.ERROR, "[stackTraceInfo="+stack1+"];event="+"set plugin status OK!");
     }
 
     /**
@@ -133,10 +133,10 @@ public class PluginConsole {
             renderer.setJSONObject(result);
             result.put(Keys.CODE, StatusCodes.SUCC);
             String stack1 = Arrays.toString(Thread.currentThread().getStackTrace());
-            LOGGER.log(Level.ERROR, "[stackTraceInfo="+stack1+"],event="+"get plugins OK!");
+            LOGGER.log(Level.ERROR, "[stackTraceInfo="+stack1+"];event="+"get plugins OK!");
         } catch (final Exception e) {
             String stack1 = Arrays.toString(Thread.currentThread().getStackTrace());
-            LOGGER.log(Level.ERROR, "[stackTraceInfo="+stack1+"],event="+e.getMessage(), e);
+            LOGGER.log(Level.ERROR, "[stackTraceInfo="+stack1+"];event="+e.getMessage(), e);
             final JSONObject jsonObject = new JSONObject().put(Keys.CODE, StatusCodes.ERR);
             renderer.setJSONObject(jsonObject);
             jsonObject.put(Keys.MSG, langPropsService.get("getFailLabel"));
@@ -159,10 +159,10 @@ public class PluginConsole {
             dataModel.put(Plugin.PLUGIN_SETTING, setting);
             dataModel.put(Keys.OBJECT_ID, pluginId);
             String stack1 = Arrays.toString(Thread.currentThread().getStackTrace());
-            LOGGER.log(Level.ERROR, "[stackTraceInfo="+stack1+"],event="+"toSetting OK!");
+            LOGGER.log(Level.ERROR, "[stackTraceInfo="+stack1+"];event="+"toSetting OK!");
         } catch (final Exception e) {
             String stack1 = Arrays.toString(Thread.currentThread().getStackTrace());
-            LOGGER.log(Level.ERROR, "[stackTraceInfo="+stack1+"],event="+e.getMessage(), e);
+            LOGGER.log(Level.ERROR, "[stackTraceInfo="+stack1+"];event="+e.getMessage(), e);
             final JSONObject jsonObject = new JSONObject().put(Keys.CODE, StatusCodes.ERR);
             final JsonRenderer JsonRenderer = new JsonRenderer();
             JsonRenderer.setJSONObject(jsonObject);

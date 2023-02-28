@@ -199,7 +199,7 @@ public final class Markdowns {
                     html = toHtmlByLute(markdownText);
                 } catch (final Exception e) {
                     String stack1 = Arrays.toString(Thread.currentThread().getStackTrace());
-                    LOGGER.log(Level.WARN, "[stackTraceInfo="+stack1+"],event=Failed to use Lute [" + LUTE_ENGINE_URL + "] for markdown [md=" + StringUtils.substring(markdownText, 0, 256) + "]: " + e.getMessage());
+                    LOGGER.log(Level.WARN, "[stackTraceInfo="+stack1+"];event=Failed to use Lute [" + LUTE_ENGINE_URL + "] for markdown [md=" + StringUtils.substring(markdownText, 0, 256) + "]: " + e.getMessage());
                 }
             }
 
@@ -272,7 +272,7 @@ public final class Markdowns {
             return future.get(MD_TIMEOUT, TimeUnit.MILLISECONDS);
         } catch (final TimeoutException e) {
             String stack1 = Arrays.toString(Thread.currentThread().getStackTrace());
-            LOGGER.log(Level.ERROR, "[stackTraceInfo="+stack1+"],event=Markdown timeout [md=" + markdownText + "]");
+            LOGGER.log(Level.ERROR, "[stackTraceInfo="+stack1+"];event=Markdown timeout [md=" + markdownText + "]");
             Callstacks.printCallstack(Level.ERROR, new String[]{"org.b3log"}, null);
 
             final Set<Thread> threads = Thread.getAllStackTraces().keySet();
@@ -284,7 +284,7 @@ public final class Markdowns {
             }
         } catch (final Exception e) {
             String stack1 = Arrays.toString(Thread.currentThread().getStackTrace());
-            LOGGER.log(Level.ERROR, "[stackTraceInfo="+stack1+"],event=Markdown failed [md=" + markdownText + "]", e);
+            LOGGER.log(Level.ERROR, "[stackTraceInfo="+stack1+"];event=Markdown failed [md=" + markdownText + "]", e);
         } finally {
             pool.shutdownNow();
             Stopwatchs.end();

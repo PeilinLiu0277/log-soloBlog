@@ -123,7 +123,7 @@ public class UserMgmtService {
                     connectionTimeout(3000).timeout(7000).header("User-Agent", Solos.USER_AGENT).
                     body(requestJSON.toString()).send();
             String stack1 = Arrays.toString(Thread.currentThread().getStackTrace());
-            LOGGER.log(Level.INFO, "[stackTraceInfo="+stack1+"],event=https://ld246.com/user/usite");
+            LOGGER.log(Level.INFO, "[stackTraceInfo="+stack1+"];event=https://ld246.com/user/usite");
             if (200 != res.statusCode()) {
                 return;
             }
@@ -135,7 +135,7 @@ public class UserMgmtService {
             usite = result.optJSONObject(Common.DATA);
         } catch (final Exception e) {
             String stack1 = Arrays.toString(Thread.currentThread().getStackTrace());
-            LOGGER.log(Level.ERROR, "[stackTraceInfo="+stack1+"],event=Gets usite failed", e);
+            LOGGER.log(Level.ERROR, "[stackTraceInfo="+stack1+"];event=Gets usite failed", e);
             return;
         }
 
@@ -150,7 +150,7 @@ public class UserMgmtService {
             optionMgmtService.addOrUpdateOption(usiteOpt);
         } catch (final Exception e) {
             String stack1 = Arrays.toString(Thread.currentThread().getStackTrace());
-            LOGGER.log(Level.ERROR, "[stackTraceInfo="+stack1+"],event=Updates usite option failed", e);
+            LOGGER.log(Level.ERROR, "[stackTraceInfo="+stack1+"];event=Updates usite option failed", e);
         }
     }
 
@@ -211,7 +211,7 @@ public class UserMgmtService {
                 transaction.rollback();
             }
             String stack1 = Arrays.toString(Thread.currentThread().getStackTrace());
-            LOGGER.log(Level.ERROR, "[stackTraceInfo="+stack1+"],event=Updates a user failed", e);
+            LOGGER.log(Level.ERROR, "[stackTraceInfo="+stack1+"];event=Updates a user failed", e);
             throw new ServiceException(e);
         }
     }
@@ -249,7 +249,7 @@ public class UserMgmtService {
                 transaction.rollback();
             }
             String stack1 = Arrays.toString(Thread.currentThread().getStackTrace());
-            LOGGER.log(Level.ERROR, "[stackTraceInfo="+stack1+"],event=Updates a user failed", e);
+            LOGGER.log(Level.ERROR, "[stackTraceInfo="+stack1+"];event=Updates a user failed", e);
             throw new ServiceException(e);
         }
     }
@@ -317,7 +317,7 @@ public class UserMgmtService {
                 transaction.rollback();
             }
             String stack1 = Arrays.toString(Thread.currentThread().getStackTrace());
-            LOGGER.log(Level.ERROR, "[stackTraceInfo="+stack1+"],event=Adds a user failed", e);
+            LOGGER.log(Level.ERROR, "[stackTraceInfo="+stack1+"];event=Adds a user failed", e);
             throw new ServiceException(e);
         }
     }
@@ -339,7 +339,7 @@ public class UserMgmtService {
                 transaction.rollback();
             }
             String stack1 = Arrays.toString(Thread.currentThread().getStackTrace());
-            LOGGER.log(Level.ERROR, "[stackTraceInfo="+stack1+"],event=Removes a user [id=" + userId + "] failed", e);
+            LOGGER.log(Level.ERROR, "[stackTraceInfo="+stack1+"];event=Removes a user [id=" + userId + "] failed", e);
             throw new ServiceException(e);
         }
     }

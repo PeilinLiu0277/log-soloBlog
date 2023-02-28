@@ -127,11 +127,11 @@ public class CategoryProcessor {
             result.put(Article.ARTICLES, articles);
             jsonObject.put(Keys.RESULTS, result);
             String stack1 = Arrays.toString(Thread.currentThread().getStackTrace());
-            LOGGER.log(Level.INFO, "[stackTraceInfo="+stack1+"],event=Gets article paged OK!");
+            LOGGER.log(Level.INFO, "[stackTraceInfo="+stack1+"];event=Gets article paged OK!");
         } catch (final Exception e) {
             jsonObject.put(Keys.CODE, StatusCodes.ERR);
             String stack1 = Arrays.toString(Thread.currentThread().getStackTrace());
-            LOGGER.log(Level.ERROR, "[stackTraceInfo="+stack1+"],event=Gets article paged failed", e);
+            LOGGER.log(Level.ERROR, "[stackTraceInfo="+stack1+"];event=Gets article paged failed", e);
         } finally {
             Stopwatchs.end();
         }
@@ -156,7 +156,7 @@ public class CategoryProcessor {
             final String categoryURI = context.pathVar("categoryURI");
             final int currentPageNum = Paginator.getPage(context);
             String stack1 = Arrays.toString(Thread.currentThread().getStackTrace());
-            LOGGER.log(Level.DEBUG, "[stackTraceInfo="+stack1+"],event=Category [URI={}, currentPageNum={}]", categoryURI, currentPageNum);
+            LOGGER.log(Level.DEBUG, "[stackTraceInfo="+stack1+"];event=Category [URI={}, currentPageNum={}]", categoryURI, currentPageNum);
             final JSONObject category = categoryQueryService.getByURI(categoryURI);
             if (null == category) {
                 context.sendError(404);
@@ -190,7 +190,7 @@ public class CategoryProcessor {
             dataModelService.fillUsite(dataModel);
         } catch (final ServiceException | JSONException e) {
             String stack1 = Arrays.toString(Thread.currentThread().getStackTrace());
-            LOGGER.log(Level.ERROR, "[stackTraceInfo="+stack1+"],event="+e.getMessage(), e);
+            LOGGER.log(Level.ERROR, "[stackTraceInfo="+stack1+"];event="+e.getMessage(), e);
 
             context.sendError(404);
         }
@@ -224,6 +224,6 @@ public class CategoryProcessor {
         dataModel.put(Pagination.PAGINATION_PAGE_COUNT, pageCount);
         dataModel.put(Pagination.PAGINATION_PAGE_NUMS, pageNums);
         String stack1 = Arrays.toString(Thread.currentThread().getStackTrace());
-        LOGGER.log(Level.INFO,"[stackTraceInfo="+stack1+"],event=fill pagination");
+        LOGGER.log(Level.INFO,"[stackTraceInfo="+stack1+"];event=fill pagination");
     }
 }

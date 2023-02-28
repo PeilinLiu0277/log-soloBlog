@@ -223,7 +223,7 @@ public class DataModelService {
             }
         } catch (final Exception e) {
             String stack1 = Arrays.toString(Thread.currentThread().getStackTrace());
-            LOGGER.log(Level.ERROR, "[stackTraceInfo="+stack1+"],event=Fills index articles failed", e);
+            LOGGER.log(Level.ERROR, "[stackTraceInfo="+stack1+"];event=Fills index articles failed", e);
 
             throw new ServiceException(e);
         } finally {
@@ -249,7 +249,7 @@ public class DataModelService {
             dataModel.put(Link.LINKS, links);
         } catch (final RepositoryException e) {
             String stack1 = Arrays.toString(Thread.currentThread().getStackTrace());
-            LOGGER.log(Level.ERROR, "[stackTraceInfo="+stack1+"],event=Fills links failed", e);
+            LOGGER.log(Level.ERROR, "[stackTraceInfo="+stack1+"];event=Fills links failed", e);
 
             throw new ServiceException(e);
         } finally {
@@ -271,7 +271,7 @@ public class DataModelService {
             dataModel.put(Tag.TAGS, tags);
         } catch (final Exception e) {
             String stack1 = Arrays.toString(Thread.currentThread().getStackTrace());
-            LOGGER.log(Level.ERROR, "[stackTraceInfo="+stack1+"],event=Fills tags failed", e);
+            LOGGER.log(Level.ERROR, "[stackTraceInfo="+stack1+"];event=Fills tags failed", e);
 
             throw new ServiceException(e);
         } finally {
@@ -296,7 +296,7 @@ public class DataModelService {
             dataModel.put(Category.CATEGORIES, categories);
         } catch (final RepositoryException e) {
             String stack1 = Arrays.toString(Thread.currentThread().getStackTrace());
-            LOGGER.log(Level.ERROR, "[stackTraceInfo="+stack1+"],event=Fills categories failed", e);
+            LOGGER.log(Level.ERROR, "[stackTraceInfo="+stack1+"];event=Fills categories failed", e);
 
             throw new ServiceException(e);
         } finally {
@@ -321,7 +321,7 @@ public class DataModelService {
             dataModel.put(Common.MOST_USED_CATEGORIES, categories);
         } catch (final RepositoryException e) {
             String stack1 = Arrays.toString(Thread.currentThread().getStackTrace());
-            LOGGER.log(Level.ERROR, "[stackTraceInfo="+stack1+"],event=Fills most used categories failed", e);
+            LOGGER.log(Level.ERROR, "[stackTraceInfo="+stack1+"];event=Fills most used categories failed", e);
 
             throw new ServiceException(e);
         } finally {
@@ -346,7 +346,7 @@ public class DataModelService {
             dataModel.put(Common.MOST_USED_TAGS, tags);
         } catch (final Exception e) {
             String stack1 = Arrays.toString(Thread.currentThread().getStackTrace());
-            LOGGER.log(Level.ERROR, "[stackTraceInfo="+stack1+"],event=Fills most used tags failed", e);
+            LOGGER.log(Level.ERROR, "[stackTraceInfo="+stack1+"];event=Fills most used tags failed", e);
 
             throw new ServiceException(e);
         } finally {
@@ -389,7 +389,7 @@ public class DataModelService {
                         archiveDates2.add(archiveDate);
                     } else {
                         String stack1 = Arrays.toString(Thread.currentThread().getStackTrace());
-                        LOGGER.log(Level.DEBUG, "[stackTraceInfo="+stack1+"],event=Found a duplicated archive date [{}]", dateString);
+                        LOGGER.log(Level.DEBUG, "[stackTraceInfo="+stack1+"];event=Found a duplicated archive date [{}]", dateString);
                     }
                 }
             }
@@ -417,7 +417,7 @@ public class DataModelService {
             dataModel.put(ArchiveDate.ARCHIVE_DATES, archiveDates2);
         } catch (final Exception e) {
             String stack1 = Arrays.toString(Thread.currentThread().getStackTrace());
-            LOGGER.log(Level.ERROR, "[stackTraceInfo="+stack1+"],event=Fills archive dates failed", e);
+            LOGGER.log(Level.ERROR, "[stackTraceInfo="+stack1+"];event=Fills archive dates failed", e);
 
             throw new ServiceException(e);
         } finally {
@@ -441,7 +441,7 @@ public class DataModelService {
             dataModel.put(Common.RECENT_ARTICLES, recentArticles);
         } catch (final Exception e) {
             String stack1 = Arrays.toString(Thread.currentThread().getStackTrace());
-            LOGGER.log(Level.ERROR, "[stackTraceInfo="+stack1+"],event=Fills recent articles failed", e);
+            LOGGER.log(Level.ERROR, "[stackTraceInfo="+stack1+"];event=Fills recent articles failed", e);
 
             throw new ServiceException(e);
         } finally {
@@ -478,7 +478,7 @@ public class DataModelService {
             dataModel.put(Option.ID_C_USITE, new JSONObject(usiteOpt.optString(Option.OPTION_VALUE)));
         } catch (final Exception e) {
             String stack1 = Arrays.toString(Thread.currentThread().getStackTrace());
-            LOGGER.log(Level.ERROR, "[stackTraceInfo="+stack1+"],event=Fills usite failed", e);
+            LOGGER.log(Level.ERROR, "[stackTraceInfo="+stack1+"];event=Fills usite failed", e);
         }
     }
 
@@ -584,7 +584,7 @@ public class DataModelService {
             }
         } catch (final Exception e) {
             String stack1 = Arrays.toString(Thread.currentThread().getStackTrace());
-            LOGGER.log(Level.ERROR, "[stackTraceInfo="+stack1+"],event=Fills blog footer failed", e);
+            LOGGER.log(Level.ERROR, "[stackTraceInfo="+stack1+"];event=Fills blog footer failed", e);
 
             throw new ServiceException(e);
         } finally {
@@ -646,7 +646,7 @@ public class DataModelService {
             fillMostUsedCategories(dataModel, preference);
         } catch (final Exception e) {
             String stack1 = Arrays.toString(Thread.currentThread().getStackTrace());
-            LOGGER.log(Level.ERROR, "[stackTraceInfo="+stack1+"],event=Fills blog header failed", e);
+            LOGGER.log(Level.ERROR, "[stackTraceInfo="+stack1+"];event=Fills blog header failed", e);
 
             throw new ServiceException(e);
         } finally {
@@ -688,7 +688,7 @@ public class DataModelService {
             }
         } catch (final ServiceException e) {
             String stack1 = Arrays.toString(Thread.currentThread().getStackTrace());
-            LOGGER.log(Level.ERROR, "[stackTraceInfo="+stack1+"],event=Fills side failed", e);
+            LOGGER.log(Level.ERROR, "[stackTraceInfo="+stack1+"];event=Fills side failed", e);
             throw new ServiceException(e);
         } finally {
             Stopwatchs.end();
@@ -709,7 +709,7 @@ public class DataModelService {
         Stopwatchs.start("Fill User Template[name=" + template.getName() + "]");
         try {
             String stack1 = Arrays.toString(Thread.currentThread().getStackTrace());
-            LOGGER.log(Level.DEBUG, "[stackTraceInfo="+stack1+"],event=Filling user template[name{}]", template.getName());
+            LOGGER.log(Level.DEBUG, "[stackTraceInfo="+stack1+"];event=Filling user template[name{}]", template.getName());
 
             if (Templates.hasExpression(template, "<#list links as link>")) {
                 fillLinks(dataModel);
@@ -732,7 +732,7 @@ public class DataModelService {
             dataModel.put(Option.ID_C_NOTICE_BOARD, noticeBoard);
         } catch (final Exception e) {
             String stack1 = Arrays.toString(Thread.currentThread().getStackTrace());
-            LOGGER.log(Level.ERROR, "[stackTraceInfo="+stack1+"],event=Fills user template failed", e);
+            LOGGER.log(Level.ERROR, "[stackTraceInfo="+stack1+"];event=Fills user template failed", e);
 
             throw new ServiceException(e);
         } finally {
@@ -754,7 +754,7 @@ public class DataModelService {
             dataModel.put(Common.PAGE_NAVIGATIONS, pages);
         } catch (final RepositoryException e) {
             String stack1 = Arrays.toString(Thread.currentThread().getStackTrace());
-            LOGGER.log(Level.ERROR, "[stackTraceInfo="+stack1+"],event=Fills page navigations failed", e);
+            LOGGER.log(Level.ERROR, "[stackTraceInfo="+stack1+"];event=Fills page navigations failed", e);
             throw new ServiceException(e);
         } finally {
             Stopwatchs.end();
@@ -829,7 +829,7 @@ public class DataModelService {
             fillCategory(article);
         } catch (final Exception e) {
             String stack1 = Arrays.toString(Thread.currentThread().getStackTrace());
-            LOGGER.log(Level.ERROR, "[stackTraceInfo="+stack1+"],event=Sets article extra properties failed", e);
+            LOGGER.log(Level.ERROR, "[stackTraceInfo="+stack1+"];event=Sets article extra properties failed", e);
             throw new ServiceException(e);
         }
     }
@@ -879,7 +879,7 @@ public class DataModelService {
             return categoryRepository.get(categoryId);
         } catch (final Exception e) {
             String stack1 = Arrays.toString(Thread.currentThread().getStackTrace());
-            LOGGER.log(Level.ERROR, "[stackTraceInfo="+stack1+"],event=Gets category of tag [" + tagTitle + "] failed", e);
+            LOGGER.log(Level.ERROR, "[stackTraceInfo="+stack1+"];event=Gets category of tag [" + tagTitle + "] failed", e);
 
             return null;
         }
@@ -993,7 +993,7 @@ public class DataModelService {
             return stringWriter.toString();
         } catch (final Exception e) {
             String stack1 = Arrays.toString(Thread.currentThread().getStackTrace());
-            LOGGER.log(Level.ERROR, "[stackTraceInfo="+stack1+"],event=Gens top bar HTML failed", e);
+            LOGGER.log(Level.ERROR, "[stackTraceInfo="+stack1+"];event=Gens top bar HTML failed", e);
 
             throw new ServiceException(e);
         } finally {

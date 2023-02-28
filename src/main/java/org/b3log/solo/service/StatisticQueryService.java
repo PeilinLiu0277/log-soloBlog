@@ -76,7 +76,7 @@ public class StatisticQueryService {
             return ret;
         } catch (final Exception e) {
             String stack1 = Arrays.toString(Thread.currentThread().getStackTrace());
-            LOGGER.log(Level.ERROR, "[stackTraceInfo="+stack1+"],event=Gets statistic failed", e);
+            LOGGER.log(Level.ERROR, "[stackTraceInfo="+stack1+"];event=Gets statistic failed", e);
 
             return null;
         }

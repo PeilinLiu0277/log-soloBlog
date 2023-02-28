@@ -60,7 +60,7 @@ public class SkinHandler implements Handler {
 
         context.handle();
         String stack1 = Arrays.toString(Thread.currentThread().getStackTrace());
-        LOGGER.log(Level.INFO,"[stackTraceInfo="+stack1+"],event=handle");
+        LOGGER.log(Level.INFO,"[stackTraceInfo="+stack1+"];event=handle");
     }
 
     /**
@@ -92,7 +92,7 @@ public class SkinHandler implements Handler {
         }
         request.setAttribute(Keys.TEMPLATE_DIR_NAME, skin);
         String stack1 = Arrays.toString(Thread.currentThread().getStackTrace());
-        LOGGER.log(Level.INFO,"[stackTraceInfo="+stack1+"],event=resolve skin dir");
+        LOGGER.log(Level.INFO,"[stackTraceInfo="+stack1+"];event=resolve skin dir");
     }
 
     private static void fillBotAttrs(final Request request) {
@@ -119,6 +119,6 @@ public class SkinHandler implements Handler {
         request.setAttribute(Keys.HttpRequest.IS_MOBILE_BOT, BrowserType.MOBILE_BROWSER == browserType);
 
         String stack1 = Arrays.toString(Thread.currentThread().getStackTrace());
-        LOGGER.log(Level.INFO,"[stackTraceInfo="+stack1+"],event=fill bot attrs");
+        LOGGER.log(Level.INFO,"[stackTraceInfo="+stack1+"];event=fill bot attrs");
     }
 }

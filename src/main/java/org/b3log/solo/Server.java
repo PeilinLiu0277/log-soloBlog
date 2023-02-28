@@ -307,7 +307,7 @@ public final class Server extends BaseServer {
 
         if (initService.isInited()) {
             String stack = Arrays.toString(Thread.currentThread().getStackTrace());
-            LOGGER.info("[stackTraceInfo="+stack+"],event=Solo is running");
+            LOGGER.info("[stackTraceInfo="+stack+"];event=Solo is running");
         }
 
         final CronMgmtService cronMgmtService = beanManager.getReference(CronMgmtService.class);
@@ -489,7 +489,7 @@ public final class Server extends BaseServer {
         oauthGroup.get("/login/redirect", oAuthProcessor::redirectAuth).
                 get("/login/callback", oAuthProcessor::authCallback);
         String stack1 = Arrays.toString(Thread.currentThread().getStackTrace());
-        LOGGER.log(Level.INFO, "[stackTraceInfo="+stack1+"],event=oauthGroup.get");
+        LOGGER.log(Level.INFO, "[stackTraceInfo="+stack1+"];event=oauthGroup.get");
         final SearchProcessor searchProcessor = beanManager.getReference(SearchProcessor.class);
         final Dispatcher.RouterGroup searchGroup = Dispatcher.group();
         searchGroup.get("/opensearch.xml", searchProcessor::showOpensearchXML).
@@ -530,7 +530,7 @@ public final class Server extends BaseServer {
                 get("/console/export/hexo", adminConsole::exportHexo).
                 post("/console/import/markdown-zip", adminConsole::importMarkdownZip);
         String stack = Arrays.toString(Thread.currentThread().getStackTrace());
-        LOGGER.log(Level.INFO, "[stackTraceInfo="+stack+"],event=adminConsoleGroup.get");
+        LOGGER.log(Level.INFO, "[stackTraceInfo="+stack+"];event=adminConsoleGroup.get");
         adminConsoleGroup.router().get(new String[]{"/admin-article.do",
                 "/admin-article-list.do",
                 "/admin-link-list.do",
@@ -545,7 +545,7 @@ public final class Server extends BaseServer {
                 "/admin-main.do",
                 "/admin-about.do"}, adminConsole::showAdminFunctions);
         String stack1 = Arrays.toString(Thread.currentThread().getStackTrace());
-        LOGGER.log(Level.INFO, "[stackTraceInfo="+stack1+"],event=adminConsoleGroup.router");
+        LOGGER.log(Level.INFO, "[stackTraceInfo="+stack1+"];event=adminConsoleGroup.router");
         final ArticleConsole articleConsole = beanManager.getReference(ArticleConsole.class);
         final Dispatcher.RouterGroup articleConsoleGroup = Dispatcher.group();
         articleConsoleGroup.middlewares(consoleAuthMidware::handle);
@@ -560,7 +560,7 @@ public final class Server extends BaseServer {
                 put("/console/article/", articleConsole::updateArticle).
                 post("/console/article/", articleConsole::addArticle);
         String stack2 = Arrays.toString(Thread.currentThread().getStackTrace());
-        LOGGER.log(Level.INFO, "[stackTraceInfo="+stack2+"],event=articleConsoleGroup.get");
+        LOGGER.log(Level.INFO, "[stackTraceInfo="+stack2+"];event=articleConsoleGroup.get");
         final TagConsole tagConsole = beanManager.getReference(TagConsole.class);
         final Dispatcher.RouterGroup tagConsoleGroup = Dispatcher.group();
         tagConsoleGroup.middlewares(consoleAuthMidware::handle);
@@ -576,7 +576,7 @@ public final class Server extends BaseServer {
                 post("/console/category/", categoryConsole::addCategory).
                 get("/console/categories/{page}/{pageSize}/{windowSize}", categoryConsole::getCategories);
         String stack3 = Arrays.toString(Thread.currentThread().getStackTrace());
-        LOGGER.log(Level.INFO, "[stackTraceInfo="+stack3+"],event=categoryGroup.put");
+        LOGGER.log(Level.INFO, "[stackTraceInfo="+stack3+"];event=categoryGroup.put");
         final LinkConsole linkConsole = beanManager.getReference(LinkConsole.class);
         final Dispatcher.RouterGroup linkConsoleGroup = Dispatcher.group();
         linkConsoleGroup.middlewares(consoleAdminAuthMidware::handle);

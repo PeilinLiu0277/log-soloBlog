@@ -70,7 +70,7 @@ public class PermalinkHandler implements Handler {
             final String permalink = StringUtils.substringAfter(requestURI, contextPath);
             if (PermalinkQueryService.invalidPermalinkFormat(permalink)) {
                 String stack1 = Arrays.toString(Thread.currentThread().getStackTrace());
-                LOGGER.log(Level.DEBUG, "[stackTraceInfo="+stack1+"],event="+"Skip permalink handling request [URI={}]", permalink);
+                LOGGER.log(Level.DEBUG, "[stackTraceInfo="+stack1+"];event="+"Skip permalink handling request [URI={}]", permalink);
                 context.handle();
                 return;
             }
@@ -88,13 +88,13 @@ public class PermalinkHandler implements Handler {
             article = articleRepository.getByPermalink(permalink);
             if (null == article) {
                 String stack1 = Arrays.toString(Thread.currentThread().getStackTrace());
-                LOGGER.log(Level.DEBUG, "[stackTraceInfo="+stack1+"],event="+"Not found article with permalink [{}]", permalink);
+                LOGGER.log(Level.DEBUG, "[stackTraceInfo="+stack1+"];event="+"Not found article with permalink [{}]", permalink);
                 context.handle();
                 return;
             }
         } catch (final RepositoryException e) {
             String stack1 = Arrays.toString(Thread.currentThread().getStackTrace());
-            LOGGER.log(Level.ERROR, "[stackTraceInfo="+stack1+"],event="+"Processes article permalink handler failed", e);
+            LOGGER.log(Level.ERROR, "[stackTraceInfo="+stack1+"];event="+"Processes article permalink handler failed", e);
             context.sendError(404);
             return;
         }
@@ -133,6 +133,6 @@ public class PermalinkHandler implements Handler {
         context.attr(Keys.HttpRequest.REQUEST_URI, Latkes.getContextPath() + "/article");
         context.attr(Keys.HttpRequest.REQUEST_METHOD, HttpMethod.GET.name());
         String stack1 = Arrays.toString(Thread.currentThread().getStackTrace());
-        LOGGER.log(Level.INFO,"[stackTraceInfo="+stack1+"],event=dispatch to article processor");
+        LOGGER.log(Level.INFO,"[stackTraceInfo="+stack1+"];event=dispatch to article processor");
     }
 }

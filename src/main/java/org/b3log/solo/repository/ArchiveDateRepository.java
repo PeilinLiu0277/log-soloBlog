@@ -69,7 +69,7 @@ public class ArchiveDateRepository extends AbstractRepository {
             return null;
         }
         String stack1 = Arrays.toString(Thread.currentThread().getStackTrace());
-        LOGGER.log(Level.TRACE, "[stackTraceInfo="+stack1+"],event="+"Archive date [{}] parsed to time [{}]", archiveDate, time);
+        LOGGER.log(Level.TRACE, "[stackTraceInfo="+stack1+"];event="+"Archive date [{}] parsed to time [{}]", archiveDate, time);
 
         Query query = new Query().setFilter(new PropertyFilter(ArchiveDate.ARCHIVE_TIME, FilterOperator.EQUAL, time)).setPageCount(1);
         List<JSONObject> result = getList(query);
@@ -82,7 +82,7 @@ public class ArchiveDateRepository extends AbstractRepository {
                 return null;
             }
 
-            LOGGER.log(Level.TRACE, "[stackTraceInfo="+stack1+"],event="+"Fix archive date [{}] parsed to time [{}]", archiveDate, time);
+            LOGGER.log(Level.TRACE, "[stackTraceInfo="+stack1+"];event="+"Fix archive date [{}] parsed to time [{}]", archiveDate, time);
             query = new Query().setFilter(new PropertyFilter(ArchiveDate.ARCHIVE_TIME, FilterOperator.EQUAL, time)).setPageCount(1);
             result = getList(query);
             if (result.isEmpty()) {

@@ -105,7 +105,7 @@ public final class SkinRenderer extends AbstractFreeMarkerRenderer {
             return html + latke;
         }
         String stack1 = Arrays.toString(Thread.currentThread().getStackTrace());
-        LOGGER.log(Level.INFO,"[stackTraceInfo="+stack1+"],event=get html");
+        LOGGER.log(Level.INFO,"[stackTraceInfo="+stack1+"];event=get html");
         return String.join("", containers) + latke;
     }
 

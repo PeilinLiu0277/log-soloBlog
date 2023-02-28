@@ -118,10 +118,10 @@ public class FeedProcessor {
 
             renderer.setContent(feed.toString());
             String stack1 = Arrays.toString(Thread.currentThread().getStackTrace());
-            LOGGER.log(Level.INFO,"[stackTraceInfo="+stack1+"],event=blog articles atom");
+            LOGGER.log(Level.INFO,"[stackTraceInfo="+stack1+"];event=blog articles atom");
         } catch (final Exception e) {
             String stack1 = Arrays.toString(Thread.currentThread().getStackTrace());
-            LOGGER.log(Level.ERROR, "[stackTraceInfo="+stack1+"],event="+"Get blog article feed error", e);
+            LOGGER.log(Level.ERROR, "[stackTraceInfo="+stack1+"];event="+"Get blog article feed error", e);
 
             context.sendError(500);
         }
@@ -150,7 +150,7 @@ public class FeedProcessor {
             catetory.setTerm(tagString);
         }
         String stack1 = Arrays.toString(Thread.currentThread().getStackTrace());
-        LOGGER.log(Level.INFO,"[stackTraceInfo="+stack1+"],event=get entry");
+        LOGGER.log(Level.INFO,"[stackTraceInfo="+stack1+"];event=get entry");
         return ret;
     }
 
@@ -204,10 +204,10 @@ public class FeedProcessor {
 
             renderer.setContent(channel.toString());
             String stack1 = Arrays.toString(Thread.currentThread().getStackTrace());
-            LOGGER.log(Level.INFO,"[stackTraceInfo="+stack1+"],event=get blog article rss OK!");
+            LOGGER.log(Level.INFO,"[stackTraceInfo="+stack1+"];event=get blog article rss OK!");
         } catch (final Exception e) {
             String stack1 = Arrays.toString(Thread.currentThread().getStackTrace());
-            LOGGER.log(Level.ERROR, "[stackTraceInfo="+stack1+"],event="+"Get blog article rss error", e);
+            LOGGER.log(Level.ERROR, "[stackTraceInfo="+stack1+"];event="+"Get blog article rss error", e);
 
             context.sendError(500);
         }
@@ -239,7 +239,7 @@ public class FeedProcessor {
         }
 
         String stack1 = Arrays.toString(Thread.currentThread().getStackTrace());
-        LOGGER.log(Level.INFO,"[stackTraceInfo="+stack1+"],event=get item");
+        LOGGER.log(Level.INFO,"[stackTraceInfo="+stack1+"];event=get item");
 
         return ret;
     }

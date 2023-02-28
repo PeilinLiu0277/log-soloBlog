@@ -91,7 +91,7 @@ public class ArticleConsole {
         final String articleId = context.param("id");
         articleMgmtService.pushArticleToCommunity(articleId);
         String stack1 = Arrays.toString(Thread.currentThread().getStackTrace());
-        LOGGER.log(Level.INFO, "[stackTraceInfo="+stack1+"],event=put article to community OK!");
+        LOGGER.log(Level.INFO, "[stackTraceInfo="+stack1+"];event=put article to community OK!");
     }
 
     /**
@@ -160,7 +160,7 @@ public class ArticleConsole {
      *     "articleTags": [{
      *         "oId": "",
      *         "tagTitle": ""
-     *     }, ....],
+     *     }, ....];
      *     "articleSignId": "",
      *     "signs": [{
      *         "oId": "",
@@ -191,10 +191,10 @@ public class ArticleConsole {
             result.put(Keys.CODE, StatusCodes.SUCC);
             renderer.setJSONObject(result);
             String stack1 = Arrays.toString(Thread.currentThread().getStackTrace());
-            LOGGER.log(Level.INFO, "[stackTraceInfo="+stack1+"],event=get articles OK!");
+            LOGGER.log(Level.INFO, "[stackTraceInfo="+stack1+"];event=get articles OK!");
         } catch (final ServiceException e) {
             String stack1 = Arrays.toString(Thread.currentThread().getStackTrace());
-            LOGGER.log(Level.ERROR, "[stackTraceInfo="+stack1+"],event="+e.getMessage(), e);
+            LOGGER.log(Level.ERROR, "[stackTraceInfo="+stack1+"];event="+e.getMessage(), e);
 
             final JSONObject jsonObject = new JSONObject().put(Keys.CODE, StatusCodes.ERR);
             renderer.setJSONObject(jsonObject);
@@ -268,10 +268,10 @@ public class ArticleConsole {
                 article.put(Article.ARTICLE_TITLE, title);
             }
             String stack1 = Arrays.toString(Thread.currentThread().getStackTrace());
-            LOGGER.log(Level.INFO, "[stackTraceInfo="+stack1+"],event=get articles OK!");
+            LOGGER.log(Level.INFO, "[stackTraceInfo="+stack1+"];event=get articles OK!");
         } catch (final Exception e) {
             String stack1 = Arrays.toString(Thread.currentThread().getStackTrace());
-            LOGGER.log(Level.ERROR, "[stackTraceInfo="+stack1+"],event="+e.getMessage(), e);
+            LOGGER.log(Level.ERROR, "[stackTraceInfo="+stack1+"];event="+e.getMessage(), e);
 
             final JSONObject jsonObject = new JSONObject().put(Keys.CODE, StatusCodes.ERR);
             renderer.setJSONObject(jsonObject);
@@ -313,10 +313,10 @@ public class ArticleConsole {
             ret.put(Keys.CODE, StatusCodes.SUCC);
             ret.put(Keys.MSG, langPropsService.get("removeSuccLabel"));
             String stack1 = Arrays.toString(Thread.currentThread().getStackTrace());
-            LOGGER.log(Level.INFO, "[stackTraceInfo="+stack1+"],event=remove article OK!");
+            LOGGER.log(Level.INFO, "[stackTraceInfo="+stack1+"];event=remove article OK!");
         } catch (final Exception e) {
             String stack1 = Arrays.toString(Thread.currentThread().getStackTrace());
-            LOGGER.log(Level.ERROR, "[stackTraceInfo="+stack1+"],event="+e.getMessage(), e);
+            LOGGER.log(Level.ERROR, "[stackTraceInfo="+stack1+"];event="+e.getMessage(), e);
 
             final JSONObject jsonObject = new JSONObject();
             renderer.setJSONObject(jsonObject);
@@ -359,10 +359,10 @@ public class ArticleConsole {
             ret.put(Keys.CODE, StatusCodes.SUCC);
             ret.put(Keys.MSG, langPropsService.get("unPulbishSuccLabel"));
             String stack1 = Arrays.toString(Thread.currentThread().getStackTrace());
-            LOGGER.log(Level.INFO, "[stackTraceInfo="+stack1+"],event=cancel publish the article OK!");
+            LOGGER.log(Level.INFO, "[stackTraceInfo="+stack1+"];event=cancel publish the article OK!");
         } catch (final Exception e) {
             String stack1 = Arrays.toString(Thread.currentThread().getStackTrace());
-            LOGGER.log(Level.ERROR, "[stackTraceInfo="+stack1+"],event="+e.getMessage(), e);
+            LOGGER.log(Level.ERROR, "[stackTraceInfo="+stack1+"];event="+e.getMessage(), e);
 
             final JSONObject jsonObject = new JSONObject();
             renderer.setJSONObject(jsonObject);
@@ -402,10 +402,10 @@ public class ArticleConsole {
             ret.put(Keys.CODE, StatusCodes.SUCC);
             ret.put(Keys.MSG, langPropsService.get("cancelTopSuccLabel"));
             String stack1 = Arrays.toString(Thread.currentThread().getStackTrace());
-            LOGGER.log(Level.INFO, "[stackTraceInfo="+stack1+"],event=cancel top article OK!");
+            LOGGER.log(Level.INFO, "[stackTraceInfo="+stack1+"];event=cancel top article OK!");
         } catch (final Exception e) {
             String stack1 = Arrays.toString(Thread.currentThread().getStackTrace());
-            LOGGER.log(Level.ERROR, "[stackTraceInfo="+stack1+"],event="+e.getMessage(), e);
+            LOGGER.log(Level.ERROR, "[stackTraceInfo="+stack1+"];event="+e.getMessage(), e);
 
             final JSONObject jsonObject = new JSONObject();
             renderer.setJSONObject(jsonObject);
@@ -445,10 +445,10 @@ public class ArticleConsole {
             ret.put(Keys.CODE, StatusCodes.SUCC);
             ret.put(Keys.MSG, langPropsService.get("putTopSuccLabel"));
             String stack1 = Arrays.toString(Thread.currentThread().getStackTrace());
-            LOGGER.log(Level.INFO, "[stackTraceInfo="+stack1+"],event=put article to top OK!");
+            LOGGER.log(Level.INFO, "[stackTraceInfo="+stack1+"];event=put article to top OK!");
         } catch (final Exception e) {
             String stack1 = Arrays.toString(Thread.currentThread().getStackTrace());
-            LOGGER.log(Level.ERROR, "[stackTraceInfo="+stack1+"],event="+e.getMessage(), e);
+            LOGGER.log(Level.ERROR, "[stackTraceInfo="+stack1+"];event="+e.getMessage(), e);
 
             final JSONObject jsonObject = new JSONObject();
             renderer.setJSONObject(jsonObject);
@@ -509,7 +509,7 @@ public class ArticleConsole {
 
             // 打印请求日志，如果发生特殊情况丢失数据，至少还可以根据日志寻回内容
             String stack1 = Arrays.toString(Thread.currentThread().getStackTrace());
-            LOGGER.log(Level.INFO, "[stackTraceInfo="+stack1+"],event="+"Updates an article request [" + requestJSONObject.toString() + "]");
+            LOGGER.log(Level.INFO, "[stackTraceInfo="+stack1+"];event="+"Updates an article request [" + requestJSONObject.toString() + "]");
 
             articleMgmtService.updateArticle(requestJSONObject);
 
@@ -565,7 +565,7 @@ public class ArticleConsole {
             requestJSONObject.getJSONObject(Article.ARTICLE).put(Article.ARTICLE_AUTHOR_ID, currentUser.getString(Keys.OBJECT_ID));
             String stack1 = Arrays.toString(Thread.currentThread().getStackTrace());
             // 打印请求日志，如果发生特殊情况丢失数据，至少还可以根据日志寻回内容
-            LOGGER.log(Level.INFO, "[stackTraceInfo="+stack1+"],event="+"Adds an article request [" + requestJSONObject.toString() + "]");
+            LOGGER.log(Level.INFO, "[stackTraceInfo="+stack1+"];event="+"Adds an article request [" + requestJSONObject.toString() + "]");
 
             final String articleId = articleMgmtService.addArticle(requestJSONObject);
             ret.put(Keys.OBJECT_ID, articleId);

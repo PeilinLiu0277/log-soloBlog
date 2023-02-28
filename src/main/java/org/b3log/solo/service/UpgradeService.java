@@ -95,12 +95,12 @@ public class UpgradeService {
                     break;
                 default:
                     String stack1 = Arrays.toString(Thread.currentThread().getStackTrace());
-                    LOGGER.log(Level.ERROR, "[stackTraceInfo="+stack1+"],event=Please upgrade to v3.6.2 first");
+                    LOGGER.log(Level.ERROR, "[stackTraceInfo="+stack1+"];event=Please upgrade to v3.6.2 first");
                     System.exit(-1);
             }
         } catch (final Exception e) {
             String stack1 = Arrays.toString(Thread.currentThread().getStackTrace());
-            LOGGER.log(Level.ERROR, "[stackTraceInfo="+stack1+"],event=Upgrade failed, please contact the Solo developers or reports this issue: https://github.com/88250/solo/issues/new", e);
+            LOGGER.log(Level.ERROR, "[stackTraceInfo="+stack1+"];event=Upgrade failed, please contact the Solo developers or reports this issue: https://github.com/88250/solo/issues/new", e);
             System.exit(-1);
         }
     }

@@ -92,7 +92,7 @@ public class TagMgmtService {
                 transaction.rollback();
             }
             String stack1 = Arrays.toString(Thread.currentThread().getStackTrace());
-            LOGGER.log(Level.ERROR, "[stackTraceInfo="+stack1+"],event=Removes unused tags failed", e);
+            LOGGER.log(Level.ERROR, "[stackTraceInfo="+stack1+"];event=Removes unused tags failed", e);
 
             throw new ServiceException(e);
         }

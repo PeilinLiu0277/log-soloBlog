@@ -95,7 +95,7 @@ public class LinkQueryService {
             return ret;
         } catch (final Exception e) {
             String stack1 = Arrays.toString(Thread.currentThread().getStackTrace());
-            LOGGER.log(Level.ERROR, "[stackTraceInfo="+stack1+"],event=Gets links failed", e);
+            LOGGER.log(Level.ERROR, "[stackTraceInfo="+stack1+"];event=Gets links failed", e);
             throw new ServiceException(e);
         }
     }
@@ -132,7 +132,7 @@ public class LinkQueryService {
             return ret;
         } catch (final Exception e) {
             String stack1 = Arrays.toString(Thread.currentThread().getStackTrace());
-            LOGGER.log(Level.ERROR, "[stackTraceInfo="+stack1+"],event=Gets a link failed", e);
+            LOGGER.log(Level.ERROR, "[stackTraceInfo="+stack1+"];event=Gets a link failed", e);
 
             throw new ServiceException(e);
         }

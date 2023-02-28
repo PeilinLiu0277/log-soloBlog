@@ -99,10 +99,10 @@ public class OtherConsole {
             context.renderJSONValue(Keys.CODE, StatusCodes.SUCC).
                     renderMsg(langPropsService.get("removeSuccLabel"));
             String stack1 = Arrays.toString(Thread.currentThread().getStackTrace());
-            LOGGER.log(Level.INFO, "[stackTraceInfo="+stack1+"],event="+"Removes unused archives OK");
+            LOGGER.log(Level.INFO, "[stackTraceInfo="+stack1+"];event="+"Removes unused archives OK");
         } catch (final Exception e) {
             String stack1 = Arrays.toString(Thread.currentThread().getStackTrace());
-            LOGGER.log(Level.ERROR, "[stackTraceInfo="+stack1+"],event="+"Removes unused archives failed", e);
+            LOGGER.log(Level.ERROR, "[stackTraceInfo="+stack1+"];event="+"Removes unused archives failed", e);
             context.renderMsg(langPropsService.get("removeFailLabel"));
         }
     }
@@ -127,10 +127,10 @@ public class OtherConsole {
             context.renderJSONValue(Keys.CODE, StatusCodes.SUCC).
                     renderMsg(langPropsService.get("removeSuccLabel"));
             String stack1 = Arrays.toString(Thread.currentThread().getStackTrace());
-            LOGGER.log(Level.INFO, "[stackTraceInfo="+stack1+"],event="+"Removes unused tags OK!");
+            LOGGER.log(Level.INFO, "[stackTraceInfo="+stack1+"];event="+"Removes unused tags OK!");
         } catch (final Exception e) {
             String stack1 = Arrays.toString(Thread.currentThread().getStackTrace());
-            LOGGER.log(Level.ERROR, "[stackTraceInfo="+stack1+"],event="+"Removes unused tags failed", e);
+            LOGGER.log(Level.ERROR, "[stackTraceInfo="+stack1+"];event="+"Removes unused tags failed", e);
             context.renderMsg(langPropsService.get("removeFailLabel"));
         }
     }

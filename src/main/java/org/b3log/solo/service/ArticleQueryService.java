@@ -153,7 +153,7 @@ public class ArticleQueryService {
             ret.put(Article.ARTICLES, (Object) articles);
         } catch (final RepositoryException e) {
             String stack1 = Arrays.toString(Thread.currentThread().getStackTrace());
-            LOGGER.log(Level.ERROR, "[stackTraceInfo="+stack1+"],event=Searches articles error", e);
+            LOGGER.log(Level.ERROR, "[stackTraceInfo="+stack1+"];event=Searches articles error", e);
         }
 
         return ret;
@@ -238,7 +238,7 @@ public class ArticleQueryService {
             return ret;
         } catch (final RepositoryException e) {
             String stack1 = Arrays.toString(Thread.currentThread().getStackTrace());
-            LOGGER.log(Level.ERROR, "[stackTraceInfo="+stack1+"],event=Gets category articles error", e);
+            LOGGER.log(Level.ERROR, "[stackTraceInfo="+stack1+"];event=Gets category articles error", e);
             throw new ServiceException(e);
         }
     }
@@ -289,7 +289,7 @@ public class ArticleQueryService {
             return recentArticle.getLong(Article.ARTICLE_UPDATED);
         } catch (final Exception e) {
             String stack1 = Arrays.toString(Thread.currentThread().getStackTrace());
-            LOGGER.log(Level.ERROR, "[stackTraceInfo="+stack1+"],event=Gets recent article time failed", e);
+            LOGGER.log(Level.ERROR, "[stackTraceInfo="+stack1+"];event=Gets recent article time failed", e);
             return 0;
         }
     }
@@ -315,7 +315,7 @@ public class ArticleQueryService {
             JSONObject ret = userRepository.get(userId);
             if (null == ret) {
                 String stack16 = Arrays.toString(Thread.currentThread().getStackTrace());
-                LOGGER.log(Level.WARN, "[stackTraceInfo="+stack16+"],event=Gets author of article failed, assumes the administrator is the author of this article [id={}]",
+                LOGGER.log(Level.WARN, "[stackTraceInfo="+stack16+"];event=Gets author of article failed, assumes the administrator is the author of this article [id={}]",
                         article.getString(Keys.OBJECT_ID));
                 // This author may be deleted by admin, use admin as the author of this article
                 ret = userRepository.getAdmin();
@@ -324,7 +324,7 @@ public class ArticleQueryService {
             return ret;
         } catch (final Exception e) {
             String stack15 = Arrays.toString(Thread.currentThread().getStackTrace());
-            LOGGER.log(Level.ERROR, "[stackTraceInfo="+stack15+"],event=Gets author of article [id={}] failed", article.optString(Keys.OBJECT_ID));
+            LOGGER.log(Level.ERROR, "[stackTraceInfo="+stack15+"];event=Gets author of article [id={}] failed", article.optString(Keys.OBJECT_ID));
             throw new ServiceException(e);
         }
     }
@@ -351,7 +351,7 @@ public class ArticleQueryService {
             }
         }
         String stack14 = Arrays.toString(Thread.currentThread().getStackTrace());
-        LOGGER.log(Level.WARN, "[stackTraceInfo="+stack14+"],event=Can not find the sign [id={}], returns a default sign [id=1]", signId);
+        LOGGER.log(Level.WARN, "[stackTraceInfo="+stack14+"];event=Can not find the sign [id={}]; returns a default sign [id=1]", signId);
         return defaultSign;
     }
 
@@ -379,7 +379,7 @@ public class ArticleQueryService {
             return articleRepository.getRecentArticles(fetchSize);
         } catch (final RepositoryException e) {
             String stack13 = Arrays.toString(Thread.currentThread().getStackTrace());
-            LOGGER.log(Level.ERROR, "[stackTraceInfo="+stack13+"],event=Gets recent articles failed", e);
+            LOGGER.log(Level.ERROR, "[stackTraceInfo="+stack13+"];event=Gets recent articles failed", e);
             return Collections.emptyList();
         }
     }
@@ -403,7 +403,7 @@ public class ArticleQueryService {
      *         "articleTags": [{
      *             "oId": "",
      *             "tagTitle": ""
-     *         }, ....],
+     *         }, ....];
      *         "articleSignId": "",
      *         "articleViewPwd": "",
      *         "signs": [{
@@ -445,11 +445,11 @@ public class ArticleQueryService {
             article.remove(Article.ARTICLE_UPDATED);
             article.remove(Article.ARTICLE_RANDOM_DOUBLE);
             String stack12 = Arrays.toString(Thread.currentThread().getStackTrace());
-            LOGGER.log(Level.DEBUG, "[stackTraceInfo="+stack12+"],event=Got an article [id={}]", articleId);
+            LOGGER.log(Level.DEBUG, "[stackTraceInfo="+stack12+"];event=Got an article [id={}]", articleId);
             return ret;
         } catch (final Exception e) {
             String stack11 = Arrays.toString(Thread.currentThread().getStackTrace());
-            LOGGER.log(Level.ERROR, "[stackTraceInfo="+stack11+"],event=Gets an article failed", e);
+            LOGGER.log(Level.ERROR, "[stackTraceInfo="+stack11+"];event=Gets an article failed", e);
             throw new ServiceException(e);
         }
     }
@@ -466,7 +466,7 @@ public class ArticleQueryService {
      *                          "paginationWindowSize": 10,
      *                          "articleStatus": int,
      *                          "keyword": "", // Optional search keyword
-     *                          "excludes": ["", ....], // Optional
+     *                          "excludes": ["", ....]; // Optional
      *                          "enableArticleUpdateHint": bool // Optional
      * @return for example,
      * <pre>
@@ -550,7 +550,7 @@ public class ArticleQueryService {
             return ret;
         } catch (final Exception e) {
             String stack10 = Arrays.toString(Thread.currentThread().getStackTrace());
-            LOGGER.log(Level.ERROR, "[stackTraceInfo="+stack10+"],event=Gets articles failed", e);
+            LOGGER.log(Level.ERROR, "[stackTraceInfo="+stack10+"];event=Gets articles failed", e);
 
             return null;
         }
@@ -601,7 +601,7 @@ public class ArticleQueryService {
             return ret;
         } catch (final Exception e) {
             String stack9 = Arrays.toString(Thread.currentThread().getStackTrace());
-            LOGGER.log(Level.ERROR, "[stackTraceInfo="+stack9+"],event=Gets articles by tag [id=" + tagId + "] failed", e);
+            LOGGER.log(Level.ERROR, "[stackTraceInfo="+stack9+"];event=Gets articles by tag [id=" + tagId + "] failed", e);
             throw new ServiceException(e);
         }
     }
@@ -643,7 +643,7 @@ public class ArticleQueryService {
             return ret;
         } catch (final Exception e) {
             String stack8 = Arrays.toString(Thread.currentThread().getStackTrace());
-            LOGGER.log(Level.ERROR, "[stackTraceInfo="+stack8+"],event=Gets articles by archive date [id=" + archiveDateId + "] failed", e);
+            LOGGER.log(Level.ERROR, "[stackTraceInfo="+stack8+"];event=Gets articles by archive date [id=" + archiveDateId + "] failed", e);
             throw new ServiceException(e);
         }
     }
@@ -665,7 +665,7 @@ public class ArticleQueryService {
             return ret;
         } catch (final RepositoryException e) {
             String stack7 = Arrays.toString(Thread.currentThread().getStackTrace());
-            LOGGER.log(Level.ERROR, "[stackTraceInfo="+stack7+"],event=Gets articles randomly failed[fetchSize=" + fetchSize + "]", e);
+            LOGGER.log(Level.ERROR, "[stackTraceInfo="+stack7+"];event=Gets articles randomly failed[fetchSize=" + fetchSize + "]", e);
             throw new ServiceException(e);
         }
     }
@@ -736,7 +736,7 @@ public class ArticleQueryService {
             return ret;
         } catch (final Exception e) {
             String stack6 = Arrays.toString(Thread.currentThread().getStackTrace());
-            LOGGER.log(Level.ERROR, "[stackTraceInfo="+stack6+"],event=Gets relevant articles failed", e);
+            LOGGER.log(Level.ERROR, "[stackTraceInfo="+stack6+"];event=Gets relevant articles failed", e);
             return Collections.emptyList();
         }
     }
@@ -762,7 +762,7 @@ public class ArticleQueryService {
             return articleRepository.getNextArticle(articleId);
         } catch (final RepositoryException e) {
             String stack5 = Arrays.toString(Thread.currentThread().getStackTrace());
-            LOGGER.log(Level.ERROR, "[stackTraceInfo="+stack5+"],event=Gets the next article failed[articleId=" + articleId + "]", e);
+            LOGGER.log(Level.ERROR, "[stackTraceInfo="+stack5+"];event=Gets the next article failed[articleId=" + articleId + "]", e);
             throw new ServiceException(e);
         }
     }
@@ -788,7 +788,7 @@ public class ArticleQueryService {
             return articleRepository.getPreviousArticle(articleId);
         } catch (final RepositoryException e) {
             String stack4 = Arrays.toString(Thread.currentThread().getStackTrace());
-            LOGGER.log(Level.ERROR, "[stackTraceInfo="+stack4+"],event=Gets the previous article failed[articleId=" + articleId + "]", e);
+            LOGGER.log(Level.ERROR, "[stackTraceInfo="+stack4+"];event=Gets the previous article failed[articleId=" + articleId + "]", e);
             throw new ServiceException(e);
         }
     }
@@ -807,7 +807,7 @@ public class ArticleQueryService {
             return articleRepository.get(articleId);
         } catch (final RepositoryException e) {
             String stack3 = Arrays.toString(Thread.currentThread().getStackTrace());
-            LOGGER.log(Level.ERROR, "[stackTraceInfo="+stack3+"],event=Gets an article [id=" + articleId + "] failed", e);
+            LOGGER.log(Level.ERROR, "[stackTraceInfo="+stack3+"];event=Gets an article [id=" + articleId + "] failed", e);
 
             return null;
         }
@@ -834,7 +834,7 @@ public class ArticleQueryService {
             return ret;
         } catch (final Exception e) {
             String stack2 = Arrays.toString(Thread.currentThread().getStackTrace());
-            LOGGER.log(Level.ERROR, "[stackTraceInfo="+stack2+"],event=Gets articles by author id failed [authorId=" + authorId + ", currentPageNum=" + currentPageNum + ", pageSize=" + pageSize + "]", e);
+            LOGGER.log(Level.ERROR, "[stackTraceInfo="+stack2+"];event=Gets articles by author id failed [authorId=" + authorId + ", currentPageNum=" + currentPageNum + ", pageSize=" + pageSize + "]", e);
             throw new ServiceException(e);
         }
     }
@@ -876,7 +876,7 @@ public class ArticleQueryService {
             return article.getString(Article.ARTICLE_CONTENT);
         } catch (final Exception e) {
             String stack1 = Arrays.toString(Thread.currentThread().getStackTrace());
-            LOGGER.log(Level.ERROR, "[stackTraceInfo="+stack1+"],event=Gets article content failed[articleId=" + articleId + "]", e);
+            LOGGER.log(Level.ERROR, "[stackTraceInfo="+stack1+"];event=Gets article content failed[articleId=" + articleId + "]", e);
 
             throw new ServiceException(e);
         }

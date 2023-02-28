@@ -118,10 +118,10 @@ public class IndexProcessor {
             dataModel.put(Pagination.PAGINATION_NEXT_PAGE_NUM, nextPageNum);
             dataModel.put(Common.PATH, "");
             String stack1 = Arrays.toString(Thread.currentThread().getStackTrace());
-            LOGGER.log(Level.INFO,"[stackTraceInfo="+stack1+"],event=show index");
+            LOGGER.log(Level.INFO,"[stackTraceInfo="+stack1+"];event=show index");
         } catch (final ServiceException e) {
             String stack1 = Arrays.toString(Thread.currentThread().getStackTrace());
-            LOGGER.log(Level.ERROR, "[stackTraceInfo="+stack1+"],event="+e.getMessage(), e);
+            LOGGER.log(Level.ERROR, "[stackTraceInfo="+stack1+"];event="+e.getMessage(), e);
             context.sendError(404);
         }
     }
@@ -163,16 +163,16 @@ public class IndexProcessor {
             }
             binaryRenderer.setData(bytes);
             String stack1 = Arrays.toString(Thread.currentThread().getStackTrace());
-            LOGGER.log(Level.INFO,"[stackTraceInfo="+stack1+"],event=show favicon");
+            LOGGER.log(Level.INFO,"[stackTraceInfo="+stack1+"];event=show favicon");
         } catch (final Exception e) {
             try (final InputStream resourceAsStream = IndexProcessor.class.getResourceAsStream("/images/favicon.ico")) {
                 bytes = IOUtils.toByteArray(resourceAsStream);
                 binaryRenderer.setData(bytes);
                 String stack1 = Arrays.toString(Thread.currentThread().getStackTrace());
-                LOGGER.log(Level.INFO,"[stackTraceInfo="+stack1+"],event=loads default favicon.ico OK!");
+                LOGGER.log(Level.INFO,"[stackTraceInfo="+stack1+"];event=loads default favicon.ico OK!");
             } catch (final Exception ex) {
                 String stack1 = Arrays.toString(Thread.currentThread().getStackTrace());
-                LOGGER.log(Level.ERROR, "[stackTraceInfo="+stack1+"],event="+"Loads default favicon.ico failed", e);
+                LOGGER.log(Level.ERROR, "[stackTraceInfo="+stack1+"];event="+"Loads default favicon.ico failed", e);
                 context.sendError(500);
                 return;
             }
@@ -214,7 +214,7 @@ public class IndexProcessor {
         dataModelService.fillUsite(dataModel);
         Solos.addGoogleNoIndex(context);
         String stack1 = Arrays.toString(Thread.currentThread().getStackTrace());
-        LOGGER.log(Level.INFO,"[stackTraceInfo="+stack1+"],event=show start");
+        LOGGER.log(Level.INFO,"[stackTraceInfo="+stack1+"];event=show start");
     }
 
     /**
@@ -228,7 +228,7 @@ public class IndexProcessor {
         Solos.addGoogleNoIndex(context);
         context.sendRedirect(Latkes.getServePath());
         String stack1 = Arrays.toString(Thread.currentThread().getStackTrace());
-        LOGGER.log(Level.INFO,"[stackTraceInfo="+stack1+"],event=log out");
+        LOGGER.log(Level.INFO,"[stackTraceInfo="+stack1+"];event=log out");
     }
 
     /**
@@ -250,10 +250,10 @@ public class IndexProcessor {
             Keys.fillServer(dataModel);
             Keys.fillRuntime(dataModel);
             String stack1 = Arrays.toString(Thread.currentThread().getStackTrace());
-            LOGGER.log(Level.INFO,"[stackTraceInfo="+stack1+"],event=show kill browser");
+            LOGGER.log(Level.INFO,"[stackTraceInfo="+stack1+"];event=show kill browser");
         } catch (final ServiceException e) {
             String stack1 = Arrays.toString(Thread.currentThread().getStackTrace());
-            LOGGER.log(Level.ERROR, "[stackTraceInfo="+stack1+"],event="+e.getMessage(), e);
+            LOGGER.log(Level.ERROR, "[stackTraceInfo="+stack1+"];event="+e.getMessage(), e);
             context.sendError(404);
         }
     }

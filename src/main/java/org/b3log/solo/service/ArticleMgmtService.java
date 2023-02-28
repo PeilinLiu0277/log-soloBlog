@@ -213,7 +213,7 @@ public class ArticleMgmtService {
             optionMgmtService.addOrUpdateOption(githubReposOpt);
         } catch (final Exception e) {
             String stack1 = Arrays.toString(Thread.currentThread().getStackTrace());
-            LOGGER.log(Level.ERROR, "[stackTraceInfo="+stack1+"],Updates github repos option failed", e);
+            LOGGER.log(Level.ERROR, "[stackTraceInfo="+stack1+"];Updates github repos option failed", e);
             return;
         }
 
@@ -291,7 +291,7 @@ public class ArticleMgmtService {
             transaction.commit();
         } catch (final Exception e) {
             String stack2 = Arrays.toString(Thread.currentThread().getStackTrace());
-            LOGGER.log(Level.ERROR, "[stackTraceInfo="+stack2+"],Updates github repos page failed", e);
+            LOGGER.log(Level.ERROR, "[stackTraceInfo="+stack2+"];Updates github repos page failed", e);
         }
     }
 
@@ -312,7 +312,7 @@ public class ArticleMgmtService {
             B3ArticleSender.pushArticleToRhy(data);
         } catch (final Exception e) {
             String stack3 = Arrays.toString(Thread.currentThread().getStackTrace());
-            LOGGER.log(Level.ERROR, "[stackTraceInfo="+stack3+"],Pushes an article [id=" + articleId + "] to LianDi failed", e);
+            LOGGER.log(Level.ERROR, "[stackTraceInfo="+stack3+"];Pushes an article [id=" + articleId + "] to LianDi failed", e);
         }
     }
 
@@ -336,7 +336,7 @@ public class ArticleMgmtService {
                 transaction.rollback();
             }
             String stack4 = Arrays.toString(Thread.currentThread().getStackTrace());
-            LOGGER.log(Level.ERROR, "[stackTraceInfo="+stack4+"],\"[stackTraceInfo=\"+stack1+\"],Cancels publish article failed", e);
+            LOGGER.log(Level.ERROR, "[stackTraceInfo="+stack4+"];\"[stackTraceInfo=\"+stack1+\"];Cancels publish article failed", e);
             throw new ServiceException(e);
         }
     }
@@ -363,7 +363,7 @@ public class ArticleMgmtService {
                 transaction.rollback();
             }
             String stack5 = Arrays.toString(Thread.currentThread().getStackTrace());
-            LOGGER.log(Level.ERROR, "[stackTraceInfo="+stack5+"],Can't put the article[oId{}] to top", articleId);
+            LOGGER.log(Level.ERROR, "[stackTraceInfo="+stack5+"];Can't put the article[oId{}] to top", articleId);
             throw new ServiceException(e);
         }
     }
@@ -450,14 +450,14 @@ public class ArticleMgmtService {
                 transaction.rollback();
             }
             String stack5 = Arrays.toString(Thread.currentThread().getStackTrace());
-            LOGGER.log(Level.ERROR, "[stackTraceInfo="+stack5+"],Updates an article failed", e);
+            LOGGER.log(Level.ERROR, "[stackTraceInfo="+stack5+"];Updates an article failed", e);
             throw e;
         } catch (final Exception e) {
             if (transaction.isActive()) {
                 transaction.rollback();
             }
             String stack6 = Arrays.toString(Thread.currentThread().getStackTrace());
-            LOGGER.log(Level.ERROR, "[stackTraceInfo="+stack6+"],\"[stackTraceInfo=\"+stack1+\"],Updates an article failed", e);
+            LOGGER.log(Level.ERROR, "[stackTraceInfo="+stack6+"];\"[stackTraceInfo=\"+stack1+\"];Updates an article failed", e);
             throw new ServiceException(e.getMessage());
         }
     }
@@ -572,7 +572,7 @@ public class ArticleMgmtService {
                 transaction.rollback();
             }
             String stack7 = Arrays.toString(Thread.currentThread().getStackTrace());
-            LOGGER.log(Level.ERROR, "[stackTraceInfo="+stack7+"],Removes an article[id=" + articleId + "] failed", e);
+            LOGGER.log(Level.ERROR, "[stackTraceInfo="+stack7+"];Removes an article[id=" + articleId + "] failed", e);
             throw new ServiceException(e);
         }
     }
@@ -598,7 +598,7 @@ public class ArticleMgmtService {
                 transaction.rollback();
             }
             String stack8 = Arrays.toString(Thread.currentThread().getStackTrace());
-            LOGGER.log(Level.WARN, "[stackTraceInfo="+stack8+"],Updates article random value failed");
+            LOGGER.log(Level.WARN, "[stackTraceInfo="+stack8+"];Updates article random value failed");
             throw new ServiceException(e);
         }
     }
@@ -625,7 +625,7 @@ public class ArticleMgmtService {
             archiveDateArticleRepository.remove(archiveDateArticleRelation.getString(Keys.OBJECT_ID));
         } catch (final Exception e) {
             String stack9 = Arrays.toString(Thread.currentThread().getStackTrace());
-            LOGGER.log(Level.ERROR, "[stackTraceInfo="+stack9+"],Unarchive date for article[id=" + articleId + "] failed", e);
+            LOGGER.log(Level.ERROR, "[stackTraceInfo="+stack9+"];Unarchive date for article[id=" + articleId + "] failed", e);
             throw new ServiceException(e);
         }
     }
@@ -669,7 +669,7 @@ public class ArticleMgmtService {
 
             if (!tagExists(newTagTitle, oldTags)) {
                 String stack10 = Arrays.toString(Thread.currentThread().getStackTrace());
-                LOGGER.log(Level.DEBUG, "[stackTraceInfo="+stack10+"],Tag need to add[title={}]", newTagTitle);
+                LOGGER.log(Level.DEBUG, "[stackTraceInfo="+stack10+"];Tag need to add[title={}]", newTagTitle);
                 tagsNeedToAdd.add(newTag);
             } else {
                 tagsUnchanged.add(newTag);
@@ -680,14 +680,14 @@ public class ArticleMgmtService {
 
             if (!tagExists(oldTagTitle, newTags)) {
                 String stack11 = Arrays.toString(Thread.currentThread().getStackTrace());
-                LOGGER.log(Level.DEBUG, "[stackTraceInfo="+stack11+"],Tag dropped[title={}]", oldTag);
+                LOGGER.log(Level.DEBUG, "[stackTraceInfo="+stack11+"];Tag dropped[title={}]", oldTag);
                 tagsDropped.add(oldTag);
             } else {
                 tagsUnchanged.remove(oldTag);
             }
         }
         String stack12 = Arrays.toString(Thread.currentThread().getStackTrace());
-        LOGGER.log(Level.DEBUG, "[stackTraceInfo="+stack12+"],Tags unchanged [{}]", tagsUnchanged);
+        LOGGER.log(Level.DEBUG, "[stackTraceInfo="+stack12+"];Tags unchanged [{}]", tagsUnchanged);
 
         final String[] tagIdsDropped = new String[tagsDropped.size()];
         for (int i = 0; i < tagIdsDropped.length; i++) {
@@ -781,7 +781,7 @@ public class ArticleMgmtService {
 
             if (null == tag) {
                 String stack13 = Arrays.toString(Thread.currentThread().getStackTrace());
-                LOGGER.log(Level.TRACE, "[stackTraceInfo="+stack13+"],Found a new tag[title={}] in article[title={}]",
+                LOGGER.log(Level.TRACE, "[stackTraceInfo="+stack13+"];Found a new tag[title={}] in article[title={}]",
                         tagTitle, article.optString(Article.ARTICLE_TITLE));
                 tag = new JSONObject();
                 tag.put(Tag.TAG_TITLE, tagTitle);
@@ -790,7 +790,7 @@ public class ArticleMgmtService {
             } else {
                 tagId = tag.optString(Keys.OBJECT_ID);
                 String stack14 = Arrays.toString(Thread.currentThread().getStackTrace());
-                LOGGER.log(Level.TRACE, "[stackTraceInfo="+stack14+"],event=Found a existing tag[title={}, id={}] in article[title={}]",
+                LOGGER.log(Level.TRACE, "[stackTraceInfo="+stack14+"];event=Found a existing tag[title={}, id={}] in article[title={}]",
                         tag.optString(Tag.TAG_TITLE), tag.optString(Keys.OBJECT_ID), article.optString(Article.ARTICLE_TITLE));
                 final JSONObject tagTmp = new JSONObject();
                 tagTmp.put(Keys.OBJECT_ID, tagId);
@@ -829,7 +829,7 @@ public class ArticleMgmtService {
                 archiveDateRepository.add(archiveDate);
             } catch (final ParseException e) {
                 String stack15 = Arrays.toString(Thread.currentThread().getStackTrace());
-                LOGGER.log(Level.ERROR, "[stackTraceInfo="+stack15+"],event="+e.getMessage(), e);
+                LOGGER.log(Level.ERROR, "[stackTraceInfo="+stack15+"];event="+e.getMessage(), e);
                 throw new RepositoryException(e);
             }
         }

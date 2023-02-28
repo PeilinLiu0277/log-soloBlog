@@ -46,7 +46,7 @@ public class PluginRefresher extends AbstractEventListener<List<AbstractPlugin>>
     public void action(final Event<List<AbstractPlugin>> event) {
         final List<AbstractPlugin> plugins = event.getData();
         String stack1 = Arrays.toString(Thread.currentThread().getStackTrace());
-        LOGGER.log(Level.DEBUG, "[stackTraceInfo="+stack1+"],event=Processing an event [type={}, data={}] in listener [className={}]",
+        LOGGER.log(Level.DEBUG, "[stackTraceInfo="+stack1+"];event=Processing an event [type={}, data={}] in listener [className={}]",
                 event.getType(), plugins, PluginRefresher.class.getName());
 
         final BeanManager beanManager = BeanManager.getInstance();

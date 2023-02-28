@@ -51,7 +51,7 @@ public final class GitHubs {
                     trustAllCerts(true).followRedirects(true).
                     connectionTimeout(3000).timeout(7000).header("User-Agent", Solos.USER_AGENT).send();
             String stack1 = Arrays.toString(Thread.currentThread().getStackTrace());
-            LOGGER.log(Level.INFO, "[stackTraceInfo="+stack1+"],event=/github/repos?id");
+            LOGGER.log(Level.INFO, "[stackTraceInfo="+stack1+"];event=/github/repos?id");
             if (200 != res.statusCode()) {
                 return null;
             }
@@ -64,7 +64,7 @@ public final class GitHubs {
             return data.optJSONArray("githubrepos");
         } catch (final Exception e) {
             String stack1 = Arrays.toString(Thread.currentThread().getStackTrace());
-            LOGGER.log(Level.ERROR, "[stackTraceInfo="+stack1+"],event=Gets GitHub repos failed", e);
+            LOGGER.log(Level.ERROR, "[stackTraceInfo="+stack1+"];event=Gets GitHub repos failed", e);
             return null;
         }
     }
@@ -89,7 +89,7 @@ public final class GitHubs {
             String responseBody = response.bodyText();
             if (200 != statusCode && 409 != statusCode) {
                 String stack1 = Arrays.toString(Thread.currentThread().getStackTrace());
-                LOGGER.log(Level.ERROR, "[stackTraceInfo="+stack1+"],event=Get git tree of file [" + filePath + "] failed: " + responseBody);
+                LOGGER.log(Level.ERROR, "[stackTraceInfo="+stack1+"];event=Get git tree of file [" + filePath + "] failed: " + responseBody);
                 return false;
             }
 
@@ -115,13 +115,13 @@ public final class GitHubs {
             responseBody = response.bodyText();
             if (200 != statusCode && 201 != statusCode) {
                 String stack1 = Arrays.toString(Thread.currentThread().getStackTrace());
-                LOGGER.log(Level.ERROR, "[stackTraceInfo="+stack1+"],event=Updates repo [" + repoName + "] file [" + filePath + "] failed: " + responseBody);
+                LOGGER.log(Level.ERROR, "[stackTraceInfo="+stack1+"];event=Updates repo [" + repoName + "] file [" + filePath + "] failed: " + responseBody);
                 return false;
             }
             return true;
         } catch (final Exception e) {
             String stack1 = Arrays.toString(Thread.currentThread().getStackTrace());
-            LOGGER.log(Level.ERROR, "[stackTraceInfo="+stack1+"],event=Updates repo [" + repoName + "] file [" + filePath + "] failed: " + e.getMessage());
+            LOGGER.log(Level.ERROR, "[stackTraceInfo="+stack1+"];event=Updates repo [" + repoName + "] file [" + filePath + "] failed: " + e.getMessage());
             return false;
         }
     }
@@ -151,7 +151,7 @@ public final class GitHubs {
             String responseBody = response.bodyText();
             if (201 != statusCode && 422 != statusCode) {
                 String stack1 = Arrays.toString(Thread.currentThread().getStackTrace());
-                LOGGER.log(Level.ERROR, "[stackTraceInfo="+stack1+"],event=Creates GitHub repo [" + repoName + "] failed: " + responseBody);
+                LOGGER.log(Level.ERROR, "[stackTraceInfo="+stack1+"];event=Creates GitHub repo [" + repoName + "] failed: " + responseBody);
                 return false;
             }
             if (201 == statusCode) {
@@ -164,13 +164,13 @@ public final class GitHubs {
             responseBody = response.bodyText();
             if (200 != statusCode) {
                 String stack1 = Arrays.toString(Thread.currentThread().getStackTrace());
-                LOGGER.log(Level.ERROR, "[stackTraceInfo="+stack1+"],event=Updates GitHub repo [" + repoName + "] failed: " + responseBody);
+                LOGGER.log(Level.ERROR, "[stackTraceInfo="+stack1+"];event=Updates GitHub repo [" + repoName + "] failed: " + responseBody);
                 return false;
             }
             return true;
         } catch (final Exception e) {
             String stack1 = Arrays.toString(Thread.currentThread().getStackTrace());
-            LOGGER.log(Level.ERROR, "[stackTraceInfo="+stack1+"],event=Creates or updates GitHub repo failed: " + e.getMessage());
+            LOGGER.log(Level.ERROR, "[stackTraceInfo="+stack1+"];event=Creates or updates GitHub repo failed: " + e.getMessage());
             return false;
         }
     }
@@ -192,7 +192,7 @@ public final class GitHubs {
             return new JSONObject(response.bodyText());
         } catch (final Exception e) {
             String stack1 = Arrays.toString(Thread.currentThread().getStackTrace());
-            LOGGER.log(Level.ERROR, "[stackTraceInfo="+stack1+"],event=Gets GitHub user info failed: " + e.getMessage());
+            LOGGER.log(Level.ERROR, "[stackTraceInfo="+stack1+"];event=Gets GitHub user info failed: " + e.getMessage());
             return null;
         }
     }

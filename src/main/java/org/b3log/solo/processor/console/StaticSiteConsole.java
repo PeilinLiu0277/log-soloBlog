@@ -128,7 +128,7 @@ public class StaticSiteConsole {
 
             Solos.GEN_STATIC_SITE = false;
             String stack1 = Arrays.toString(Thread.currentThread().getStackTrace());
-            LOGGER.log(Level.INFO, "[stackTraceInfo="+stack1+"],event="+"Static site generated [dir=" + staticSitePath + "]");
+            LOGGER.log(Level.INFO, "[stackTraceInfo="+stack1+"];event="+"Static site generated [dir=" + staticSitePath + "]");
 
             String siteGenedLabel = langPropsService.get("siteGenedLabel");
             siteGenedLabel = siteGenedLabel.replace("{dir}", staticSitePath);
@@ -136,7 +136,7 @@ public class StaticSiteConsole {
             context.renderMsg(siteGenedLabel);
         } catch (final Exception e) {
             String stack1 = Arrays.toString(Thread.currentThread().getStackTrace());
-            LOGGER.log(Level.ERROR, "[stackTraceInfo="+stack1+"],event="+"Generates static site failed", e);
+            LOGGER.log(Level.ERROR, "[stackTraceInfo="+stack1+"];event="+"Generates static site failed", e);
 
             context.renderJSON(StatusCodes.ERR);
             context.renderMsg(langPropsService.get("updateFailLabel"));
@@ -161,7 +161,7 @@ public class StaticSiteConsole {
             staticSitePath = rootPath + "/static-site";
         } else {
             String stack1 = Arrays.toString(Thread.currentThread().getStackTrace());
-            LOGGER.log(Level.INFO, "[stackTraceInfo="+stack1+"],event="+"Do not support export static site when running in jar");
+            LOGGER.log(Level.INFO, "[stackTraceInfo="+stack1+"];event="+"Do not support export static site when running in jar");
         }
     }
 
@@ -185,7 +185,7 @@ public class StaticSiteConsole {
                 }
             } catch (final Exception e) {
                 String stack1 = Arrays.toString(Thread.currentThread().getStackTrace());
-                LOGGER.log(Level.ERROR, "[stackTraceInfo="+stack1+"],event="+"Generates a category [uri=" + categoryURI + "] failed", e);
+                LOGGER.log(Level.ERROR, "[stackTraceInfo="+stack1+"];event="+"Generates a category [uri=" + categoryURI + "] failed", e);
             }
         });
     }
@@ -211,7 +211,7 @@ public class StaticSiteConsole {
                 }
             } catch (final Exception e) {
                 String stack1 = Arrays.toString(Thread.currentThread().getStackTrace());
-                LOGGER.log(Level.ERROR, "[stackTraceInfo="+stack1+"],event="+"Generates an archive [date=" + archiveDate + "] failed", e);
+                LOGGER.log(Level.ERROR, "[stackTraceInfo="+stack1+"];event="+"Generates an archive [date=" + archiveDate + "] failed", e);
             }
         });
     }
@@ -236,7 +236,7 @@ public class StaticSiteConsole {
                 }
             } catch (final Exception e) {
                 String stack1 = Arrays.toString(Thread.currentThread().getStackTrace());
-                LOGGER.log(Level.ERROR, "[stackTraceInfo="+stack1+"],event="+"Generates a tag [title=" + tagTitle + "] failed", e);
+                LOGGER.log(Level.ERROR, "[stackTraceInfo="+stack1+"];event="+"Generates a tag [title=" + tagTitle + "] failed", e);
             }
         });
     }
@@ -268,7 +268,7 @@ public class StaticSiteConsole {
                     genURI("/article/relevant/" + article.optString(Keys.OBJECT_ID) + ".json");
                 } catch (final Exception e) {
                     String stack1 = Arrays.toString(Thread.currentThread().getStackTrace());
-                    LOGGER.log(Level.ERROR, "[stackTraceInfo="+stack1+"],event="+"Generates an article [uri=" + permalink + "] failed", e);
+                    LOGGER.log(Level.ERROR, "[stackTraceInfo="+stack1+"];event="+"Generates an article [uri=" + permalink + "] failed", e);
                 }
             });
 
@@ -286,7 +286,7 @@ public class StaticSiteConsole {
         IOUtils.write(html, outputStream, StandardCharsets.UTF_8);
         outputStream.close();
         String stack1 = Arrays.toString(Thread.currentThread().getStackTrace());
-        LOGGER.log(Level.INFO, "[stackTraceInfo="+stack1+"],event="+"Generated a page [" + uri + "]");
+        LOGGER.log(Level.INFO, "[stackTraceInfo="+stack1+"];event="+"Generated a page [" + uri + "]");
     }
 
     private static void genURI(final String uri) throws Exception {
@@ -296,7 +296,7 @@ public class StaticSiteConsole {
         IOUtils.write(html, outputStream, StandardCharsets.UTF_8);
         outputStream.close();
         String stack1 = Arrays.toString(Thread.currentThread().getStackTrace());
-        LOGGER.log(Level.INFO, "[stackTraceInfo="+stack1+"],event="+"Generated a file [" + uri + "]");
+        LOGGER.log(Level.INFO, "[stackTraceInfo="+stack1+"];event="+"Generated a file [" + uri + "]");
     }
 
     private static void genArticle(final String permalink) throws Exception {
@@ -321,7 +321,7 @@ public class StaticSiteConsole {
         FileUtils.forceMkdir(new File(staticSitePath + "/skins"));
         FileUtils.copyDirectory(new File(rootPath + "/skins"), new File(staticSitePath + "/skins"));
         String stack1 = Arrays.toString(Thread.currentThread().getStackTrace());
-        LOGGER.log(Level.INFO, "[stackTraceInfo="+stack1+"],event="+"Generated skins");
+        LOGGER.log(Level.INFO, "[stackTraceInfo="+stack1+"];event="+"Generated skins");
     }
 
     private static void genJS() throws Exception {
@@ -329,7 +329,7 @@ public class StaticSiteConsole {
         FileUtils.forceMkdir(new File(staticSitePath + "/js"));
         FileUtils.copyDirectory(new File(rootPath + "/js"), new File(staticSitePath + "/js"));
         String stack1 = Arrays.toString(Thread.currentThread().getStackTrace());
-        LOGGER.log(Level.INFO, "[stackTraceInfo="+stack1+"],event="+"Generated js");
+        LOGGER.log(Level.INFO, "[stackTraceInfo="+stack1+"];event="+"Generated js");
     }
 
     private static void genImages() throws Exception {
@@ -337,7 +337,7 @@ public class StaticSiteConsole {
         FileUtils.forceMkdir(new File(staticSitePath + "/images"));
         FileUtils.copyDirectory(new File(rootPath + "/images"), new File(staticSitePath + "/images"));
         String stack1 = Arrays.toString(Thread.currentThread().getStackTrace());
-        LOGGER.log(Level.INFO, "[stackTraceInfo="+stack1+"],event="+"Generated images");
+        LOGGER.log(Level.INFO, "[stackTraceInfo="+stack1+"];event="+"Generated images");
     }
 
     private static void genPlugins() throws Exception {
@@ -353,7 +353,7 @@ public class StaticSiteConsole {
         FileUtils.forceMkdirParent(new File(staticSitePath + "/" + file));
         FileUtils.copyFile(new File(rootPath + "/" + file), new File(staticSitePath + "/" + file));
         String stack1 = Arrays.toString(Thread.currentThread().getStackTrace());
-        LOGGER.log(Level.INFO, "[stackTraceInfo="+stack1+"],event="+"Generated a file [" + file + "]");
+        LOGGER.log(Level.INFO, "[stackTraceInfo="+stack1+"];event="+"Generated a file [" + file + "]");
     }
 
 }

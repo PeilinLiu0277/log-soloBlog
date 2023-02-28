@@ -101,11 +101,11 @@ public class SitemapProcessor {
             String content = sitemap.toString();
             content = XMLs.format(content);
             String stack1 = Arrays.toString(Thread.currentThread().getStackTrace());
-            LOGGER.log(Level.INFO, "[stackTraceInfo="+stack1+"],event="+"Generated sitemap");
+            LOGGER.log(Level.INFO, "[stackTraceInfo="+stack1+"];event="+"Generated sitemap");
             renderer.setContent(content);
         } catch (final Exception e) {
             String stack1 = Arrays.toString(Thread.currentThread().getStackTrace());
-            LOGGER.log(Level.ERROR, "[stackTraceInfo="+stack1+"],event="+"Generates sitemap failed", e);
+            LOGGER.log(Level.ERROR, "[stackTraceInfo="+stack1+"];event="+"Generates sitemap failed", e);
             context.sendError(500);
         }
     }
@@ -133,7 +133,7 @@ public class SitemapProcessor {
             sitemap.addURL(url);
         }
         String stack1 = Arrays.toString(Thread.currentThread().getStackTrace());
-        LOGGER.log(Level.INFO,"[stackTraceInfo="+stack1+"],event=add articles OK!");
+        LOGGER.log(Level.INFO,"[stackTraceInfo="+stack1+"];event=add articles OK!");
     }
 
     /**
@@ -162,7 +162,7 @@ public class SitemapProcessor {
             sitemap.addURL(url);
         }
         String stack1 = Arrays.toString(Thread.currentThread().getStackTrace());
-        LOGGER.log(Level.INFO,"[stackTraceInfo="+stack1+"],event=add navigations OK!");
+        LOGGER.log(Level.INFO,"[stackTraceInfo="+stack1+"];event=add navigations OK!");
     }
 
     /**
@@ -186,7 +186,7 @@ public class SitemapProcessor {
         url.setLoc(Latkes.getServePath() + "/tags.html");
         sitemap.addURL(url);
         String stack1 = Arrays.toString(Thread.currentThread().getStackTrace());
-        LOGGER.log(Level.INFO,"[stackTraceInfo="+stack1+"],event=add tags OK!");
+        LOGGER.log(Level.INFO,"[stackTraceInfo="+stack1+"];event=add tags OK!");
     }
 
     /**
@@ -206,6 +206,6 @@ public class SitemapProcessor {
             sitemap.addURL(url);
         }
         String stack1 = Arrays.toString(Thread.currentThread().getStackTrace());
-        LOGGER.log(Level.INFO,"[stackTraceInfo="+stack1+"],event=add archives OK!");
+        LOGGER.log(Level.INFO,"[stackTraceInfo="+stack1+"];event=add archives OK!");
     }
 }

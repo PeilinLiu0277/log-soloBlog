@@ -59,7 +59,7 @@ public class B3ArticleSender extends AbstractEventListener<JSONObject> {
     public void action(final Event<JSONObject> event) {
         final JSONObject data = event.getData();
         String stack1 = Arrays.toString(Thread.currentThread().getStackTrace());
-        LOGGER.log(Level.DEBUG, "[stackTraceInfo="+stack1+"],event=Processing an event [type={}, data={}] in listener [className={}]",
+        LOGGER.log(Level.DEBUG, "[stackTraceInfo="+stack1+"];event=Processing an event [type={}, data={}] in listener [className={}]",
                 event.getType(), data, B3ArticleSender.class.getName());
 
         pushArticleToRhy(data);
@@ -76,19 +76,19 @@ public class B3ArticleSender extends AbstractEventListener<JSONObject> {
             final String title = originalArticle.getString(Article.ARTICLE_TITLE);
             if (Article.ARTICLE_STATUS_C_PUBLISHED != originalArticle.optInt(Article.ARTICLE_STATUS)) {
                 String stack1 = Arrays.toString(Thread.currentThread().getStackTrace());
-                LOGGER.log(Level.INFO, "[stackTraceInfo="+stack1+"],event=Ignored push a draft [title={}] to Rhy", title);
+                LOGGER.log(Level.INFO, "[stackTraceInfo="+stack1+"];event=Ignored push a draft [title={}] to Rhy", title);
                 return;
             }
 
             if (StringUtils.isNotBlank(originalArticle.optString(Article.ARTICLE_VIEW_PWD))) {
                 String stack1 = Arrays.toString(Thread.currentThread().getStackTrace());
-                LOGGER.log(Level.INFO, "[stackTraceInfo="+stack1+"],event=Article [title={}] is a password article, ignored push to Rhy", title);
+                LOGGER.log(Level.INFO, "[stackTraceInfo="+stack1+"];event=Article [title={}] is a password article, ignored push to Rhy", title);
                 return;
             }
 
             if (!originalArticle.optBoolean(Common.POST_TO_COMMUNITY)) {
                 String stack1 = Arrays.toString(Thread.currentThread().getStackTrace());
-                LOGGER.log(Level.INFO, "[stackTraceInfo="+stack1+"],event=Article [title={}] push flag [postToCommunity] is [false], ignored push to Rhy", title);
+                LOGGER.log(Level.INFO, "[stackTraceInfo="+stack1+"];event=Article [title={}] push flag [postToCommunity] is [false]; ignored push to Rhy", title);
                 return;
             }
 
@@ -122,10 +122,10 @@ public class B3ArticleSender extends AbstractEventListener<JSONObject> {
             response.charset("UTF-8");
             final JSONObject result = new JSONObject(response.bodyText());
             String stack1 = Arrays.toString(Thread.currentThread().getStackTrace());
-            LOGGER.log(Level.INFO, "[stackTraceInfo="+stack1+"],event=Pushed an article [title=" + title + "] to Rhy, result [" + result.optString(Keys.MSG) + "]");
+            LOGGER.log(Level.INFO, "[stackTraceInfo="+stack1+"];event=Pushed an article [title=" + title + "] to Rhy, result [" + result.optString(Keys.MSG) + "]");
         } catch (final Exception e) {
             String stack1 = Arrays.toString(Thread.currentThread().getStackTrace());
-            LOGGER.log(Level.ERROR, "[stackTraceInfo="+stack1+"],event=Pushes an article to Rhy failed: " + e.getMessage());
+            LOGGER.log(Level.ERROR, "[stackTraceInfo="+stack1+"];event=Pushes an article to Rhy failed: " + e.getMessage());
         }
     }
 

@@ -112,7 +112,7 @@ public final class Solos {
                     form("access_token", accessToken).trustAllCerts(true).followRedirects(true).
                     connectionTimeout(3000).timeout(7000).header("User-Agent", Solos.USER_AGENT).send();
             String stack1 = Arrays.toString(Thread.currentThread().getStackTrace());
-            LOGGER.log(Level.INFO, "[stackTraceInfo="+stack1+"],event=/user/ak");
+            LOGGER.log(Level.INFO, "[stackTraceInfo="+stack1+"];event=/user/ak");
             if (200 != res.statusCode()) {
                 return null;
             }
@@ -124,7 +124,7 @@ public final class Solos {
             return result.optJSONObject(Common.DATA);
         } catch (final Exception e) {
             String stack1 = Arrays.toString(Thread.currentThread().getStackTrace());
-            LOGGER.log(Level.ERROR, "[stackTraceInfo="+stack1+"],event=Gets community user info failed", e);
+            LOGGER.log(Level.ERROR, "[stackTraceInfo="+stack1+"];event=Gets community user info failed", e);
             return null;
         }
     }
@@ -143,7 +143,7 @@ public final class Solos {
                     trustAllCerts(true).followRedirects(true).
                     connectionTimeout(3000).timeout(7000).header("User-Agent", Solos.USER_AGENT).send();
             String stack1 = Arrays.toString(Thread.currentThread().getStackTrace());
-            LOGGER.log(Level.INFO, "[stackTraceInfo="+stack1+"],event=/apis/blacklist/ip");
+            LOGGER.log(Level.INFO, "[stackTraceInfo="+stack1+"];event=/apis/blacklist/ip");
             if (200 != res.statusCode()) {
                 return;
             }
@@ -233,7 +233,7 @@ public final class Solos {
             final HttpResponse res = HttpRequest.post("https://ld246.com/apis/upload/token").trustAllCerts(true).followRedirects(true).
                     body(requestJSON.toString()).connectionTimeout(3000).timeout(7000).header("User-Agent", Solos.USER_AGENT).send();
             String stack1 = Arrays.toString(Thread.currentThread().getStackTrace());
-            LOGGER.log(Level.INFO, "[stackTraceInfo="+stack1+"],event=/apis/upload/token");
+            LOGGER.log(Level.INFO, "[stackTraceInfo="+stack1+"];event=/apis/upload/token");
             uploadTokenCheckTime = now;
             if (200 != res.statusCode()) {
                 return null;
@@ -243,7 +243,7 @@ public final class Solos {
             if (0 != result.optInt(Keys.CODE)) {
                 uploadMsg = result.optString(Keys.MSG);
                 String stack10 = Arrays.toString(Thread.currentThread().getStackTrace());
-                LOGGER.log(Level.ERROR, "[stackTraceInfo="+stack10+"],event="+uploadMsg);
+                LOGGER.log(Level.ERROR, "[stackTraceInfo="+stack10+"];event="+uploadMsg);
                 return null;
             }
 
@@ -258,7 +258,7 @@ public final class Solos {
                     put(Common.UPLOAD_MSG, uploadMsg);
         } catch (final Exception e) {
             String stack1 = Arrays.toString(Thread.currentThread().getStackTrace());
-            LOGGER.log(Level.ERROR, "[stackTraceInfo="+stack1+"],event=Gets upload token failed", e);
+            LOGGER.log(Level.ERROR, "[stackTraceInfo="+stack1+"];event=Gets upload token failed", e);
             return null;
         }
     }
@@ -333,7 +333,7 @@ public final class Solos {
             }
         } catch (final Exception e) {
             String stack1 = Arrays.toString(Thread.currentThread().getStackTrace());
-            LOGGER.log(Level.TRACE, "[stackTraceInfo="+stack1+"],event=Parses cookie failed, clears the cookie [name=" + COOKIE_NAME + "]");
+            LOGGER.log(Level.TRACE, "[stackTraceInfo="+stack1+"];event=Parses cookie failed, clears the cookie [name=" + COOKIE_NAME + "]");
             final Cookie cookie = new Cookie(COOKIE_NAME, "");
             cookie.setMaxAge(0);
             cookie.setPath("/");
@@ -366,7 +366,7 @@ public final class Solos {
             response.addCookie(cookie);
         } catch (final Exception e) {
             String stack1 = Arrays.toString(Thread.currentThread().getStackTrace());
-            LOGGER.log(Level.WARN, "[stackTraceInfo="+stack1+"],event=Can not write cookie", e);
+            LOGGER.log(Level.WARN, "[stackTraceInfo="+stack1+"];event=Can not write cookie", e);
         }
     }
 

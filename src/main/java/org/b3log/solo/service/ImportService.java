@@ -133,7 +133,7 @@ public class ImportService {
                 succCnt++;
             } catch (final Exception e) {
                 String stack1 = Arrays.toString(Thread.currentThread().getStackTrace());
-                LOGGER.log(Level.ERROR, "[stackTraceInfo="+stack1+"],event=Import file [" + fileName + "] failed", e);
+                LOGGER.log(Level.ERROR, "[stackTraceInfo="+stack1+"];event=Import file [" + fileName + "] failed", e);
 
                 failCnt++;
                 failSet.add(fileName);
@@ -257,7 +257,7 @@ public class ImportService {
                         "dd-MM-yyyy HH:mm", "yyyyMMdd HH:mm"});
             } catch (final Exception e) {
                 String stack1 = Arrays.toString(Thread.currentThread().getStackTrace());
-                LOGGER.log(Level.ERROR, "[stackTraceInfo="+stack1+"],event=Parse date [" + date + "] failed", e);
+                LOGGER.log(Level.ERROR, "[stackTraceInfo="+stack1+"];event=Parse date [" + date + "] failed", e);
 
                 throw new RuntimeException(e);
             }

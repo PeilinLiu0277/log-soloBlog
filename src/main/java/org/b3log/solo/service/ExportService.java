@@ -172,7 +172,7 @@ public class ExportService {
         final Latkes.RuntimeDatabase runtimeDatabase = Latkes.getRuntimeDatabase();
         if (Latkes.RuntimeDatabase.H2 != runtimeDatabase && Latkes.RuntimeDatabase.MYSQL != runtimeDatabase) {
             String stack1 = Arrays.toString(Thread.currentThread().getStackTrace());
-            LOGGER.log(Level.ERROR, "[stackTraceInfo="+stack1+"],event=Just support MySQL/H2 export now");
+            LOGGER.log(Level.ERROR, "[stackTraceInfo="+stack1+"];event=Just support MySQL/H2 export now");
 
             return null;
         }
@@ -194,7 +194,7 @@ public class ExportService {
                 }
             } catch (final Exception e) {
                 String stack1 = Arrays.toString(Thread.currentThread().getStackTrace());
-                LOGGER.log(Level.ERROR, "[stackTraceInfo="+stack1+"],event=Export failed", e);
+                LOGGER.log(Level.ERROR, "[stackTraceInfo="+stack1+"];event=Export failed", e);
 
                 return null;
             }
@@ -212,7 +212,7 @@ public class ExportService {
                 sql = sqlBuilder.toString();
             } catch (final Exception e) {
                 String stack1 = Arrays.toString(Thread.currentThread().getStackTrace());
-                LOGGER.log(Level.ERROR, "[stackTraceInfo="+stack1+"],event=Export failed", e);
+                LOGGER.log(Level.ERROR, "[stackTraceInfo="+stack1+"];event=Export failed", e);
 
                 return null;
             }
@@ -220,7 +220,7 @@ public class ExportService {
 
         if (StringUtils.isBlank(sql)) {
             String stack1 = Arrays.toString(Thread.currentThread().getStackTrace());
-            LOGGER.log(Level.ERROR, "[stackTraceInfo="+stack1+"],event=Export failed, executing export script returns empty");
+            LOGGER.log(Level.ERROR, "[stackTraceInfo="+stack1+"];event=Export failed, executing export script returns empty");
 
             return null;
         }
@@ -248,7 +248,7 @@ public class ExportService {
             return ret;
         } catch (final Exception e) {
             String stack1 = Arrays.toString(Thread.currentThread().getStackTrace());
-            LOGGER.log(Level.ERROR, "[stackTraceInfo="+stack1+"],event=Export failed", e);
+            LOGGER.log(Level.ERROR, "[stackTraceInfo="+stack1+"];event=Export failed", e);
 
             return null;
         }
@@ -273,7 +273,7 @@ public class ExportService {
                 return;
             }
             String stack1 = Arrays.toString(Thread.currentThread().getStackTrace());
-            LOGGER.log(Level.INFO, "[stackTraceInfo="+stack1+"],event=Backup public articles to your GitHub repo [solo-blog]....");
+            LOGGER.log(Level.INFO, "[stackTraceInfo="+stack1+"];event=Backup public articles to your GitHub repo [solo-blog]....");
 
             final JSONObject mds = exportHexoMDs();
             JdbcRepository.dispose();
@@ -320,11 +320,11 @@ public class ExportService {
             }
             if (ok) {
                 String stack2 = Arrays.toString(Thread.currentThread().getStackTrace());
-                LOGGER.log(Level.INFO, "[stackTraceInfo="+stack2+"],event=Exported public articles to your repo [solo-blog]");
+                LOGGER.log(Level.INFO, "[stackTraceInfo="+stack2+"];event=Exported public articles to your repo [solo-blog]");
             }
         } catch (final Exception e) {
             String stack1 = Arrays.toString(Thread.currentThread().getStackTrace());
-            LOGGER.log(Level.ERROR, "[stackTraceInfo="+stack1+"],event=Exports public articles to your repo failed: " + e.getMessage());
+            LOGGER.log(Level.ERROR, "[stackTraceInfo="+stack1+"];event=Exports public articles to your repo failed: " + e.getMessage());
         }
     }
 
@@ -402,7 +402,7 @@ public class ExportService {
             LOGGER.info("[stackTraceInfo]:"+stack2+"event=Backup all articles to LianDi completed: " + response.bodyText());
         } catch (final Exception e) {
             String stack1 = Arrays.toString(Thread.currentThread().getStackTrace());
-            LOGGER.log(Level.ERROR, "[stackTraceInfo="+stack1+"],event=Exports articles to LianDi failed:" + e.getMessage());
+            LOGGER.log(Level.ERROR, "[stackTraceInfo="+stack1+"];event=Exports articles to LianDi failed:" + e.getMessage());
         }
     }
 
@@ -462,7 +462,7 @@ public class ExportService {
                 FileUtils.writeStringToFile(new File(dir + filename), text, "UTF-8");
             } catch (final Exception e) {
                 String stack1 = Arrays.toString(Thread.currentThread().getStackTrace());
-                LOGGER.log(Level.ERROR, "[stackTraceInfo="+stack1+"],event=Write markdown file failed", e);
+                LOGGER.log(Level.ERROR, "[stackTraceInfo="+stack1+"];event=Write markdown file failed", e);
             }
         });
     }
@@ -479,8 +479,8 @@ public class ExportService {
      *             "content": "",
      *             "created": long
      *         }, ....
-     *     ],
-     *     "passwords": [], // format is same as post
+     *     ];
+     *     "passwords": []; // format is same as post
      *     "drafts": [] // format is same as post
      * }
      * </pre>
@@ -576,7 +576,7 @@ public class ExportService {
             return new JSONArray(list);
         } catch (final Exception e) {
             String stack1 = Arrays.toString(Thread.currentThread().getStackTrace());
-            LOGGER.log(Level.ERROR, "[stackTraceInfo="+stack1+"],event=Gets data from repository [" + repository.getName() + "] failed", e);
+            LOGGER.log(Level.ERROR, "[stackTraceInfo="+stack1+"];event=Gets data from repository [" + repository.getName() + "] failed", e);
             return new JSONArray();
         }
     }

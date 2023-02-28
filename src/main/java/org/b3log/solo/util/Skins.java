@@ -68,11 +68,11 @@ public final class Skins {
             }
             TEMPLATE_CFG.setDirectoryForTemplateLoading(new File(path));
             String stack = Arrays.toString(Thread.currentThread().getStackTrace());
-            LOGGER.log(Level.INFO, "[stackTraceInfo="+stack+"],event=Loaded template from directory [" + path + "]");
+            LOGGER.log(Level.INFO, "[stackTraceInfo="+stack+"];event=Loaded template from directory [" + path + "]");
         } catch (final Exception e) {
             TEMPLATE_CFG.setClassForTemplateLoading(Skins.class, "/");
             String stack1 = Arrays.toString(Thread.currentThread().getStackTrace());
-            LOGGER.log(Level.INFO, "[stackTraceInfo="+stack1+"],event=Loaded template from classpath");
+            LOGGER.log(Level.INFO, "[stackTraceInfo="+stack1+"];event=Loaded template from classpath");
         }
         TEMPLATE_CFG.setTemplateExceptionHandler(TemplateExceptionHandler.RETHROW_HANDLER);
         TEMPLATE_CFG.setLogTemplateExceptions(false);
@@ -100,7 +100,7 @@ public final class Skins {
             return Skins.TEMPLATE_CFG.getTemplate(templateName);
         } catch (final IOException e) {
             String stack1 = Arrays.toString(Thread.currentThread().getStackTrace());
-            LOGGER.log(Level.ERROR, "[stackTraceInfo="+stack1+"],event=Gets console template [" + templateName + "] failed", e);
+            LOGGER.log(Level.ERROR, "[stackTraceInfo="+stack1+"];event=Gets console template [" + templateName + "] failed", e);
 
             return null;
         }
@@ -159,7 +159,7 @@ public final class Skins {
                 final InputStream inputStream = Skins.class.getResourceAsStream("/skins/" + currentSkinDirName + "/lang/lang_" + language + '_' + country + ".properties");
                 if (null != inputStream) {
                     String stack1 = Arrays.toString(Thread.currentThread().getStackTrace());
-                    LOGGER.log(Level.DEBUG, "[stackTraceInfo="+stack1+"],event=Loading skin [dirName={}, locale={}]", currentSkinDirName, localeString);
+                    LOGGER.log(Level.DEBUG, "[stackTraceInfo="+stack1+"];event=Loading skin [dirName={}, locale={}]", currentSkinDirName, localeString);
                     final Properties props = new Properties();
                     props.load(inputStream);
                     inputStream.close();
@@ -172,14 +172,14 @@ public final class Skins {
 
                     LANG_MAP.put(langName, langs);
 
-                    LOGGER.log(Level.DEBUG, "[stackTraceInfo="+stack1+"],event=Loaded skin [dirName={}, locale={}, keyCount={}]", currentSkinDirName, localeString, langs.size());
+                    LOGGER.log(Level.DEBUG, "[stackTraceInfo="+stack1+"];event=Loaded skin [dirName={}, locale={}, keyCount={}]", currentSkinDirName, localeString, langs.size());
                 }
             }
 
             dataModel.putAll(langs); // Fills the current skin's language configurations
         } catch (final Exception e) {
             String stack1 = Arrays.toString(Thread.currentThread().getStackTrace());
-            LOGGER.log(Level.ERROR, "[stackTraceInfo="+stack1+"],event=Fills skin langs failed", e);
+            LOGGER.log(Level.ERROR, "[stackTraceInfo="+stack1+"];event=Fills skin langs failed", e);
 
             throw new ServiceException(e);
         } finally {
@@ -229,7 +229,7 @@ public final class Skins {
             }
         } catch (final Exception e) {
             String stack1 = Arrays.toString(Thread.currentThread().getStackTrace());
-            LOGGER.log(Level.ERROR, "[stackTraceInfo="+stack1+"],event=Get skin dir names failed", e);
+            LOGGER.log(Level.ERROR, "[stackTraceInfo="+stack1+"];event=Get skin dir names failed", e);
         }
 
         return ret;

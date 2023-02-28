@@ -42,7 +42,7 @@ public class AdminConsoleTestCase extends AbstractTestCase {
         final MockRequest request = mockRequest();
         request.setRequestURI("/admin-index.do");
         String stack1 = Arrays.toString(Thread.currentThread().getStackTrace());
-        LOGGER.log(Level.INFO,"[stackTraceInfo="+stack1+"],event=/admin-index.do");
+        LOGGER.log(Level.INFO,"[stackTraceInfo="+stack1+"];event=/admin-index.do");
         mockAdminLogin(request);
         final MockResponse response = mockResponse();
 
@@ -59,7 +59,7 @@ public class AdminConsoleTestCase extends AbstractTestCase {
         final MockRequest request = mockRequest();
         request.setRequestURI("/admin-article.do");
         String stack1 = Arrays.toString(Thread.currentThread().getStackTrace());
-        LOGGER.log(Level.INFO,"[stackTraceInfo="+stack1+"],event=/admin-article.do");
+        LOGGER.log(Level.INFO,"[stackTraceInfo="+stack1+"];event=/admin-article.do");
         mockAdminLogin(request);
         final MockResponse response = mockResponse();
 
@@ -76,7 +76,7 @@ public class AdminConsoleTestCase extends AbstractTestCase {
         final MockRequest request = mockRequest();
         request.setRequestURI("/admin-preference.do");
         String stack1 = Arrays.toString(Thread.currentThread().getStackTrace());
-        LOGGER.log(Level.INFO,"[stackTraceInfo="+stack1+"],event=/admin-preference.do");
+        LOGGER.log(Level.INFO,"[stackTraceInfo="+stack1+"];event=/admin-preference.do");
         mockAdminLogin(request);
         final MockResponse response = mockResponse();
 
@@ -93,7 +93,7 @@ public class AdminConsoleTestCase extends AbstractTestCase {
         final MockRequest request = mockRequest();
         request.setRequestURI("/console/export/sql");
         String stack1 = Arrays.toString(Thread.currentThread().getStackTrace());
-        LOGGER.log(Level.INFO,"[stackTraceInfo="+stack1+"],event=/console/export/sql");
+        LOGGER.log(Level.INFO,"[stackTraceInfo="+stack1+"];event=/console/export/sql");
         mockAdminLogin(request);
         final MockResponse response = mockResponse();
 
@@ -110,7 +110,7 @@ public class AdminConsoleTestCase extends AbstractTestCase {
         final MockRequest request = mockRequest();
         request.setRequestURI("/console/export/json");
         String stack1 = Arrays.toString(Thread.currentThread().getStackTrace());
-        LOGGER.log(Level.INFO,"[stackTraceInfo="+stack1+"],event=/console/export/json");
+        LOGGER.log(Level.INFO,"[stackTraceInfo="+stack1+"];event=/console/export/json");
         mockAdminLogin(request);
         final MockResponse response = mockResponse();
 
@@ -127,7 +127,7 @@ public class AdminConsoleTestCase extends AbstractTestCase {
         final MockRequest request = mockRequest();
         request.setRequestURI("/console/export/hexo");
         String stack1 = Arrays.toString(Thread.currentThread().getStackTrace());
-        LOGGER.log(Level.INFO,"[stackTraceInfo="+stack1+"],event=/console/export/hexo");
+        LOGGER.log(Level.INFO,"[stackTraceInfo="+stack1+"];event=/console/export/hexo");
         mockAdminLogin(request);
         final MockResponse response = mockResponse();
 

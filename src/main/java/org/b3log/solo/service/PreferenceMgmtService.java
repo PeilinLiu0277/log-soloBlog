@@ -239,11 +239,11 @@ public class PreferenceMgmtService {
                 transaction.rollback();
             }
             String stack1 = Arrays.toString(Thread.currentThread().getStackTrace());
-            LOGGER.log(Level.ERROR, "[stackTraceInfo="+stack1+"],event=Updates preference failed", e);
+            LOGGER.log(Level.ERROR, "[stackTraceInfo="+stack1+"];event=Updates preference failed", e);
             throw new ServiceException(langPropsService.get("updateFailLabel"));
         }
         String stack1 = Arrays.toString(Thread.currentThread().getStackTrace());
-        LOGGER.log(Level.DEBUG, "[stackTraceInfo="+stack1+"],event=Updates preference successfully");
+        LOGGER.log(Level.DEBUG, "[stackTraceInfo="+stack1+"];event=Updates preference successfully");
     }
 
     private void emptyPreferenceOptSave(final String optID, final String val) throws Exception {

@@ -115,7 +115,7 @@ public class CategoryQueryService {
             return tagArticlesCountResult == null ? 0 : tagArticlesCountResult.get(0).optInt("C");
         } catch (final Exception e) {
             String stack1 = Arrays.toString(Thread.currentThread().getStackTrace());
-            LOGGER.log(Level.ERROR, "[stackTraceInfo="+stack1+"],event=Gets article count failed", e);
+            LOGGER.log(Level.ERROR, "[stackTraceInfo="+stack1+"];event=Gets article count failed", e);
 
             return -1;
         }
@@ -143,7 +143,7 @@ public class CategoryQueryService {
             return ret;
         } catch (final Exception e) {
             String stack1 = Arrays.toString(Thread.currentThread().getStackTrace());
-            LOGGER.log(Level.ERROR, "[stackTraceInfo="+stack1+"],event=Gets most tag category error", e);
+            LOGGER.log(Level.ERROR, "[stackTraceInfo="+stack1+"];event=Gets most tag category error", e);
 
             return Collections.emptyList();
         }
@@ -172,7 +172,7 @@ public class CategoryQueryService {
             }
         } catch (final RepositoryException e) {
             String stack1 = Arrays.toString(Thread.currentThread().getStackTrace());
-            LOGGER.log(Level.ERROR, "[stackTraceInfo="+stack1+"],event=Gets category [id=" + categoryId + "] tags error", e);
+            LOGGER.log(Level.ERROR, "[stackTraceInfo="+stack1+"];event=Gets category [id=" + categoryId + "] tags error", e);
         }
 
         return ret;
@@ -192,7 +192,7 @@ public class CategoryQueryService {
             return ret;
         } catch (final RepositoryException e) {
             String stack1 = Arrays.toString(Thread.currentThread().getStackTrace());
-            LOGGER.log(Level.ERROR, "[stackTraceInfo="+stack1+"],event=Gets category [URI=" + categoryURI + "] failed", e);
+            LOGGER.log(Level.ERROR, "[stackTraceInfo="+stack1+"];event=Gets category [URI=" + categoryURI + "] failed", e);
 
             throw new ServiceException(e);
         }
@@ -212,7 +212,7 @@ public class CategoryQueryService {
             return ret;
         } catch (final RepositoryException e) {
             String stack1 = Arrays.toString(Thread.currentThread().getStackTrace());
-            LOGGER.log(Level.ERROR, "[stackTraceInfo="+stack1+"],event=Gets category [title=" + categoryTitle + "] failed", e);
+            LOGGER.log(Level.ERROR, "[stackTraceInfo="+stack1+"];event=Gets category [title=" + categoryTitle + "] failed", e);
 
             throw new ServiceException(e);
         }
@@ -265,7 +265,7 @@ public class CategoryQueryService {
             result = categoryRepository.get(query);
         } catch (final RepositoryException e) {
             String stack1 = Arrays.toString(Thread.currentThread().getStackTrace());
-            LOGGER.log(Level.ERROR, "[stackTraceInfo="+stack1+"],event=Gets categories failed", e);
+            LOGGER.log(Level.ERROR, "[stackTraceInfo="+stack1+"];event=Gets categories failed", e);
             throw new ServiceException(e);
         }
 
@@ -299,7 +299,7 @@ public class CategoryQueryService {
             return ret;
         } catch (final RepositoryException e) {
             String stack1 = Arrays.toString(Thread.currentThread().getStackTrace());
-            LOGGER.log(Level.ERROR, "[stackTraceInfo="+stack1+"],event=Gets a category [categoryId=" + categoryId + "] failed", e);
+            LOGGER.log(Level.ERROR, "[stackTraceInfo="+stack1+"];event=Gets a category [categoryId=" + categoryId + "] failed", e);
 
             throw new ServiceException(e);
         }
@@ -332,7 +332,7 @@ public class CategoryQueryService {
             return categoryTagRepository.count(query) > 0;
         } catch (final Exception e) {
             String stack1 = Arrays.toString(Thread.currentThread().getStackTrace());
-            LOGGER.log(Level.ERROR, "[stackTraceInfo="+stack1+"],event=Check category tag [tagTitle=" + tagTitle + ", categoryId=" + categoryId + "] failed", e);
+            LOGGER.log(Level.ERROR, "[stackTraceInfo="+stack1+"];event=Check category tag [tagTitle=" + tagTitle + ", categoryId=" + categoryId + "] failed", e);
 
             return true;
         }

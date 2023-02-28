@@ -74,10 +74,10 @@ public class TagConsole {
             jsonObject.put(Tag.TAGS, tagQueryService.getTags());
             jsonObject.put(Keys.CODE, StatusCodes.SUCC);
             String stack1 = Arrays.toString(Thread.currentThread().getStackTrace());
-            LOGGER.log(Level.INFO, "[stackTraceInfo="+stack1+"],event="+"Gets tags OK!");
+            LOGGER.log(Level.INFO, "[stackTraceInfo="+stack1+"];event="+"Gets tags OK!");
         } catch (final Exception e) {
             String stack1 = Arrays.toString(Thread.currentThread().getStackTrace());
-            LOGGER.log(Level.ERROR, "[stackTraceInfo="+stack1+"],event="+"Gets tags failed", e);
+            LOGGER.log(Level.ERROR, "[stackTraceInfo="+stack1+"];event="+"Gets tags failed", e);
             jsonObject.put(Keys.CODE, StatusCodes.ERR);
         }
     }

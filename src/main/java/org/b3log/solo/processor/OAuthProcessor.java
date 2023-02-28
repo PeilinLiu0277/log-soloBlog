@@ -113,7 +113,7 @@ public class OAuthProcessor {
 
         final String loginAuthURL = "https://ld246.com/login?goto=" + Latkes.getServePath() + "/login/callback";
         String stack = Arrays.toString(Thread.currentThread().getStackTrace());
-        LOGGER.log(Level.INFO, "[stackTraceInfo="+stack+"],event=/login/callback");
+        LOGGER.log(Level.INFO, "[stackTraceInfo="+stack+"];event=/login/callback");
         final String path = loginAuthURL + "&state=" + state + "&v=" + Server.VERSION;
         context.sendRedirect(path);
     }
@@ -138,7 +138,7 @@ public class OAuthProcessor {
         final JSONObject userInfo = Solos.getUserInfo(accessToken);
         if (null == userInfo) {
             String stack1 = Arrays.toString(Thread.currentThread().getStackTrace());
-            LOGGER.log(Level.WARN, "[stackTraceInfo="+stack1+"],event="+"Can't get user info with token [" + accessToken + "]");
+            LOGGER.log(Level.WARN, "[stackTraceInfo="+stack1+"];event="+"Can't get user info with token [" + accessToken + "]");
             context.sendError(401);
             return;
         }
@@ -169,7 +169,7 @@ public class OAuthProcessor {
                         userMgmtService.addUser(addUserReq);
                     } catch (final Exception e) {
                         String stack1 = Arrays.toString(Thread.currentThread().getStackTrace());
-                        LOGGER.log(Level.ERROR, "[stackTraceInfo="+stack1+"],event="+"Registers via oauth failed", e);
+                        LOGGER.log(Level.ERROR, "[stackTraceInfo="+stack1+"];event="+"Registers via oauth failed", e);
                         context.sendError(500);
                         return;
                     }
@@ -180,7 +180,7 @@ public class OAuthProcessor {
                         userMgmtService.updateUser(user);
                     } catch (final Exception e) {
                         String stack1 = Arrays.toString(Thread.currentThread().getStackTrace());
-                        LOGGER.log(Level.ERROR, "[stackTraceInfo="+stack1+"],event="+"Updates user id failed", e);
+                        LOGGER.log(Level.ERROR, "[stackTraceInfo="+stack1+"];event="+"Updates user id failed", e);
                         context.sendError(500);
                         return;
                     }
@@ -193,7 +193,7 @@ public class OAuthProcessor {
                 userMgmtService.updateUser(user);
             } catch (final Exception e) {
                 String stack1 = Arrays.toString(Thread.currentThread().getStackTrace());
-                LOGGER.log(Level.ERROR, "[stackTraceInfo="+stack1+"],event="+"Updates user name failed", e);
+                LOGGER.log(Level.ERROR, "[stackTraceInfo="+stack1+"];event="+"Updates user name failed", e);
                 context.sendError(500);
                 return;
             }
@@ -202,7 +202,7 @@ public class OAuthProcessor {
         user = userQueryService.getUserByName(userName);
         if (null == user) {
             String stack1 = Arrays.toString(Thread.currentThread().getStackTrace());
-            LOGGER.log(Level.WARN, "[stackTraceInfo="+stack1+"],event="+"Can't get user by name [" + userName + "]");
+            LOGGER.log(Level.WARN, "[stackTraceInfo="+stack1+"];event="+"Can't get user by name [" + userName + "]");
             context.sendError(404);
             return;
         }
@@ -211,6 +211,6 @@ public class OAuthProcessor {
         Statics.clear();
         context.sendRedirect(referer);
         String stack1 = Arrays.toString(Thread.currentThread().getStackTrace());
-        LOGGER.log(Level.INFO, "[stackTraceInfo="+stack1+"],event="+"Logged in [name={}, remoteAddr={}] with oauth", userName, Requests.getRemoteAddr(request));
+        LOGGER.log(Level.INFO, "[stackTraceInfo="+stack1+"];event="+"Logged in [name={}, remoteAddr={}] with oauth", userName, Requests.getRemoteAddr(request));
     }
 }

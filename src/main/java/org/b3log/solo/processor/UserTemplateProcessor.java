@@ -91,18 +91,18 @@ public class UserTemplateProcessor {
                     final String content = IOUtils.toString(resourceAsStream, StandardCharsets.UTF_8);
                     renderer.setContent(Markdowns.toHTML(content));
                     String stack1 = Arrays.toString(Thread.currentThread().getStackTrace());
-                    LOGGER.log(Level.INFO,"[stackTraceInfo="+stack1+"],event=CHANGE_LOSS.md OK!");
+                    LOGGER.log(Level.INFO,"[stackTraceInfo="+stack1+"];event=CHANGE_LOSS.md OK!");
                 }
                 String stack1 = Arrays.toString(Thread.currentThread().getStackTrace());
-                LOGGER.log(Level.INFO,"[stackTraceInfo="+stack1+"],event=renders CHANGE_LOSS OK!");
+                LOGGER.log(Level.INFO,"[stackTraceInfo="+stack1+"];event=renders CHANGE_LOSS OK!");
             } catch (final Exception e) {
                 String stack1 = Arrays.toString(Thread.currentThread().getStackTrace());
-                LOGGER.log(Level.ERROR, "[stackTraceInfo="+stack1+"],event="+"Renders CHANGE_LOGS failed", e);
+                LOGGER.log(Level.ERROR, "[stackTraceInfo="+stack1+"];event="+"Renders CHANGE_LOGS failed", e);
             }
             return;
         }
         String stack1 = Arrays.toString(Thread.currentThread().getStackTrace());
-        LOGGER.log(Level.DEBUG, "[stackTraceInfo="+stack1+"],event="+"Shows page [requestURI={}, templateName={}]", requestURI, templateName);
+        LOGGER.log(Level.DEBUG, "[stackTraceInfo="+stack1+"];event="+"Shows page [requestURI={}, templateName={}]", requestURI, templateName);
 
         final Request request = context.getRequest();
         final Response response = context.getResponse();
@@ -126,10 +126,10 @@ public class UserTemplateProcessor {
             Skins.fillLangs(preference.optString(Option.ID_C_LOCALE_STRING), (String) context.attr(Keys.TEMPLATE_DIR_NAME), dataModel);
 
             String stack = Arrays.toString(Thread.currentThread().getStackTrace());
-            LOGGER.log(Level.INFO,"[stackTraceInfo="+stack+"],event=show page");
+            LOGGER.log(Level.INFO,"[stackTraceInfo="+stack+"];event=show page");
         } catch (final Exception e) {
             String stack = Arrays.toString(Thread.currentThread().getStackTrace());
-            LOGGER.log(Level.ERROR, "[stackTraceInfo="+stack+"],event="+e.getMessage(), e);
+            LOGGER.log(Level.ERROR, "[stackTraceInfo="+stack+"];event="+e.getMessage(), e);
 
             context.sendError(404);
         }

@@ -123,7 +123,7 @@ public class B3Receiver {
 
         final JSONObject requestJSONObject = context.requestJSON();
         String stack1 = Arrays.toString(Thread.currentThread().getStackTrace());
-        LOGGER.log(Level.DEBUG, "[stackTraceInfo="+stack1+"],event=Adds an article from Sym [" + requestJSONObject.toString() + "]");
+        LOGGER.log(Level.DEBUG, "[stackTraceInfo="+stack1+"];event=Adds an article from Sym [" + requestJSONObject.toString() + "]");
 
         try {
             final JSONObject client = requestJSONObject.optJSONObject("client");
@@ -132,7 +132,7 @@ public class B3Receiver {
                 final String msg = "Not found client";
                 ret.put(Keys.MSG, msg);
 
-                LOGGER.log(Level.WARN, "[stackTraceInfo="+stack1+"],event="+msg);
+                LOGGER.log(Level.WARN, "[stackTraceInfo="+stack1+"];event="+msg);
                 return;
             }
 
@@ -144,7 +144,7 @@ public class B3Receiver {
                 final String msg = "Not found user [" + articleAuthorName + "]";
                 ret.put(Keys.MSG, msg);
 
-                LOGGER.log(Level.WARN, "[stackTraceInfo="+stack1+"],event="+msg);
+                LOGGER.log(Level.WARN, "[stackTraceInfo="+stack1+"];event="+msg);
                 return;
             }
 
@@ -154,7 +154,7 @@ public class B3Receiver {
                 ret.put(Keys.CODE, 1);
                 final String msg = "Wrong key";
                 ret.put(Keys.MSG, msg);
-                LOGGER.log(Level.WARN, "[stackTraceInfo="+stack1+"],event="+msg);
+                LOGGER.log(Level.WARN, "[stackTraceInfo="+stack1+"];event="+msg);
                 return;
             }
 
@@ -163,7 +163,7 @@ public class B3Receiver {
                 ret.put(Keys.CODE, 1);
                 final String msg = "Not found article";
                 ret.put(Keys.MSG, msg);
-                LOGGER.log(Level.WARN, "[stackTraceInfo="+stack1+"],event="+msg);
+                LOGGER.log(Level.WARN, "[stackTraceInfo="+stack1+"];event="+msg);
                 return;
             }
 
@@ -187,7 +187,7 @@ public class B3Receiver {
                 final JSONObject addRequest = new JSONObject().put(Article.ARTICLE, article);
                 articleMgmtService.addArticle(addRequest);
                 String stack2 = Arrays.toString(Thread.currentThread().getStackTrace());
-                LOGGER.log(Level.INFO, "[stackTraceInfo="+stack2+"],event=Added an article [" + title + "] via Sym");
+                LOGGER.log(Level.INFO, "[stackTraceInfo="+stack2+"];event=Added an article [" + title + "] via Sym");
                 return;
             }
 
@@ -200,10 +200,10 @@ public class B3Receiver {
             final JSONObject updateRequest = new JSONObject().put(Article.ARTICLE, oldArticle);
             articleMgmtService.updateArticle(updateRequest);
             String stack3 = Arrays.toString(Thread.currentThread().getStackTrace());
-            LOGGER.log(Level.INFO, "[stackTraceInfo="+stack3+"],event=Updated an article [" + title + "] via Sym");
+            LOGGER.log(Level.INFO, "[stackTraceInfo="+stack3+"];event=Updated an article [" + title + "] via Sym");
         } catch (final Exception e) {
             String stack4 = Arrays.toString(Thread.currentThread().getStackTrace());
-            LOGGER.log(Level.ERROR, "[stackTraceInfo="+stack4+"],event="+e.getMessage(), e);
+            LOGGER.log(Level.ERROR, "[stackTraceInfo="+stack4+"];event="+e.getMessage(), e);
             ret.put(Keys.CODE, 1).put(Keys.MSG, e.getMessage());
         }
     }

@@ -114,10 +114,10 @@ public class RepairConsole {
             renderer.setContent("Restore signs succeeded.");
 
             String stack1 = Arrays.toString(Thread.currentThread().getStackTrace());
-            LOGGER.log(Level.INFO, "[stackTraceInfo="+stack1+"],event="+"restore signs OK!");
+            LOGGER.log(Level.INFO, "[stackTraceInfo="+stack1+"];event="+"restore signs OK!");
         } catch (final Exception e) {
             String stack1 = Arrays.toString(Thread.currentThread().getStackTrace());
-            LOGGER.log(Level.ERROR, "[stackTraceInfo="+stack1+"],event="+e.getMessage(), e);
+            LOGGER.log(Level.ERROR, "[stackTraceInfo="+stack1+"];event="+e.getMessage(), e);
 
             renderer.setContent("Restores signs failed, error msg [" + e.getMessage() + "]");
         }
@@ -173,13 +173,13 @@ public class RepairConsole {
             renderer.setContent("Cleaned duplicated archive date articles");
 
             String stack1 = Arrays.toString(Thread.currentThread().getStackTrace());
-            LOGGER.log(Level.INFO, "[stackTraceInfo="+stack1+"],event="+"clean archive data articles OK!");
+            LOGGER.log(Level.INFO, "[stackTraceInfo="+stack1+"];event="+"clean archive data articles OK!");
         } catch (final Exception e) {
             if (transaction.isActive()) {
                 transaction.rollback();
             }
             String stack1 = Arrays.toString(Thread.currentThread().getStackTrace());
-            LOGGER.log(Level.ERROR, "[stackTraceInfo="+stack1+"],event="+e.getMessage(), e);
+            LOGGER.log(Level.ERROR, "[stackTraceInfo="+stack1+"];event="+e.getMessage(), e);
             renderer.setContent("Clean duplicated archive date articles failed [" + e.getMessage() + "]");
         }
     }
