@@ -66,7 +66,7 @@ public class LinkMgmtService {
                 transaction.rollback();
             }
             String stack1 = Arrays.toString(Thread.currentThread().getStackTrace());
-            LOGGER.log(Level.ERROR, "[stackTraceInfo="+stack1+"],event=Removes a link[id=" + linkId + "] failed", e);
+            LOGGER.log(Level.ERROR, "[stackTraceInfo="+stack1+"];event=Removes a link[id=" + linkId + "] failed", e);
             throw new ServiceException(e);
         }
     }
@@ -107,7 +107,7 @@ public class LinkMgmtService {
                 transaction.rollback();
             }
             String stack1 = Arrays.toString(Thread.currentThread().getStackTrace());
-            LOGGER.log(Level.ERROR, "[stackTraceInfo="+stack1+"],event="+e.getMessage(), e);
+            LOGGER.log(Level.ERROR, "[stackTraceInfo="+stack1+"];event="+e.getMessage(), e);
 
             throw new ServiceException(e);
         }
@@ -142,7 +142,7 @@ public class LinkMgmtService {
                     transaction.rollback();
                 }
                 String stack1 = Arrays.toString(Thread.currentThread().getStackTrace());
-                LOGGER.log(Level.WARN, "[stackTraceInfo="+stack1+"],event=Cant not find the target link of source link[order={}]", srcLinkOrder);
+                LOGGER.log(Level.WARN, "[stackTraceInfo="+stack1+"];event=Cant not find the target link of source link[order={}]", srcLinkOrder);
                 return;
             }
 
@@ -160,7 +160,7 @@ public class LinkMgmtService {
                 transaction.rollback();
             }
             String stack1 = Arrays.toString(Thread.currentThread().getStackTrace());
-            LOGGER.log(Level.ERROR, "[stackTraceInfo="+stack1+"],event=Changes link's order failed", e);
+            LOGGER.log(Level.ERROR, "[stackTraceInfo="+stack1+"];event=Changes link's order failed", e);
 
             throw new ServiceException(e);
         }
@@ -203,7 +203,7 @@ public class LinkMgmtService {
                 transaction.rollback();
             }
             String stack1 = Arrays.toString(Thread.currentThread().getStackTrace());
-            LOGGER.log(Level.ERROR, "[stackTraceInfo="+stack1+"],event=Adds a link failed", e);
+            LOGGER.log(Level.ERROR, "[stackTraceInfo="+stack1+"];event=Adds a link failed", e);
             throw new ServiceException(e);
         }
     }

@@ -105,7 +105,7 @@ public class PluginMgmtService {
                         }
                     } catch (final JSONException e) {
                         String stack1 = Arrays.toString(Thread.currentThread().getStackTrace());
-                        LOGGER.log(Level.WARN, "[stackTraceInfo="+stack1+"],event=the formatter of the old config failed to convert to json", e);
+                        LOGGER.log(Level.WARN, "[stackTraceInfo="+stack1+"];event=the formatter of the old config failed to convert to json", e);
                     }
                 }
             }
@@ -116,12 +116,12 @@ public class PluginMgmtService {
 
                 pluginRepository.add(pluginDesc);
                 String stack1 = Arrays.toString(Thread.currentThread().getStackTrace());
-                LOGGER.log(Level.TRACE, "[stackTraceInfo="+stack1+"],event=Refreshed plugin[{}]", pluginDesc);
+                LOGGER.log(Level.TRACE, "[stackTraceInfo="+stack1+"];event=Refreshed plugin[{}]", pluginDesc);
             }
 
         } catch (final Exception e) {
             String stack1 = Arrays.toString(Thread.currentThread().getStackTrace());
-            LOGGER.log(Level.ERROR, "[stackTraceInfo="+stack1+"],event=Refresh plugins failed", e);
+            LOGGER.log(Level.ERROR, "[stackTraceInfo="+stack1+"];event=Refresh plugins failed", e);
         }
     }
 
@@ -179,7 +179,7 @@ public class PluginMgmtService {
                         transaction.rollback();
                     }
                     String stack1 = Arrays.toString(Thread.currentThread().getStackTrace());
-                    LOGGER.log(Level.ERROR, "[stackTraceInfo="+stack1+"],event=Set plugin status error", e);
+                    LOGGER.log(Level.ERROR, "[stackTraceInfo="+stack1+"];event=Set plugin status error", e);
                     ret.put(Keys.CODE, StatusCodes.ERR);
                     ret.put(Keys.MSG, langs.get("setFailLabel"));
                     return ret;
@@ -220,7 +220,7 @@ public class PluginMgmtService {
                         transaction.rollback();
                     }
                     String stack1 = Arrays.toString(Thread.currentThread().getStackTrace());
-                    LOGGER.log(Level.ERROR, "[stackTraceInfo="+stack1+"],event=Set plugin status error", e);
+                    LOGGER.log(Level.ERROR, "[stackTraceInfo="+stack1+"];event=Set plugin status error", e);
                     ret.put(Keys.CODE, StatusCodes.ERR);
                     ret.put(Keys.MSG, langs.get("setFailLabel"));
                     return ret;

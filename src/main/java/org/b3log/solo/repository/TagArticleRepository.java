@@ -94,7 +94,7 @@ public class TagArticleRepository extends AbstractRepository {
             return (int) count(query);
         } catch (final Exception e) {
             String stack1 = Arrays.toString(Thread.currentThread().getStackTrace());
-            LOGGER.log(Level.ERROR, "[stackTraceInfo="+stack1+"],event="+"Gets tag [" + tagId + "]'s article count failed", e);
+            LOGGER.log(Level.ERROR, "[stackTraceInfo="+stack1+"];event="+"Gets tag [" + tagId + "]'s article count failed", e);
 
             return -1;
         }
@@ -123,7 +123,7 @@ public class TagArticleRepository extends AbstractRepository {
             return result.get(0).optInt("C");
         } catch (final Exception e) {
             String stack1 = Arrays.toString(Thread.currentThread().getStackTrace());
-            LOGGER.log(Level.ERROR, "[stackTraceInfo="+stack1+"],event="+"Gets tag [" + tagId + "]'s published article count failed", e);
+            LOGGER.log(Level.ERROR, "[stackTraceInfo="+stack1+"];event="+"Gets tag [" + tagId + "]'s published article count failed", e);
 
             return -1;
         }
@@ -139,7 +139,7 @@ public class TagArticleRepository extends AbstractRepository {
      *         "oId": "",
      *         "tag_oId": "",
      *         "article_oId": articleId
-     * }, ....], returns an empty list if not found
+     * }, ....]; returns an empty list if not found
      * </pre>
      * @throws RepositoryException repository exception
      */

@@ -57,7 +57,7 @@ public final class Emotions {
             ret = ret.replace(":" + emojiCode + ":", repl);
         }
         String stack1 = Arrays.toString(Thread.currentThread().getStackTrace());
-        LOGGER.log(Level.INFO,"[stackTraceInfo="+stack1+"],event=/unpkg.com/vditor/dist/images/emoji/");
+        LOGGER.log(Level.INFO,"[stackTraceInfo="+stack1+"];event=/unpkg.com/vditor/dist/images/emoji/");
 
         return ret;
     }

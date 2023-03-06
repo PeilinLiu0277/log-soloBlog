@@ -84,7 +84,7 @@ public class CategoryMgmtService {
                     transaction.rollback();
                 }
                 String stack1 = Arrays.toString(Thread.currentThread().getStackTrace());
-                LOGGER.log(Level.WARN, "[stackTraceInfo="+stack1+"],event=Cant not find the target category of source category [order={}]", srcCategoryOrder);
+                LOGGER.log(Level.WARN, "[stackTraceInfo="+stack1+"];event=Cant not find the target category of source category [order={}]", srcCategoryOrder);
                 return;
             }
 
@@ -101,7 +101,7 @@ public class CategoryMgmtService {
                 transaction.rollback();
             }
             String stack1 = Arrays.toString(Thread.currentThread().getStackTrace());
-            LOGGER.log(Level.ERROR, "[stackTraceInfo="+stack1+"],event=Changes category's order failed", e);
+            LOGGER.log(Level.ERROR, "[stackTraceInfo="+stack1+"];event=Changes category's order failed", e);
 
             throw new ServiceException(e);
         }
@@ -128,7 +128,7 @@ public class CategoryMgmtService {
             categoryTagRepository.remove(query);
         } catch (final RepositoryException e) {
             String stack1 = Arrays.toString(Thread.currentThread().getStackTrace());
-            LOGGER.log(Level.ERROR, "[stackTraceInfo="+stack1+"],event=Adds a category-tag relation failed", e);
+            LOGGER.log(Level.ERROR, "[stackTraceInfo="+stack1+"];event=Adds a category-tag relation failed", e);
             throw new ServiceException(e);
         }
     }
@@ -151,7 +151,7 @@ public class CategoryMgmtService {
             categoryRepository.update(categoryId, category);
         } catch (final RepositoryException e) {
             String stack1 = Arrays.toString(Thread.currentThread().getStackTrace());
-            LOGGER.log(Level.ERROR, "[stackTraceInfo="+stack1+"],event=Adds a category-tag relation failed", e);
+            LOGGER.log(Level.ERROR, "[stackTraceInfo="+stack1+"];event=Adds a category-tag relation failed", e);
 
             throw new ServiceException(e);
         }
@@ -183,7 +183,7 @@ public class CategoryMgmtService {
             return ret;
         } catch (final RepositoryException e) {
             String stack1 = Arrays.toString(Thread.currentThread().getStackTrace());
-            LOGGER.log(Level.ERROR, "[stackTraceInfo="+stack1+"],event=Adds a category failed", e);
+            LOGGER.log(Level.ERROR, "[stackTraceInfo="+stack1+"];event=Adds a category failed", e);
 
             throw new ServiceException(e);
         }
@@ -206,7 +206,7 @@ public class CategoryMgmtService {
             categoryRepository.update(categoryId, category);
         } catch (final RepositoryException e) {
             String stack1 = Arrays.toString(Thread.currentThread().getStackTrace());
-            LOGGER.log(Level.ERROR, "[stackTraceInfo="+stack1+"],event=Updates a category [id=" + categoryId + "] failed", e);
+            LOGGER.log(Level.ERROR, "[stackTraceInfo="+stack1+"];event=Updates a category [id=" + categoryId + "] failed", e);
 
             throw new ServiceException(e);
         }
@@ -225,7 +225,7 @@ public class CategoryMgmtService {
             categoryRepository.remove(categoryId);
         } catch (final RepositoryException e) {
             String stack1 = Arrays.toString(Thread.currentThread().getStackTrace());
-            LOGGER.log(Level.ERROR, "[stackTraceInfo="+stack1+"],event=Remove a category [id=" + categoryId + "] failed", e);
+            LOGGER.log(Level.ERROR, "[stackTraceInfo="+stack1+"];event=Remove a category [id=" + categoryId + "] failed", e);
 
             throw new ServiceException(e);
         }
@@ -243,7 +243,7 @@ public class CategoryMgmtService {
             categoryTagRepository.removeByCategoryId(categoryId);
         } catch (final RepositoryException e) {
             String stack1 = Arrays.toString(Thread.currentThread().getStackTrace());
-            LOGGER.log(Level.ERROR, "[stackTraceInfo="+stack1+"],event=Remove category-tag [categoryId=" + categoryId + "] failed", e);
+            LOGGER.log(Level.ERROR, "[stackTraceInfo="+stack1+"];event=Remove category-tag [categoryId=" + categoryId + "] failed", e);
 
             throw new ServiceException(e);
         }

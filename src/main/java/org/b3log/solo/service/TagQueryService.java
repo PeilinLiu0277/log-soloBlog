@@ -93,7 +93,7 @@ public class TagQueryService {
             return ret;
         } catch (final RepositoryException e) {
             String stack1 = Arrays.toString(Thread.currentThread().getStackTrace());
-            LOGGER.log(Level.ERROR, "[stackTraceInfo="+stack1+"],event=Gets an article failed", e);
+            LOGGER.log(Level.ERROR, "[stackTraceInfo="+stack1+"];event=Gets an article failed", e);
             throw new ServiceException(e);
         }
     }
@@ -108,7 +108,7 @@ public class TagQueryService {
             return tagRepository.count();
         } catch (final RepositoryException e) {
             String stack1 = Arrays.toString(Thread.currentThread().getStackTrace());
-            LOGGER.log(Level.ERROR, "[stackTraceInfo="+stack1+"],event=Gets tags failed", e);
+            LOGGER.log(Level.ERROR, "[stackTraceInfo="+stack1+"];event=Gets tags failed", e);
 
             return 0;
         }
@@ -138,7 +138,7 @@ public class TagQueryService {
             return ret;
         } catch (final RepositoryException e) {
             String stack1 = Arrays.toString(Thread.currentThread().getStackTrace());
-            LOGGER.log(Level.ERROR, "[stackTraceInfo="+stack1+"],event=Gets tags failed", e);
+            LOGGER.log(Level.ERROR, "[stackTraceInfo="+stack1+"];event=Gets tags failed", e);
 
             throw new ServiceException(e);
         }

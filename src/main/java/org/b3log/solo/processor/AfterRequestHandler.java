@@ -38,7 +38,7 @@ public class AfterRequestHandler implements Handler {
         JdbcRepository.dispose();
         Stopwatchs.end();
         String stack1 = Arrays.toString(Thread.currentThread().getStackTrace());
-        LOGGER.log(Level.TRACE, "[stackTraceInfo="+stack1+"],event=Stopwatch: {}{}", Strings.LINE_SEPARATOR, Stopwatchs.getTimingStat());
+        LOGGER.log(Level.TRACE, "[stackTraceInfo="+stack1+"];event=Stopwatch: {}{}", Strings.LINE_SEPARATOR, Stopwatchs.getTimingStat());
         Stopwatchs.release();
     }
 }

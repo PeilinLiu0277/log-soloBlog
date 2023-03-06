@@ -192,7 +192,7 @@ public class PermalinkQueryService {
                     || null != pageRepository.getByPermalink(permalink) || permalink.endsWith(".ftl");
         } catch (final RepositoryException e) {
             String stack1 = Arrays.toString(Thread.currentThread().getStackTrace());
-            LOGGER.log(Level.ERROR, "[stackTraceInfo="+stack1+"],event=Determines whether the permalink[" + permalink + "] exists failed, returns true", e);
+            LOGGER.log(Level.ERROR, "[stackTraceInfo="+stack1+"];event=Determines whether the permalink[" + permalink + "] exists failed, returns true", e);
 
             return true;
         }

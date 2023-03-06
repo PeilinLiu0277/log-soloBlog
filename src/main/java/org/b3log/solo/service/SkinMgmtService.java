@@ -71,12 +71,12 @@ public class SkinMgmtService {
         final String currentSkinDirName = skin.optString(Option.ID_C_SKIN_DIR_NAME);
         if (!skinDirNames.contains(currentSkinDirName)) {
             String stack1 = Arrays.toString(Thread.currentThread().getStackTrace());
-            LOGGER.log(Level.WARN, "[stackTraceInfo="+stack1+"],event=Not found skin [dirName={}] configured, try to use default skin [dirName="
+            LOGGER.log(Level.WARN, "[stackTraceInfo="+stack1+"];event=Not found skin [dirName={}] configured, try to use default skin [dirName="
                     + Option.DefaultPreference.DEFAULT_SKIN_DIR_NAME + "] instead", currentSkinDirName);
             if (!skinDirNames.contains(Option.DefaultPreference.DEFAULT_SKIN_DIR_NAME)) {
                 String stack2 = Arrays.toString(Thread.currentThread().getStackTrace());
-                LOGGER.log(Level.ERROR, "[stackTraceInfo="+stack2+"],event=Not found default skin [dirName=" + Option.DefaultPreference.DEFAULT_SKIN_DIR_NAME
-                        + "], please redeploy your Solo and make sure contains the default skin.");
+                LOGGER.log(Level.ERROR, "[stackTraceInfo="+stack2+"];event=Not found default skin [dirName=" + Option.DefaultPreference.DEFAULT_SKIN_DIR_NAME
+                        + "]; please redeploy your Solo and make sure contains the default skin.");
                 System.exit(-1);
             }
 
@@ -87,12 +87,12 @@ public class SkinMgmtService {
         final String currentMobileSkinDirName = skin.optString(Option.ID_C_MOBILE_SKIN_DIR_NAME);
         if (!skinDirNames.contains(currentMobileSkinDirName)) {
             String stack1 = Arrays.toString(Thread.currentThread().getStackTrace());
-            LOGGER.log(Level.WARN, "[stackTraceInfo="+stack1+"],event=Not found mobile skin [dirName={}] configured, try to use default mobile skin [dirName="
+            LOGGER.log(Level.WARN, "[stackTraceInfo="+stack1+"];event=Not found mobile skin [dirName={}] configured, try to use default mobile skin [dirName="
                     + Option.DefaultPreference.DEFAULT_MOBILE_SKIN_DIR_NAME + "] instead", currentMobileSkinDirName);
             if (!skinDirNames.contains(Option.DefaultPreference.DEFAULT_MOBILE_SKIN_DIR_NAME)) {
                 String stack3 = Arrays.toString(Thread.currentThread().getStackTrace());
-                LOGGER.log(Level.ERROR, "[stackTraceInfo="+stack3+"],event=Not found default mobile skin [dirName=" + Option.DefaultPreference.DEFAULT_MOBILE_SKIN_DIR_NAME
-                        + "], please redeploy your Solo and make sure contains the default mobile skin.");
+                LOGGER.log(Level.ERROR, "[stackTraceInfo="+stack3+"];event=Not found default mobile skin [dirName=" + Option.DefaultPreference.DEFAULT_MOBILE_SKIN_DIR_NAME
+                        + "]; please redeploy your Solo and make sure contains the default mobile skin.");
                 System.exit(-1);
             }
 
@@ -124,7 +124,7 @@ public class SkinMgmtService {
                 transaction.rollback();
             }
             String stack1 = Arrays.toString(Thread.currentThread().getStackTrace());
-            LOGGER.log(Level.ERROR, "[stackTraceInfo="+stack1+"],event=Updates skin failed", e);
+            LOGGER.log(Level.ERROR, "[stackTraceInfo="+stack1+"];event=Updates skin failed", e);
             throw new ServiceException(langPropsService.get("updateFailLabel"));
         }
     }

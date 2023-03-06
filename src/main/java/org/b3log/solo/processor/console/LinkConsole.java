@@ -92,9 +92,14 @@ public class LinkConsole {
 
             jsonObject.put(Keys.CODE, StatusCodes.SUCC);
             jsonObject.put(Keys.MSG, langPropsService.get("removeSuccLabel"));
+<<<<<<< HEAD
+=======
+            String stack1 = Arrays.toString(Thread.currentThread().getStackTrace());
+            LOGGER.log(Level.INFO, "[stackTraceInfo="+stack1+"];event=remove link OK!");
+>>>>>>> a638a09f1404432d07b4c698e7dc5861e1b5d249
         } catch (final Exception e) {
             String stack1 = Arrays.toString(Thread.currentThread().getStackTrace());
-            LOGGER.log(Level.ERROR, "[stackTraceInfo="+stack1+"],event="+e.getMessage(), e);
+            LOGGER.log(Level.ERROR, "[stackTraceInfo="+stack1+"];event="+e.getMessage(), e);
             jsonObject.put(Keys.CODE, StatusCodes.ERR);
             jsonObject.put(Keys.MSG, langPropsService.get("removeFailLabel"));
         }
@@ -140,9 +145,14 @@ public class LinkConsole {
             ret.put(Keys.CODE, StatusCodes.SUCC);
             ret.put(Keys.MSG, langPropsService.get("updateSuccLabel"));
             renderer.setJSONObject(ret);
+<<<<<<< HEAD
+=======
+            String stack1 = Arrays.toString(Thread.currentThread().getStackTrace());
+            LOGGER.log(Level.INFO, "[stackTraceInfo="+stack1+"];event=update link OK!");
+>>>>>>> a638a09f1404432d07b4c698e7dc5861e1b5d249
         } catch (final Exception e) {
             String stack1 = Arrays.toString(Thread.currentThread().getStackTrace());
-            LOGGER.log(Level.ERROR, "[stackTraceInfo="+stack1+"],event="+e.getMessage(), e);
+            LOGGER.log(Level.ERROR, "[stackTraceInfo="+stack1+"];event="+e.getMessage(), e);
             final JSONObject jsonObject = new JSONObject().put(Keys.CODE, StatusCodes.ERR);
             renderer.setJSONObject(jsonObject);
             jsonObject.put(Keys.MSG, langPropsService.get("updateFailLabel"));
@@ -188,9 +198,14 @@ public class LinkConsole {
             ret.put(Keys.CODE, StatusCodes.SUCC);
             ret.put(Keys.MSG, langPropsService.get("updateSuccLabel"));
             renderer.setJSONObject(ret);
+<<<<<<< HEAD
+=======
+            String stack1 = Arrays.toString(Thread.currentThread().getStackTrace());
+            LOGGER.log(Level.INFO, "[stackTraceInfo="+stack1+"];event=change links order OK!");
+>>>>>>> a638a09f1404432d07b4c698e7dc5861e1b5d249
         } catch (final Exception e) {
             String stack1 = Arrays.toString(Thread.currentThread().getStackTrace());
-            LOGGER.log(Level.ERROR, "[stackTraceInfo="+stack1+"],event="+e.getMessage(), e);
+            LOGGER.log(Level.ERROR, "[stackTraceInfo="+stack1+"];event="+e.getMessage(), e);
             final JSONObject jsonObject = new JSONObject().put(Keys.CODE, StatusCodes.ERR);
             renderer.setJSONObject(jsonObject);
             jsonObject.put(Keys.MSG, langPropsService.get("updateFailLabel"));
@@ -237,9 +252,14 @@ public class LinkConsole {
             ret.put(Keys.MSG, langPropsService.get("addSuccLabel"));
             ret.put(Keys.CODE, StatusCodes.SUCC);
             renderer.setJSONObject(ret);
+<<<<<<< HEAD
+=======
+            String stack1 = Arrays.toString(Thread.currentThread().getStackTrace());
+            LOGGER.log(Level.INFO, "[stackTraceInfo="+stack1+"];event=add link OK!");
+>>>>>>> a638a09f1404432d07b4c698e7dc5861e1b5d249
         } catch (final Exception e) {
             String stack1 = Arrays.toString(Thread.currentThread().getStackTrace());
-            LOGGER.log(Level.ERROR, "[stackTraceInfo="+stack1+"],event="+e.getMessage(), e);
+            LOGGER.log(Level.ERROR, "[stackTraceInfo="+stack1+"];event="+e.getMessage(), e);
             final JSONObject jsonObject = new JSONObject().put(Keys.CODE, StatusCodes.ERR);
             renderer.setJSONObject(jsonObject);
             jsonObject.put(Keys.MSG, langPropsService.get("addFailLabel"));
@@ -292,9 +312,14 @@ public class LinkConsole {
                 title = StringEscapeUtils.escapeXml(title);
                 link.put(Link.LINK_TITLE, title);
             }
+<<<<<<< HEAD
+=======
+            String stack1 = Arrays.toString(Thread.currentThread().getStackTrace());
+            LOGGER.log(Level.INFO, "[stackTraceInfo="+stack1+"];event=get links OK!");
+>>>>>>> a638a09f1404432d07b4c698e7dc5861e1b5d249
         } catch (final Exception e) {
             String stack1 = Arrays.toString(Thread.currentThread().getStackTrace());
-            LOGGER.log(Level.ERROR, "[stackTraceInfo="+stack1+"],event="+e.getMessage(), e);
+            LOGGER.log(Level.ERROR, "[stackTraceInfo="+stack1+"];event="+e.getMessage(), e);
             final JSONObject jsonObject = new JSONObject().put(Keys.CODE, StatusCodes.ERR);
             renderer.setJSONObject(jsonObject);
             jsonObject.put(Keys.MSG, langPropsService.get("getFailLabel"));
@@ -334,9 +359,14 @@ public class LinkConsole {
 
             renderer.setJSONObject(result);
             result.put(Keys.CODE, StatusCodes.SUCC);
+<<<<<<< HEAD
+=======
+            String stack1 = Arrays.toString(Thread.currentThread().getStackTrace());
+            LOGGER.log(Level.INFO, "[stackTraceInfo="+stack1+"];event=get link OK!");
+>>>>>>> a638a09f1404432d07b4c698e7dc5861e1b5d249
         } catch (final Exception e) {
             String stack1 = Arrays.toString(Thread.currentThread().getStackTrace());
-            LOGGER.log(Level.ERROR, "[stackTraceInfo="+stack1+"],event="+e.getMessage(), e);
+            LOGGER.log(Level.ERROR, "[stackTraceInfo="+stack1+"];event="+e.getMessage(), e);
             final JSONObject jsonObject = new JSONObject().put(Keys.CODE, StatusCodes.ERR);
             renderer.setJSONObject(jsonObject);
             jsonObject.put(Keys.MSG, langPropsService.get("getFailLabel"));

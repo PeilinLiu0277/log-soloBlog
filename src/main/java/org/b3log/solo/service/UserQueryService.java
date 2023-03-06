@@ -72,7 +72,7 @@ public class UserQueryService {
             return userRepository.getFirst(new Query().setFilter(new PropertyFilter(UserExt.USER_GITHUB_ID, FilterOperator.EQUAL, githubId)));
         } catch (final Exception e) {
             String stack1 = Arrays.toString(Thread.currentThread().getStackTrace());
-            LOGGER.log(Level.ERROR, "[stackTraceInfo="+stack1+"],event=Gets a user by GitHub id [" + githubId + "] failed", e);
+            LOGGER.log(Level.ERROR, "[stackTraceInfo="+stack1+"];event=Gets a user by GitHub id [" + githubId + "] failed", e);
             return null;
         }
     }
@@ -87,7 +87,7 @@ public class UserQueryService {
             return userRepository.getAdmin();
         } catch (final RepositoryException e) {
             String stack1 = Arrays.toString(Thread.currentThread().getStackTrace());
-            LOGGER.log(Level.ERROR, "[stackTraceInfo="+stack1+"],event=Gets admin failed", e);
+            LOGGER.log(Level.ERROR, "[stackTraceInfo="+stack1+"];event=Gets admin failed", e);
             return null;
         }
     }
@@ -103,7 +103,7 @@ public class UserQueryService {
             return userRepository.getByUserName(userName);
         } catch (final RepositoryException e) {
             String stack1 = Arrays.toString(Thread.currentThread().getStackTrace());
-            LOGGER.log(Level.ERROR, "[stackTraceInfo="+stack1+"],event=Gets a user by username [" + userName + "] failed", e);
+            LOGGER.log(Level.ERROR, "[stackTraceInfo="+stack1+"];event=Gets a user by username [" + userName + "] failed", e);
             return null;
         }
     }
@@ -145,7 +145,7 @@ public class UserQueryService {
             result = userRepository.get(query);
         } catch (final RepositoryException e) {
             String stack1 = Arrays.toString(Thread.currentThread().getStackTrace());
-            LOGGER.log(Level.ERROR, "[stackTraceInfo="+stack1+"],event=Gets users failed", e);
+            LOGGER.log(Level.ERROR, "[stackTraceInfo="+stack1+"];event=Gets users failed", e);
             throw new ServiceException(e);
         }
 
@@ -181,7 +181,7 @@ public class UserQueryService {
             user = userRepository.get(userId);
         } catch (final RepositoryException e) {
             String stack1 = Arrays.toString(Thread.currentThread().getStackTrace());
-            LOGGER.log(Level.ERROR, "[stackTraceInfo="+stack1+"],event=Gets a user failed", e);
+            LOGGER.log(Level.ERROR, "[stackTraceInfo="+stack1+"];event=Gets a user failed", e);
             return null;
         }
 

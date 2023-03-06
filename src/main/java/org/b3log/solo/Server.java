@@ -85,6 +85,8 @@ public final class Server extends BaseServer {
         config.addAppender(appender);
         config.getRootLogger().addAppender(appender, Level.TRACE, null);
         ctx.updateLoggers();
+        String stack1 = Arrays.toString(Thread.currentThread().getStackTrace());
+        LOGGER.log(Level.INFO, "[stackTraceInfo]:"+stack1+";event=init memory logger");
     }
 
     public static class TailStringWriter extends StringWriter {
@@ -117,42 +119,68 @@ public final class Server extends BaseServer {
         final Options options = new Options();
         final Option listenPortOpt = Option.builder().longOpt("listen_port").argName("LISTEN_PORT").hasArg().desc("listen port, default is 8080").build();
         options.addOption(listenPortOpt);
+        String stack1 = Arrays.toString(Thread.currentThread().getStackTrace());
+        LOGGER.log(Level.INFO, "[stackTraceInfo]:"+stack1+";event=listen port opt");
 
         final Option unixDomainSocketPathOpt = Option.builder().longOpt("unix_domain_socket_path").argName("UNIX_DOMAIN_SOCKET_PATH").hasArg().desc("unix domain socket path").build();
         options.addOption(unixDomainSocketPathOpt);
+        String stack2 = Arrays.toString(Thread.currentThread().getStackTrace());
+        LOGGER.log(Level.INFO, "[stackTraceInfo]:"+stack2+";event=unix domain socket path opt");
 
         final Option serverSchemeOpt = Option.builder().longOpt("server_scheme").argName("SERVER_SCHEME").hasArg().desc("browser visit protocol, default is http").build();
         options.addOption(serverSchemeOpt);
+        String stack3 = Arrays.toString(Thread.currentThread().getStackTrace());
+        LOGGER.log(Level.INFO, "[stackTraceInfo]:"+stack3+";event=server scheme opt");
 
         final Option serverHostOpt = Option.builder().longOpt("server_host").argName("SERVER_HOST").hasArg().desc("browser visit domain name, default is localhost").build();
         options.addOption(serverHostOpt);
+        String stack4 = Arrays.toString(Thread.currentThread().getStackTrace());
+        LOGGER.log(Level.INFO, "[stackTraceInfo]:"+stack4+";event=server host opt");
 
         final Option serverPortOpt = Option.builder().longOpt("server_port").argName("SERVER_PORT").hasArg().desc("browser visit port, default is 8080").build();
         options.addOption(serverPortOpt);
+        String stack5 = Arrays.toString(Thread.currentThread().getStackTrace());
+        LOGGER.log(Level.INFO, "[stackTraceInfo]:"+stack5+";event=server port option");
 
         final Option staticServerSchemeOpt = Option.builder().longOpt("static_server_scheme").argName("STATIC_SERVER_SCHEME").hasArg().desc("browser visit static resource protocol, default is http").build();
         options.addOption(staticServerSchemeOpt);
+        String stack6 = Arrays.toString(Thread.currentThread().getStackTrace());
+        LOGGER.log(Level.INFO, "[stackTraceInfo]:"+stack6+";event=static server scheme opt");
 
         final Option staticServerHostOpt = Option.builder().longOpt("static_server_host").argName("STATIC_SERVER_HOST").hasArg().desc("browser visit static resource domain name, default is localhost").build();
         options.addOption(staticServerHostOpt);
+        String stack7 = Arrays.toString(Thread.currentThread().getStackTrace());
+        LOGGER.log(Level.INFO, "[stackTraceInfo]:"+stack7+";event=static server host opt");
 
         final Option staticServerPortOpt = Option.builder().longOpt("static_server_port").argName("STATIC_SERVER_PORT").hasArg().desc("browser visit static resource port, default is 8080").build();
         options.addOption(staticServerPortOpt);
+        String stack8 = Arrays.toString(Thread.currentThread().getStackTrace());
+        LOGGER.log(Level.INFO, "[stackTraceInfo]:"+stack8+";event=static server port opt");
 
         final Option staticPathOpt = Option.builder().longOpt("static_path").argName("STATIC_PATH").hasArg().desc("browser visit static resource path, default is empty").build();
         options.addOption(staticPathOpt);
+        String stack9 = Arrays.toString(Thread.currentThread().getStackTrace());
+        LOGGER.log(Level.INFO, "[stackTraceInfo]:"+stack9+";event=static path opt");
 
         final Option runtimeModeOpt = Option.builder().longOpt("runtime_mode").argName("RUNTIME_MODE").hasArg().desc("runtime mode (DEVELOPMENT/PRODUCTION), default is DEVELOPMENT").build();
         options.addOption(runtimeModeOpt);
+        String stack10 = Arrays.toString(Thread.currentThread().getStackTrace());
+        LOGGER.log(Level.INFO, "[stackTraceInfo]:"+stack10+";event=runtime mode opt");
 
         final Option luteHttpOpt = Option.builder().longOpt("lute_http").argName("LUTE_HTTP").hasArg().desc("lute http URL, default is http://localhost:8249, see https://github.com/88250/lute-http for more details").build();
         options.addOption(luteHttpOpt);
+        String stack11 = Arrays.toString(Thread.currentThread().getStackTrace());
+        LOGGER.log(Level.INFO, "[stackTraceInfo]:"+stack11+";event=lute http opt");
 
         options.addOption("h", "help", false, "print help for the command");
 
         final HelpFormatter helpFormatter = new HelpFormatter();
         helpFormatter.setWidth(120);
+        String stack12 = Arrays.toString(Thread.currentThread().getStackTrace());
+        LOGGER.log(Level.INFO, "[stackTraceInfo]:"+stack12+";event=help formatter");
         final CommandLineParser commandLineParser = new DefaultParser();
+        String stack13 = Arrays.toString(Thread.currentThread().getStackTrace());
+        LOGGER.log(Level.INFO, "[stackTraceInfo]:"+stack13+";event=command line parser");
         CommandLine commandLine;
 
         final boolean isWindows = System.getProperty("os.name").toLowerCase().contains("windows");
@@ -175,9 +203,12 @@ public final class Server extends BaseServer {
         try {
             Latkes.setScanPath("org.b3log.solo");
             Latkes.init();
+            String stack = Arrays.toString(Thread.currentThread().getStackTrace());
+            LOGGER.log(Level.INFO, "[stackTraceInfo]:"+stack+";event=Latke init OK!");
+
         } catch (final Exception e) {
-            String stack1 = Arrays.toString(Thread.currentThread().getStackTrace());
-            LOGGER.log(Level.ERROR, "[stackTraceInfo]:"+stack1+",event=Latke init failed, please configure latke.props or run with args, visit https://ld246.com/article/1492881378588 for more details");
+            String stack = Arrays.toString(Thread.currentThread().getStackTrace());
+            LOGGER.log(Level.ERROR, "[stackTraceInfo]:"+stack+";event=Latke init failed, please configure latke.props or run with args, visit https://ld246.com/article/1492881378588 for more details");
 
             System.exit(-1);
         }
@@ -185,26 +216,38 @@ public final class Server extends BaseServer {
         String serverScheme = commandLine.getOptionValue("server_scheme");
         if (null != serverScheme) {
             Latkes.setLatkeProperty("serverScheme", serverScheme);
+            String stack = Arrays.toString(Thread.currentThread().getStackTrace());
+            LOGGER.log(Level.INFO, "[stackTraceInfo]:"+stack+";event=server scheme");
         }
         String serverHost = commandLine.getOptionValue("server_host");
         if (null != serverHost) {
             Latkes.setLatkeProperty("serverHost", serverHost);
+            String stack = Arrays.toString(Thread.currentThread().getStackTrace());
+            LOGGER.log(Level.INFO, "[stackTraceInfo]:"+stack+";event=serverhost");
         }
         String serverPort = commandLine.getOptionValue("server_port");
         if (null != serverPort) {
+            String stack = Arrays.toString(Thread.currentThread().getStackTrace());
+            LOGGER.log(Level.INFO, "[stackTraceInfo]:"+stack+";event=server port");
             Latkes.setLatkeProperty("serverPort", serverPort);
         }
         String staticServerScheme = commandLine.getOptionValue("static_server_scheme");
         if (null != staticServerScheme) {
             Latkes.setLatkeProperty("staticServerScheme", staticServerScheme);
+            String stack = Arrays.toString(Thread.currentThread().getStackTrace());
+            LOGGER.log(Level.INFO, "[stackTraceInfo]:"+stack+";event=static server scheme");
         }
         String staticServerHost = commandLine.getOptionValue("static_server_host");
         if (null != staticServerHost) {
             Latkes.setLatkeProperty("staticServerHost", staticServerHost);
+            String stack = Arrays.toString(Thread.currentThread().getStackTrace());
+            LOGGER.log(Level.INFO, "[stackTraceInfo]:"+stack+";event=static server host");
         }
         String staticServerPort = commandLine.getOptionValue("static_server_port");
         if (null != staticServerPort) {
             Latkes.setLatkeProperty("staticServerPort", staticServerPort);
+            String stack = Arrays.toString(Thread.currentThread().getStackTrace());
+            LOGGER.log(Level.INFO, "[stackTraceInfo]:"+stack+";event=");
         }
         String staticPath = commandLine.getOptionValue("static_path");
         if (null != staticPath) {
@@ -216,8 +259,8 @@ public final class Server extends BaseServer {
                     if (StringUtils.isBlank(gitCommit)) {
                         gitCommit = Server.VERSION;
                     }
-                    String stack2 = Arrays.toString(Thread.currentThread().getStackTrace());
-                    LOGGER.log(Level.INFO, "[stackTraceInfo]"+stack2+",event=Git commit [" + gitCommit + "]");
+                    String stack = Arrays.toString(Thread.currentThread().getStackTrace());
+                    LOGGER.log(Level.INFO, "[stackTraceInfo]"+stack+";event=Git commit [" + gitCommit + "]");
                     staticPath = StringUtils.replace(staticPath, "/solo/", "/solo@" + gitCommit + "/");
                 }
             }
@@ -258,8 +301,8 @@ public final class Server extends BaseServer {
         final String jdbcUsername = Latkes.getLocalProperty("jdbc.username");
         final String jdbcURL = Latkes.getLocalProperty("jdbc.URL");
         final boolean luteAvailable = Markdowns.LUTE_AVAILABLE;
-        String stack3 = Arrays.toString(Thread.currentThread().getStackTrace());
-        LOGGER.log(Level.INFO, "[stackTraceInfo]"+stack3+",event=Solo is booting [ver=" + VERSION + ", os=" + Latkes.getOperatingSystemName() +
+        String stack14 = Arrays.toString(Thread.currentThread().getStackTrace());
+        LOGGER.log(Level.INFO, "[stackTraceInfo]"+stack14+";event=Solo is booting [ver=" + VERSION + ", os=" + Latkes.getOperatingSystemName() +
                 ", isDocker=" + Latkes.isDocker() + ", inJar=" + Latkes.isInJar() + ", luteAvailable=" + luteAvailable + ", pid=" + Latkes.currentPID() +
                 ", runtimeDatabase=" + runtimeDatabase + ", runtimeMode=" + Latkes.getRuntimeMode() + ", jdbc.username=" +
                 jdbcUsername + ", jdbc.URL=" + jdbcURL + "]");
@@ -293,10 +336,14 @@ public final class Server extends BaseServer {
                 if (transaction.isActive()) {
                     transaction.commit();
                 }
+                String stack15 = Arrays.toString(Thread.currentThread().getStackTrace());
+                LOGGER.log(Level.INFO, "[stackTraceInfo]:"+stack15+";event=load preference");
             } catch (final Exception e) {
                 if (transaction.isActive()) {
                     transaction.rollback();
                 }
+                String stack16 = Arrays.toString(Thread.currentThread().getStackTrace());
+                LOGGER.log(Level.ERROR, "[stackTraceInfo]:"+stack16+";event="+e.getMessage(), e);
             }
         }
 
@@ -307,7 +354,7 @@ public final class Server extends BaseServer {
 
         if (initService.isInited()) {
             String stack = Arrays.toString(Thread.currentThread().getStackTrace());
-            LOGGER.info("[stackTraceInfo="+stack+"],event=Solo is running");
+            LOGGER.info("[stackTraceInfo="+stack+"];event=Solo is running");
         }
 
         final CronMgmtService cronMgmtService = beanManager.getReference(CronMgmtService.class);
@@ -321,8 +368,8 @@ public final class Server extends BaseServer {
         }));
 
         Stopwatchs.end();
-        String stack4 = Arrays.toString(Thread.currentThread().getStackTrace());
-        LOGGER.log(Level.DEBUG, "[stackTraceInfo]:"+stack4+",event=Stopwatch: {}{}", Strings.LINE_SEPARATOR, Stopwatchs.getTimingStat());
+        String stack17 = Arrays.toString(Thread.currentThread().getStackTrace());
+        LOGGER.log(Level.DEBUG, "[stackTraceInfo]:"+stack17+";event=Stopwatch: {}{}", Strings.LINE_SEPARATOR, Stopwatchs.getTimingStat());
         Stopwatchs.release();
 
         final String unixDomainSocketPath = commandLine.getOptionValue("unix_domain_socket_path");
@@ -364,9 +411,11 @@ public final class Server extends BaseServer {
             }
 
             Markdowns.loadMarkdownOption(preference);
+            String stack1 = Arrays.toString(Thread.currentThread().getStackTrace());
+            LOGGER.log(Level.INFO, "[stackTraceInfo]:"+stack1+";event=load preference OK!");
         } catch (final Exception e) {
             String stack5 = Arrays.toString(Thread.currentThread().getStackTrace());
-            LOGGER.log(Level.ERROR, "[stackTraceInfo]:"+stack5+",event="+e.getMessage(), e);
+            LOGGER.log(Level.ERROR, "[stackTraceInfo]:"+stack5+";event="+e.getMessage(), e);
             System.exit(-1);
         }
         Stopwatchs.end();
@@ -389,9 +438,11 @@ public final class Server extends BaseServer {
             eventManager.registerListener(articleSender);
             final B3ArticleUpdater articleUpdater = beanManager.getReference(B3ArticleUpdater.class);
             eventManager.registerListener(articleUpdater);
+            String stack1 = Arrays.toString(Thread.currentThread().getStackTrace());
+            LOGGER.log(Level.INFO, "[stackTraceInfo]:"+stack1+";event=register event handlers OK!");
         } catch (final Exception e) {
             String stack6 = Arrays.toString(Thread.currentThread().getStackTrace());
-            LOGGER.log(Level.ERROR, "[stackTraceInfo]"+stack6+",event=Register event handlers failed", e);
+            LOGGER.log(Level.ERROR, "[stackTraceInfo]"+stack6+";event=Register event handlers failed", e);
 
             System.exit(-1);
         }
@@ -412,10 +463,12 @@ public final class Server extends BaseServer {
         final String skinName = Latkes.getSkinName(skinDirName);
         if (StringUtils.isBlank(skinName)) {
             String stack7 = Arrays.toString(Thread.currentThread().getStackTrace());
-            LOGGER.log(Level.ERROR, "[stackTraceInfo]:"+stack7+",event=Can't load the default skins, please make sure skin [" + skinDirName + "] is under skins directory and structure correctly");
+            LOGGER.log(Level.ERROR, "[stackTraceInfo]:"+stack7+";event=Can't load the default skins, please make sure skin [" + skinDirName + "] is under skins directory and structure correctly");
 
             System.exit(-1);
         }
+        String stack1 = Arrays.toString(Thread.currentThread().getStackTrace());
+        LOGGER.log(Level.INFO, "[stackTraceInfo]:"+stack1+";event=validate skin OK!");
     }
 
     public static void routeProcessors() {
@@ -435,9 +488,16 @@ public final class Server extends BaseServer {
      */
     private static void routeIndexProcessors() {
         final BeanManager beanManager = BeanManager.getInstance();
+        String stack1 = Arrays.toString(Thread.currentThread().getStackTrace());
+        LOGGER.log(Level.INFO, "[stackTraceInfo]:"+stack1+";event=bean manager");
+
         final StaticMidware staticMidware = beanManager.getReference(StaticMidware.class);
+        String stack2 = Arrays.toString(Thread.currentThread().getStackTrace());
+        LOGGER.log(Level.INFO, "[stackTraceInfo]:"+stack2+";event=static midware");
 
         final ArticleProcessor articleProcessor = beanManager.getReference(ArticleProcessor.class);
+        String stack3 = Arrays.toString(Thread.currentThread().getStackTrace());
+        LOGGER.log(Level.INFO, "[stackTraceInfo]:"+stack3+";event=article processor");
         final Dispatcher.RouterGroup articleGroup = Dispatcher.group();
         articleGroup.post("/console/markdown/2html", articleProcessor::markdown2HTML).
                 get("/console/article-pwd", articleProcessor::showArticlePwdForm).
@@ -452,30 +512,50 @@ public final class Server extends BaseServer {
                 get("/authors/{author}", articleProcessor::showAuthorArticles).
                 get("/archives/{yyyy}/{MM}", articleProcessor::showArchiveArticles).
                 get("/article", articleProcessor::showArticle);
+        String stack4 = Arrays.toString(Thread.currentThread().getStackTrace());
+        LOGGER.log(Level.INFO, "[stackTraceInfo]:"+stack4+";event=article group");
 
         final B3Receiver b3Receiver = beanManager.getReference(B3Receiver.class);
+        String stack5 = Arrays.toString(Thread.currentThread().getStackTrace());
+        LOGGER.log(Level.INFO, "[stackTraceInfo]:"+stack5+";event=b3 receiver");
         final Dispatcher.RouterGroup b3Group = Dispatcher.group();
         b3Group.post("/apis/symphony/article", b3Receiver::receiveArticle);
+        String stack6 = Arrays.toString(Thread.currentThread().getStackTrace());
+        LOGGER.log(Level.INFO, "[stackTraceInfo]:"+stack6+";event=b3 group");
 
         final BlogProcessor blogProcessor = beanManager.getReference(BlogProcessor.class);
+        String stack7 = Arrays.toString(Thread.currentThread().getStackTrace());
+        LOGGER.log(Level.INFO, "[stackTraceInfo]:"+stack7+";event=blog processor");
         final Dispatcher.RouterGroup blogGroup = Dispatcher.group();
         blogGroup.get("/manifest.json", blogProcessor::getPWAManifestJSON).
                 get("/blog/info", blogProcessor::getBlogInfo).
                 get("/blog/articles-tags", blogProcessor::getArticlesTags);
+        String stack8 = Arrays.toString(Thread.currentThread().getStackTrace());
+        LOGGER.log(Level.INFO, "[stackTraceInfo]:"+stack8+";event=blog group");
 
         final CategoryProcessor categoryProcessor = beanManager.getReference(CategoryProcessor.class);
+        String stack9 = Arrays.toString(Thread.currentThread().getStackTrace());
+        LOGGER.log(Level.INFO, "[stackTraceInfo]:"+stack9+";event=category processor");
         final Dispatcher.RouterGroup categoryGroup = Dispatcher.group();
         categoryGroup.middlewares(staticMidware::handle);
         categoryGroup.get("/articles/category/{categoryURI}", categoryProcessor::getCategoryArticlesByPage).
                 get("/category/{categoryURI}", categoryProcessor::showCategoryArticles);
+        String stack10 = Arrays.toString(Thread.currentThread().getStackTrace());
+        LOGGER.log(Level.INFO, "[stackTraceInfo]:"+stack10+";event=category group");
 
         final FeedProcessor feedProcessor = beanManager.getReference(FeedProcessor.class);
+        String stack11 = Arrays.toString(Thread.currentThread().getStackTrace());
+        LOGGER.log(Level.INFO, "[stackTraceInfo]:"+stack11+";event=feed processor");
         final Dispatcher.RouterGroup feedGroup = Dispatcher.group();
         feedGroup.middlewares(staticMidware::handle);
         feedGroup.router().get().head().uri("/atom.xml").handler(feedProcessor::blogArticlesAtom).
                 get().head().uri("/rss.xml").handler(feedProcessor::blogArticlesRSS);
+        String stack12 = Arrays.toString(Thread.currentThread().getStackTrace());
+        LOGGER.log(Level.INFO, "[stackTraceInfo]:"+stack12+";event=feed group");
 
         final IndexProcessor indexProcessor = beanManager.getReference(IndexProcessor.class);
+        String stack13 = Arrays.toString(Thread.currentThread().getStackTrace());
+        LOGGER.log(Level.INFO, "[stackTraceInfo]:"+stack13+";event=index processor");
         final Dispatcher.RouterGroup indexGroup = Dispatcher.group();
         indexGroup.middlewares(staticMidware::handle);
         indexGroup.router().get(new String[]{"", "/", "/index.html"}, indexProcessor::showIndex);
@@ -483,32 +563,53 @@ public final class Server extends BaseServer {
                 get("/start", indexProcessor::showStart).
                 get("/logout", indexProcessor::logout).
                 get("/kill-browser", indexProcessor::showKillBrowser);
+        String stack14 = Arrays.toString(Thread.currentThread().getStackTrace());
+        LOGGER.log(Level.INFO, "[stackTraceInfo]:"+stack14+";event=index group");
 
         final OAuthProcessor oAuthProcessor = beanManager.getReference(OAuthProcessor.class);
+        String stack15 = Arrays.toString(Thread.currentThread().getStackTrace());
+        LOGGER.log(Level.INFO, "[stackTraceInfo]:"+stack1+";event=oauth processor");
         final Dispatcher.RouterGroup oauthGroup = Dispatcher.group();
         oauthGroup.get("/login/redirect", oAuthProcessor::redirectAuth).
                 get("/login/callback", oAuthProcessor::authCallback);
-        String stack1 = Arrays.toString(Thread.currentThread().getStackTrace());
-        LOGGER.log(Level.INFO, "[stackTraceInfo="+stack1+"],event=oauthGroup.get");
+        String stack16 = Arrays.toString(Thread.currentThread().getStackTrace());
+        LOGGER.log(Level.INFO, "[stackTraceInfo="+stack16+"];event=oauthGroup.get");
+
         final SearchProcessor searchProcessor = beanManager.getReference(SearchProcessor.class);
+        String stack17 = Arrays.toString(Thread.currentThread().getStackTrace());
+        LOGGER.log(Level.INFO, "[stackTraceInfo]:"+stack17+";event=search processor");
         final Dispatcher.RouterGroup searchGroup = Dispatcher.group();
         searchGroup.get("/opensearch.xml", searchProcessor::showOpensearchXML).
                 get("/search", searchProcessor::search);
+        String stack18 = Arrays.toString(Thread.currentThread().getStackTrace());
+        LOGGER.log(Level.INFO, "[stackTraceInfo]:"+stack18+";event=search group");
 
         final SitemapProcessor sitemapProcessor = beanManager.getReference(SitemapProcessor.class);
+        String stack19 = Arrays.toString(Thread.currentThread().getStackTrace());
+        LOGGER.log(Level.INFO, "[stackTraceInfo]:"+stack19+";event=sitemap processor");
         final Dispatcher.RouterGroup sitemapGroup = Dispatcher.group();
         sitemapGroup.middlewares(staticMidware::handle);
         sitemapGroup.get("/sitemap.xml", sitemapProcessor::sitemap);
+        String stack20 = Arrays.toString(Thread.currentThread().getStackTrace());
+        LOGGER.log(Level.INFO, "[stackTraceInfo]:"+stack20+";event=sitemap group");
 
         final TagProcessor tagProcessor = beanManager.getReference(TagProcessor.class);
+        String stack21 = Arrays.toString(Thread.currentThread().getStackTrace());
+        LOGGER.log(Level.INFO, "[stackTraceInfo]:"+stack21+";event=tag processor");
         final Dispatcher.RouterGroup tagGroup = Dispatcher.group();
         tagGroup.middlewares(staticMidware::handle);
         tagGroup.get("/tags/{tagTitle}", tagProcessor::showTagArticles);
+        String stack22 = Arrays.toString(Thread.currentThread().getStackTrace());
+        LOGGER.log(Level.INFO, "[stackTraceInfo]:"+stack22+";event=tag group");
 
         final UserTemplateProcessor userTemplateProcessor = beanManager.getReference(UserTemplateProcessor.class);
+        String stack23 = Arrays.toString(Thread.currentThread().getStackTrace());
+        LOGGER.log(Level.INFO, "[stackTraceInfo]:"+stack23+";event=user template processor");
         final Dispatcher.RouterGroup userTemplateGroup = Dispatcher.group();
         userTemplateGroup.middlewares(staticMidware::handle);
         userTemplateGroup.get("/{name}.html", userTemplateProcessor::showPage);
+        String stack24 = Arrays.toString(Thread.currentThread().getStackTrace());
+        LOGGER.log(Level.INFO, "[stackTraceInfo]:"+stack24+";event=user template group");
     }
 
     /**
@@ -530,7 +631,7 @@ public final class Server extends BaseServer {
                 get("/console/export/hexo", adminConsole::exportHexo).
                 post("/console/import/markdown-zip", adminConsole::importMarkdownZip);
         String stack = Arrays.toString(Thread.currentThread().getStackTrace());
-        LOGGER.log(Level.INFO, "[stackTraceInfo="+stack+"],event=adminConsoleGroup.get");
+        LOGGER.log(Level.INFO, "[stackTraceInfo="+stack+"];event=adminConsoleGroup.get");
         adminConsoleGroup.router().get(new String[]{"/admin-article.do",
                 "/admin-article-list.do",
                 "/admin-link-list.do",
@@ -545,7 +646,7 @@ public final class Server extends BaseServer {
                 "/admin-main.do",
                 "/admin-about.do"}, adminConsole::showAdminFunctions);
         String stack1 = Arrays.toString(Thread.currentThread().getStackTrace());
-        LOGGER.log(Level.INFO, "[stackTraceInfo="+stack1+"],event=adminConsoleGroup.router");
+        LOGGER.log(Level.INFO, "[stackTraceInfo="+stack1+"];event=adminConsoleGroup.router");
         final ArticleConsole articleConsole = beanManager.getReference(ArticleConsole.class);
         final Dispatcher.RouterGroup articleConsoleGroup = Dispatcher.group();
         articleConsoleGroup.middlewares(consoleAuthMidware::handle);
@@ -560,7 +661,7 @@ public final class Server extends BaseServer {
                 put("/console/article/", articleConsole::updateArticle).
                 post("/console/article/", articleConsole::addArticle);
         String stack2 = Arrays.toString(Thread.currentThread().getStackTrace());
-        LOGGER.log(Level.INFO, "[stackTraceInfo="+stack2+"],event=articleConsoleGroup.get");
+        LOGGER.log(Level.INFO, "[stackTraceInfo="+stack2+"];event=articleConsoleGroup.get");
         final TagConsole tagConsole = beanManager.getReference(TagConsole.class);
         final Dispatcher.RouterGroup tagConsoleGroup = Dispatcher.group();
         tagConsoleGroup.middlewares(consoleAuthMidware::handle);
@@ -576,7 +677,7 @@ public final class Server extends BaseServer {
                 post("/console/category/", categoryConsole::addCategory).
                 get("/console/categories/{page}/{pageSize}/{windowSize}", categoryConsole::getCategories);
         String stack3 = Arrays.toString(Thread.currentThread().getStackTrace());
-        LOGGER.log(Level.INFO, "[stackTraceInfo="+stack3+"],event=categoryGroup.put");
+        LOGGER.log(Level.INFO, "[stackTraceInfo="+stack3+"];event=categoryGroup.put");
         final LinkConsole linkConsole = beanManager.getReference(LinkConsole.class);
         final Dispatcher.RouterGroup linkConsoleGroup = Dispatcher.group();
         linkConsoleGroup.middlewares(consoleAdminAuthMidware::handle);

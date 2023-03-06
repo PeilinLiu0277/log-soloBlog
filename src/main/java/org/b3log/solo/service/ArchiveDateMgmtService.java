@@ -76,7 +76,7 @@ public class ArchiveDateMgmtService {
                 transaction.rollback();
             }
             String stack = Arrays.toString(Thread.currentThread().getStackTrace());
-            LOGGER.log(Level.ERROR, "[stackTaceInfo="+stack+"],Gets archive dates failed", e);
+            LOGGER.log(Level.ERROR, "[stackTaceInfo="+stack+"];Gets archive dates failed", e);
         }
     }
 }

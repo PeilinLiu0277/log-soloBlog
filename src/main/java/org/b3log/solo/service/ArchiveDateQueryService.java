@@ -75,7 +75,7 @@ public class ArchiveDateQueryService {
             return archiveDateRepository.getArchiveDates();
         } catch (final RepositoryException e) {
             String stack1 = Arrays.toString(Thread.currentThread().getStackTrace());
-            LOGGER.log(Level.ERROR, "[stackTraceInfo="+stack1+"],Gets archive dates failed", e);
+            LOGGER.log(Level.ERROR, "[stackTraceInfo="+stack1+"];Gets archive dates failed", e);
             throw new ServiceException("Gets archive dates failed");
         }
     }
@@ -112,7 +112,7 @@ public class ArchiveDateQueryService {
             return ret;
         } catch (final RepositoryException e) {
             String stack2 = Arrays.toString(Thread.currentThread().getStackTrace());
-            LOGGER.log(Level.ERROR, "[stackTaceInfo="+stack2+"],Gets archive date[string=" + archiveDateString + "] failed", e);
+            LOGGER.log(Level.ERROR, "[stackTaceInfo="+stack2+"];Gets archive date[string=" + archiveDateString + "] failed", e);
             throw new ServiceException("Gets archive date[string=" + archiveDateString + "] failed");
         }
     }

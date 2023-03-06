@@ -115,9 +115,14 @@ public class CategoryConsole {
             ret.put(Keys.CODE, StatusCodes.SUCC);
             ret.put(Keys.MSG, langPropsService.get("updateSuccLabel"));
             renderer.setJSONObject(ret);
+<<<<<<< HEAD
+=======
+            String stack1 = Arrays.toString(Thread.currentThread().getStackTrace());
+            LOGGER.log(Level.INFO, "[stackTraceInfo="+stack1+"];event=change categories oreder OK!");
+>>>>>>> a638a09f1404432d07b4c698e7dc5861e1b5d249
         } catch (final Exception e) {
             String stack1 = Arrays.toString(Thread.currentThread().getStackTrace());
-            LOGGER.log(Level.ERROR, "[stackTraceInfo="+stack1+"],event="+e.getMessage(), e);
+            LOGGER.log(Level.ERROR, "[stackTraceInfo="+stack1+"];event="+e.getMessage(), e);
             final JSONObject jsonObject = new JSONObject().put(Keys.CODE, StatusCodes.ERR);
             renderer.setJSONObject(jsonObject);
             jsonObject.put(Keys.MSG, langPropsService.get("updateFailLabel"));
@@ -169,9 +174,14 @@ public class CategoryConsole {
 
             renderer.setJSONObject(result);
             result.put(Keys.CODE, StatusCodes.SUCC);
+<<<<<<< HEAD
+=======
+            String stack1 = Arrays.toString(Thread.currentThread().getStackTrace());
+            LOGGER.log(Level.INFO, "[stackTraceInfo="+stack1+"];event=get categories OK!");
+>>>>>>> a638a09f1404432d07b4c698e7dc5861e1b5d249
         } catch (final ServiceException e) {
             String stack1 = Arrays.toString(Thread.currentThread().getStackTrace());
-            LOGGER.log(Level.ERROR, "[stackTraceInfo="+stack1+"],event="+e.getMessage(), e);
+            LOGGER.log(Level.ERROR, "[stackTraceInfo="+stack1+"];event="+e.getMessage(), e);
             final JSONObject jsonObject = new JSONObject().put(Keys.CODE, StatusCodes.ERR);
             renderer.setJSONObject(jsonObject);
             jsonObject.put(Keys.MSG, langPropsService.get("getFailLabel"));
@@ -205,9 +215,14 @@ public class CategoryConsole {
 
             jsonObject.put(Keys.CODE, StatusCodes.SUCC);
             jsonObject.put(Keys.MSG, langPropsService.get("removeSuccLabel"));
+<<<<<<< HEAD
+=======
+            String stack1 = Arrays.toString(Thread.currentThread().getStackTrace());
+            LOGGER.log(Level.INFO, "[stackTraceInfo="+stack1+"];event=remove categories OK!");
+>>>>>>> a638a09f1404432d07b4c698e7dc5861e1b5d249
         } catch (final ServiceException e) {
             String stack1 = Arrays.toString(Thread.currentThread().getStackTrace());
-            LOGGER.log(Level.ERROR, "[stackTraceInfo="+stack1+"],event="+e.getMessage(), e);
+            LOGGER.log(Level.ERROR, "[stackTraceInfo="+stack1+"];event="+e.getMessage(), e);
             jsonObject.put(Keys.CODE, StatusCodes.ERR);
             jsonObject.put(Keys.MSG, langPropsService.get("removeFailLabel"));
         }
@@ -337,9 +352,14 @@ public class CategoryConsole {
             ret.put(Keys.OBJECT_ID, categoryId);
             ret.put(Keys.MSG, langPropsService.get("updateSuccLabel"));
             ret.put(Keys.CODE, StatusCodes.SUCC);
+<<<<<<< HEAD
+=======
+            String stack1 = Arrays.toString(Thread.currentThread().getStackTrace());
+            LOGGER.log(Level.INFO, "[stackTraceInfo="+stack1+"];event=update categories OK!");
+>>>>>>> a638a09f1404432d07b4c698e7dc5861e1b5d249
         } catch (final ServiceException e) {
             String stack1 = Arrays.toString(Thread.currentThread().getStackTrace());
-            LOGGER.log(Level.ERROR, "[stackTraceInfo="+stack1+"],event="+e.getMessage(), e);
+            LOGGER.log(Level.ERROR, "[stackTraceInfo="+stack1+"];event="+e.getMessage(), e);
             final JSONObject jsonObject = new JSONObject().put(Keys.CODE, StatusCodes.ERR);
             renderer.setJSONObject(jsonObject);
             jsonObject.put(Keys.MSG, langPropsService.get("updateFailLabel"));
@@ -464,9 +484,14 @@ public class CategoryConsole {
             ret.put(Keys.OBJECT_ID, categoryId);
             ret.put(Keys.MSG, langPropsService.get("addSuccLabel"));
             ret.put(Keys.CODE, StatusCodes.SUCC);
+<<<<<<< HEAD
+=======
+            String stack1 = Arrays.toString(Thread.currentThread().getStackTrace());
+            LOGGER.log(Level.INFO, "[stackTraceInfo="+stack1+"];event=add categories OK!");
+>>>>>>> a638a09f1404432d07b4c698e7dc5861e1b5d249
         } catch (final ServiceException e) {
             String stack1 = Arrays.toString(Thread.currentThread().getStackTrace());
-            LOGGER.log(Level.ERROR, "[stackTraceInfo="+stack1+"],event="+e.getMessage(), e);
+            LOGGER.log(Level.ERROR, "[stackTraceInfo="+stack1+"];event="+e.getMessage(), e);
             final JSONObject jsonObject = new JSONObject().put(Keys.CODE, StatusCodes.ERR);
             renderer.setJSONObject(jsonObject);
             jsonObject.put(Keys.MSG, langPropsService.get("updateFailLabel"));
@@ -518,9 +543,14 @@ public class CategoryConsole {
                 title = StringEscapeUtils.escapeXml(title);
                 category.put(Category.CATEGORY_TITLE, title);
             }
+<<<<<<< HEAD
+=======
+            String stack1 = Arrays.toString(Thread.currentThread().getStackTrace());
+            LOGGER.log(Level.INFO, "[stackTraceInfo="+stack1+"];event=get categories OK!");
+>>>>>>> a638a09f1404432d07b4c698e7dc5861e1b5d249
         } catch (final ServiceException e) {
             String stack1 = Arrays.toString(Thread.currentThread().getStackTrace());
-            LOGGER.log(Level.ERROR, "[stackTraceInfo="+stack1+"],event="+e.getMessage(), e);
+            LOGGER.log(Level.ERROR, "[stackTraceInfo="+stack1+"];event="+e.getMessage(), e);
             final JSONObject jsonObject = new JSONObject().put(Keys.CODE, StatusCodes.ERR);
             renderer.setJSONObject(jsonObject);
             jsonObject.put(Keys.MSG, langPropsService.get("getFailLabel"));

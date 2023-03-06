@@ -22,13 +22,13 @@
         <!--项目名称-->
         <!--        <property name="FILE_NAME" value="solo" />-->
         <!--log输出格式-->
-        <property name="LOG_PATTERN" value="[%d{yyyy-MM-dd HH:mm:ss.SSS}],[%-5p],[traceID-%thread],[class=%class],[method=%M],[cost=%-4r ms],%msg,[exception=%exception]%n"/>
+        <property name="LOG_PATTERN" value="[%d{yyyy-MM-dd HH:mm:ss.SSS}];[%-5p];[traceID-%thread];[class=%class];[method=%M];[cost=%-4r ms];%msg;[exception=%exception]%n"/>
     </Properties>
 
     <Appenders>
         <Console name="Console" target="SYSTEM_OUT">
             <PatternLayout>
-                <pattern>[%d{yyyy-MM-dd HH:mm:ss.SSS}],[%-5p],[traceID-%thread],[class=%class],[method=%M],[cost=%-4r ms],%msg,[exception=%exception]%n</pattern>
+                <pattern>[%d{yyyy-MM-dd HH:mm:ss.SSS}];[%-5p];[traceID-%thread];[class=%class];[method=%M];[cost=%-4r ms];%msg,[exception=%exception]%n</pattern>
             </PatternLayout>
         </Console>
 
@@ -52,7 +52,7 @@
             <Policies>
                 <!--interval属性用来指定多久滚动一次，默认是1 hour-->
                 <TimeBasedTriggeringPolicy interval="1"/>
-                <SizeBasedTriggeringPolicy size="1MB"/>
+                <SizeBasedTriggeringPolicy size="10000MB"/>
             </Policies>
             <!-- DefaultRolloverStrategy属性如不设置，则默认为最多同一文件夹下7个文件开始覆盖-->
             <DefaultRolloverStrategy max="15"/>

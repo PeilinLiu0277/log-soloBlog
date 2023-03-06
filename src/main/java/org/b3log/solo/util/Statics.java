@@ -70,7 +70,7 @@ public final class Statics {
                 DIR = new File(staticDir);
             } catch (final Exception e) {
                 String stack1 = Arrays.toString(Thread.currentThread().getStackTrace());
-                LOGGER.log(Level.ERROR, "[stackTraceInfo="+stack1+"],event=Creates static cache dir failed", e);
+                LOGGER.log(Level.ERROR, "[stackTraceInfo="+stack1+"];event=Creates static cache dir failed", e);
             }
         }
     }
@@ -158,7 +158,7 @@ public final class Statics {
             FileUtils.writeByteArrayToFile(path.toFile(), commpressed);
         } catch (final Exception e) {
             String stack1 = Arrays.toString(Thread.currentThread().getStackTrace());
-            LOGGER.log(Level.ERROR, "[stackTraceInfo="+stack1+"],event=Writes static file failed", e);
+            LOGGER.log(Level.ERROR, "[stackTraceInfo="+stack1+"];event=Writes static file failed", e);
         }
     }
 
@@ -170,7 +170,7 @@ public final class Statics {
             FileUtils.cleanDirectory(DIR);
         } catch (final Exception e) {
             String stack1 = Arrays.toString(Thread.currentThread().getStackTrace());
-            LOGGER.log(Level.ERROR, "[stackTraceInfo="+stack1+"],event=Clears static cached files failed", e);
+            LOGGER.log(Level.ERROR, "[stackTraceInfo="+stack1+"];event=Clears static cached files failed", e);
         }
     }
 
@@ -191,7 +191,7 @@ public final class Statics {
             return StringUtils.join(lines, "\n");
         } catch (final Exception e) {
             String stack1 = Arrays.toString(Thread.currentThread().getStackTrace());
-            LOGGER.log(Level.ERROR, "[stackTraceInfo="+stack1+"],event=Reads static file failed", e);
+            LOGGER.log(Level.ERROR, "[stackTraceInfo="+stack1+"];event=Reads static file failed", e);
         }
 
         return null;
@@ -246,7 +246,7 @@ public final class Statics {
             return out.toByteArray();
         } catch (final Exception e) {
             String stack1 = Arrays.toString(Thread.currentThread().getStackTrace());
-            LOGGER.log(Level.ERROR, "[stackTraceInfo="+stack1+"],event=Gzip failed", e);
+            LOGGER.log(Level.ERROR, "[stackTraceInfo="+stack1+"];event=Gzip failed", e);
 
             return null;
         }
@@ -266,7 +266,7 @@ public final class Statics {
             return out.toByteArray();
         } catch (final Exception e) {
             String stack1 = Arrays.toString(Thread.currentThread().getStackTrace());
-            LOGGER.log(Level.ERROR, "[stackTraceInfo="+stack1+"],event=UnGzip failed", e);
+            LOGGER.log(Level.ERROR, "[stackTraceInfo="+stack1+"];event=UnGzip failed", e);
 
             return null;
         }

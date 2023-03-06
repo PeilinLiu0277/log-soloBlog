@@ -42,7 +42,7 @@ public class TagConsoleTestCase extends AbstractTestCase {
         final MockRequest request = mockRequest();
         request.setRequestURI("/console/tags");
         String stack1 = Arrays.toString(Thread.currentThread().getStackTrace());
-        LOGGER.log(Level.INFO, "[stackTraceInfo="+stack1+"],event=/consloe/tags");
+        LOGGER.log(Level.INFO, "[stackTraceInfo="+stack1+"];event=/consloe/tags");
         mockAdminLogin(request);
 
         final MockResponse response = mockResponse();

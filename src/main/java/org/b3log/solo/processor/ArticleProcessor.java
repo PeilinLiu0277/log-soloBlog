@@ -154,7 +154,7 @@ public class ArticleProcessor {
             final String html = Markdowns.toHTML(markdownText);
             result.put(Common.DATA, html);
         } catch (final Exception e) {
-            LOGGER.log(Level.ERROR, "[stackTraceInfo="+stack1+"],event="+e.getMessage(), e);
+            LOGGER.log(Level.ERROR, "[stackTraceInfo="+stack1+"];event="+e.getMessage(), e);
             result.put(Keys.CODE, -1);
             result.put(Keys.MSG, langPropsService.get("getFailLabel"));
         }
@@ -238,7 +238,7 @@ public class ArticleProcessor {
             context.sendRedirect(Latkes.getServePath() + "/console/article-pwd?articleId=" + article.optString(Keys.OBJECT_ID) + "&msg=1");
         } catch (final Exception e) {
             String stack1 = Arrays.toString(Thread.currentThread().getStackTrace());
-            LOGGER.log(Level.ERROR, "[stackTraceInfo="+stack1+"],event=Processes article view password form submits failed", e);
+            LOGGER.log(Level.ERROR, "[stackTraceInfo="+stack1+"];event=Processes article view password form submits failed", e);
             context.sendError(404);
         }
     }
@@ -332,7 +332,7 @@ public class ArticleProcessor {
             content = articleQueryService.getArticleContent(context, articleId);
         } catch (final ServiceException e) {
             String stack1 = Arrays.toString(Thread.currentThread().getStackTrace());
-            LOGGER.log(Level.ERROR, "[stackTraceInfo="+stack1+"],event=Can not get article content", e);
+            LOGGER.log(Level.ERROR, "[stackTraceInfo="+stack1+"];event=Can not get article content", e);
             return;
         }
 
@@ -375,7 +375,7 @@ public class ArticleProcessor {
         } catch (final Exception e) {
             jsonObject.put(Keys.CODE, StatusCodes.ERR);
             String stack1 = Arrays.toString(Thread.currentThread().getStackTrace());
-            LOGGER.log(Level.ERROR, "[stackTraceInfo="+stack1+"],event=Gets article paged failed", e);
+            LOGGER.log(Level.ERROR, "[stackTraceInfo="+stack1+"];event=Gets article paged failed", e);
         } finally {
             Stopwatchs.end();
         }
@@ -428,7 +428,7 @@ public class ArticleProcessor {
         } catch (final Exception e) {
             jsonObject.put(Keys.CODE, StatusCodes.ERR);
             String stack1 = Arrays.toString(Thread.currentThread().getStackTrace());
-            LOGGER.log(Level.ERROR, "[stackTraceInfo="+stack1+"],event=Gets article paged failed", e);
+            LOGGER.log(Level.ERROR, "[stackTraceInfo="+stack1+"];event=Gets article paged failed", e);
         } finally {
             Stopwatchs.end();
         }
@@ -480,7 +480,7 @@ public class ArticleProcessor {
         } catch (final Exception e) {
             jsonObject.put(Keys.CODE, StatusCodes.ERR);
             String stack1 = Arrays.toString(Thread.currentThread().getStackTrace());
-            LOGGER.log(Level.ERROR, "[stackTraceInfo="+stack1+"],event=Gets article paged failed", e);
+            LOGGER.log(Level.ERROR, "[stackTraceInfo="+stack1+"];event=Gets article paged failed", e);
         } finally {
             Stopwatchs.end();
         }
@@ -529,7 +529,7 @@ public class ArticleProcessor {
         } catch (final Exception e) {
             jsonObject.put(Keys.CODE, StatusCodes.ERR);
             String stack1 = Arrays.toString(Thread.currentThread().getStackTrace());
-            LOGGER.log(Level.ERROR, "[stackTraceInfo="+stack1+"],event=Gets article paged failed", e);
+            LOGGER.log(Level.ERROR, "[stackTraceInfo="+stack1+"];event=Gets article paged failed", e);
         } finally {
             Stopwatchs.end();
         }
@@ -552,7 +552,7 @@ public class ArticleProcessor {
             final String authorId = context.pathVar("author");
             final int currentPageNum = Paginator.getPage(request);
             String stack1 = Arrays.toString(Thread.currentThread().getStackTrace());
-            LOGGER.log(Level.DEBUG, "[stackTraceInfo="+stack1+"],event=Request author articles [authorId={}, currentPageNum={}]", authorId, currentPageNum);
+            LOGGER.log(Level.DEBUG, "[stackTraceInfo="+stack1+"];event=Request author articles [authorId={}, currentPageNum={}]", authorId, currentPageNum);
 
             final JSONObject preference = optionQueryService.getPreference();
             if (null == preference) {
@@ -589,7 +589,7 @@ public class ArticleProcessor {
             Skins.fillLangs(preference.optString(Option.ID_C_LOCALE_STRING), (String) context.attr(Keys.TEMPLATE_DIR_NAME), dataModel);
         } catch (final Exception e) {
             String stack1 = Arrays.toString(Thread.currentThread().getStackTrace());
-            LOGGER.log(Level.ERROR, "[stackTraceInfo="+stack1+"],event="+e.getMessage(), e);
+            LOGGER.log(Level.ERROR, "[stackTraceInfo="+stack1+"];event="+e.getMessage(), e);
             context.sendError(404);
         }
     }
@@ -607,10 +607,10 @@ public class ArticleProcessor {
             final int currentPageNum = Paginator.getPage(request);
             final String archiveDateString = context.pathVar("yyyy") + "/" + context.pathVar("MM");
             String stack1 = Arrays.toString(Thread.currentThread().getStackTrace());
-            LOGGER.log(Level.DEBUG, "[stackTraceInfo="+stack1+"],event=Request archive date [string={}, currentPageNum={}]", archiveDateString, currentPageNum);
+            LOGGER.log(Level.DEBUG, "[stackTraceInfo="+stack1+"];event=Request archive date [string={}, currentPageNum={}]", archiveDateString, currentPageNum);
             final JSONObject result = archiveDateQueryService.getByArchiveDateString(archiveDateString);
             if (null == result) {
-                LOGGER.log(Level.DEBUG, "[stackTraceInfo="+stack1+"],event=Can not find articles for the specified archive date[string={}]", archiveDateString);
+                LOGGER.log(Level.DEBUG, "[stackTraceInfo="+stack1+"];event=Can not find articles for the specified archive date[string={}]", archiveDateString);
                 context.sendError(404);
                 return;
             }
@@ -640,7 +640,7 @@ public class ArticleProcessor {
             dataModelService.fillUsite(dataModel);
         } catch (final Exception e) {
             String stack1 = Arrays.toString(Thread.currentThread().getStackTrace());
-            LOGGER.log(Level.ERROR, "[stackTraceInfo="+stack1+"],event="+e.getMessage(), e);
+            LOGGER.log(Level.ERROR, "[stackTraceInfo="+stack1+"];event="+e.getMessage(), e);
             context.sendError(404);
         }
     }
@@ -660,12 +660,12 @@ public class ArticleProcessor {
 
         final String articleId = article.optString(Keys.OBJECT_ID);
         String stack1 = Arrays.toString(Thread.currentThread().getStackTrace());
-        LOGGER.log(Level.DEBUG, "[stackTraceInfo="+stack1+"],event=Article [id={}]", articleId);
+        LOGGER.log(Level.DEBUG, "[stackTraceInfo="+stack1+"];event=Article [id={}]", articleId);
 
         final AbstractFreeMarkerRenderer renderer = new SkinRenderer(context, "article.ftl");
 
         try {
-            LOGGER.log(Level.TRACE, "[stackTraceInfo="+stack1+"],event=Article [title={}]", article.getString(Article.ARTICLE_TITLE));
+            LOGGER.log(Level.TRACE, "[stackTraceInfo="+stack1+"];event=Article [title={}]", article.getString(Article.ARTICLE_TITLE));
             articleQueryService.markdown(article);
 
             article.put(Article.ARTICLE_T_CREATE_DATE, new Date(article.optLong(Article.ARTICLE_CREATED)));
@@ -703,7 +703,7 @@ public class ArticleProcessor {
             eventData.put(Article.ARTICLE, article);
             eventManager.fireEventSynchronously(new Event<>(EventTypes.BEFORE_RENDER_ARTICLE, eventData));
         } catch (final Exception e) {
-            LOGGER.log(Level.ERROR, "[stackTraceInfo="+stack1+"],event="+e.getMessage(), e);
+            LOGGER.log(Level.ERROR, "[stackTraceInfo="+stack1+"];event="+e.getMessage(), e);
             context.sendError(404);
         }
     }
@@ -721,7 +721,7 @@ public class ArticleProcessor {
             return ret;
         } catch (final Exception e) {
             String stack1 = Arrays.toString(Thread.currentThread().getStackTrace());
-            LOGGER.log(Level.ERROR, "[stackTraceInfo="+stack1+"],event="+e.getMessage(), e);
+            LOGGER.log(Level.ERROR, "[stackTraceInfo="+stack1+"];event="+e.getMessage(), e);
             return Collections.emptyList();
         }
     }

@@ -86,7 +86,7 @@ public class ErrorProcessor {
             final String requestURI = context.requestURI();
             final String templateName = statusCode + ".ftl";
             String stack1 = Arrays.toString(Thread.currentThread().getStackTrace());
-            LOGGER.log(Level.TRACE, "[stackTraceInfo="+stack1+"],event="+"Shows error page [requestURI={}, templateName={}]", requestURI, templateName);
+            LOGGER.log(Level.TRACE, "[stackTraceInfo="+stack1+"];event="+"Shows error page [requestURI={}, templateName={}]", requestURI, templateName);
 
             final AbstractFreeMarkerRenderer renderer = new SkinRenderer(context, "error/" + templateName);
             final Map<String, Object> dataModel = renderer.getDataModel();
@@ -101,10 +101,10 @@ public class ErrorProcessor {
                 dataModel.put(Keys.MSG, msg);
                 dataModel.put(Common.LOGIN_URL, userQueryService.getLoginURL(Common.ADMIN_INDEX_URI));
                 String stack = Arrays.toString(Thread.currentThread().getStackTrace());
-                LOGGER.log(Level.INFO,"[stackTraceInfo="+stack+"],event=show error page");
+                LOGGER.log(Level.INFO,"[stackTraceInfo="+stack+"];event=show error page");
             } catch (final Exception e) {
                 String stack = Arrays.toString(Thread.currentThread().getStackTrace());
-                LOGGER.log(Level.ERROR, "[stackTraceInfo="+stack+"],event="+"Shows error page failed", e);
+                LOGGER.log(Level.ERROR, "[stackTraceInfo="+stack+"];event="+"Shows error page failed", e);
             }
 
             Solos.addGoogleNoIndex(context);

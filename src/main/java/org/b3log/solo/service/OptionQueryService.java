@@ -54,7 +54,7 @@ public class OptionQueryService {
             return getOptions(Option.CATEGORY_C_SKIN);
         } catch (final Exception e) {
             String stack1 = Arrays.toString(Thread.currentThread().getStackTrace());
-            LOGGER.log(Level.ERROR, "[stackTraceInfo="+stack1+"],event=Gets skin failed", e);
+            LOGGER.log(Level.ERROR, "[stackTraceInfo="+stack1+"];event=Gets skin failed", e);
 
             return null;
         }
@@ -70,7 +70,7 @@ public class OptionQueryService {
             return getOptions(Option.CATEGORY_C_PREFERENCE);
         } catch (final Exception e) {
             String stack1 = Arrays.toString(Thread.currentThread().getStackTrace());
-            LOGGER.log(Level.ERROR, "[stackTraceInfo="+stack1+"],event=Gets preference failed", e);
+            LOGGER.log(Level.ERROR, "[stackTraceInfo="+stack1+"];event=Gets preference failed", e);
 
             return null;
         }

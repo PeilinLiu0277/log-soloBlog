@@ -104,9 +104,14 @@ public class PreferenceConsole {
             renderer.setJSONObject(ret);
             ret.put(Sign.SIGNS, signs);
             ret.put(Keys.CODE, StatusCodes.SUCC);
+<<<<<<< HEAD
+=======
+            String stack1 = Arrays.toString(Thread.currentThread().getStackTrace());
+            LOGGER.log(Level.INFO, "[stackTraceInfo="+stack1+"];event="+"get signs OK!");
+>>>>>>> a638a09f1404432d07b4c698e7dc5861e1b5d249
         } catch (final Exception e) {
             String stack1 = Arrays.toString(Thread.currentThread().getStackTrace());
-            LOGGER.log(Level.ERROR, "[stackTraceInfo="+stack1+"],event="+e.getMessage(), e);
+            LOGGER.log(Level.ERROR, "[stackTraceInfo="+stack1+"];event="+e.getMessage(), e);
             final JSONObject jsonObject = new JSONObject().put(Keys.CODE, StatusCodes.ERR);
             renderer.setJSONObject(jsonObject);
             jsonObject.put(Keys.MSG, langPropsService.get("getFailLabel"));
@@ -192,9 +197,14 @@ public class PreferenceConsole {
             renderer.setJSONObject(ret);
             ret.put(Option.CATEGORY_C_PREFERENCE, preference);
             ret.put(Keys.CODE, StatusCodes.SUCC);
+<<<<<<< HEAD
+=======
+            String stack1 = Arrays.toString(Thread.currentThread().getStackTrace());
+            LOGGER.log(Level.INFO, "[stackTraceInfo="+stack1+"];event="+"get preference OK!");
+>>>>>>> a638a09f1404432d07b4c698e7dc5861e1b5d249
         } catch (final Exception e) {
             String stack1 = Arrays.toString(Thread.currentThread().getStackTrace());
-            LOGGER.log(Level.ERROR, "[stackTraceInfo="+stack1+"],event="+e.getMessage(), e);
+            LOGGER.log(Level.ERROR, "[stackTraceInfo="+stack1+"];event="+e.getMessage(), e);
             final JSONObject jsonObject = new JSONObject().put(Keys.CODE, StatusCodes.ERR);
             renderer.setJSONObject(jsonObject);
             jsonObject.put(Keys.MSG, langPropsService.get("getFailLabel"));
@@ -227,7 +237,7 @@ public class PreferenceConsole {
      *         "signs": [{
      *             "oId": "",
      *             "signHTML": ""
-     *             }, ...],
+     *             }, ...];
      *         "allowVisitDraftViaPermalink": boolean,
      *         "articleListStyle": "",
      *         "feedOutputMode: "",
@@ -268,9 +278,14 @@ public class PreferenceConsole {
 
             ret.put(Keys.CODE, StatusCodes.SUCC);
             ret.put(Keys.MSG, langPropsService.get("updateSuccLabel"));
+<<<<<<< HEAD
+=======
+            String stack1 = Arrays.toString(Thread.currentThread().getStackTrace());
+            LOGGER.log(Level.INFO, "[stackTraceInfo="+stack1+"];event="+"update preference OK!");
+>>>>>>> a638a09f1404432d07b4c698e7dc5861e1b5d249
         } catch (final ServiceException e) {
             String stack1 = Arrays.toString(Thread.currentThread().getStackTrace());
-            LOGGER.log(Level.ERROR, "[stackTraceInfo="+stack1+"],event="+e.getMessage(), e);
+            LOGGER.log(Level.ERROR, "[stackTraceInfo="+stack1+"];event="+e.getMessage(), e);
             final JSONObject jsonObject = new JSONObject().put(Keys.CODE, StatusCodes.ERR);
             renderer.setJSONObject(jsonObject);
             jsonObject.put(Keys.MSG, langPropsService.get("updateFailLabel"));

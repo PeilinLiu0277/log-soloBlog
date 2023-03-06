@@ -48,7 +48,7 @@ public class InitCheckHandler implements Handler {
         final String requestURI = context.requestURI();
         final boolean isSpiderBot = (boolean) context.attr(Keys.HttpRequest.IS_SEARCH_ENGINE_BOT);
         String stack1 = Arrays.toString(Thread.currentThread().getStackTrace());
-        LOGGER.log(Level.TRACE, "[stackTraceInfo="+stack1+"],event="+"Request [URI={}]", requestURI);
+        LOGGER.log(Level.TRACE, "[stackTraceInfo="+stack1+"];event="+"Request [URI={}]", requestURI);
 
         // 禁止直接获取 robots.txt https://github.com/b3log/solo/issues/12543
         if (requestURI.startsWith("/robots.txt") && !isSpiderBot) {
@@ -71,7 +71,7 @@ public class InitCheckHandler implements Handler {
 
         if (!initReported) {
             String stack = Arrays.toString(Thread.currentThread().getStackTrace());
-            LOGGER.log(Level.DEBUG, "[stackTraceInfo="+stack+"],event="+"Solo has not been initialized, so redirects to /start");
+            LOGGER.log(Level.DEBUG, "[stackTraceInfo="+stack+"];event="+"Solo has not been initialized, so redirects to /start");
             initReported = true;
         }
 

@@ -42,7 +42,7 @@ public class B3ArticleUpdater extends AbstractEventListener<JSONObject> {
     public void action(final Event<JSONObject> event) {
         final JSONObject data = event.getData();
         String stack1 = Arrays.toString(Thread.currentThread().getStackTrace());
-        LOGGER.log(Level.DEBUG, "[stackTraceInfo="+stack1+"],event=Processing an event [type={}, data={}] in listener [className={}]",
+        LOGGER.log(Level.DEBUG, "[stackTraceInfo="+stack1+"];event=Processing an event [type={}, data={}] in listener [className={}]",
                 event.getType(), data, B3ArticleUpdater.class.getName());
 
         B3ArticleSender.pushArticleToRhy(data);

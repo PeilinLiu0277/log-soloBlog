@@ -90,10 +90,10 @@ public class BlogProcessor {
         try (final InputStream tplStream = BlogProcessor.class.getResourceAsStream("/manifest.json.tpl")) {
             PWA_MANIFESTO_JSON = IOUtils.toString(tplStream, StandardCharsets.UTF_8);
             String stack1 = Arrays.toString(Thread.currentThread().getStackTrace());
-            LOGGER.log(Level.INFO, "[stackTraceInfo="+stack1+"],event=Loads PWA manifest.json template OK!");
+            LOGGER.log(Level.INFO, "[stackTraceInfo="+stack1+"];event=Loads PWA manifest.json template OK!");
         } catch (final Exception e) {
             String stack1 = Arrays.toString(Thread.currentThread().getStackTrace());
-            LOGGER.log(Level.ERROR, "[stackTraceInfo="+stack1+"],event=Loads PWA manifest.json template failed", e);
+            LOGGER.log(Level.ERROR, "[stackTraceInfo="+stack1+"];event=Loads PWA manifest.json template failed", e);
         }
     }
 
@@ -118,7 +118,7 @@ public class BlogProcessor {
         PWA_MANIFESTO_JSON = StringUtils.replace(PWA_MANIFESTO_JSON, "${shortName}", name);
         renderer.setJSONObject(jsonObject);
         String stack1 = Arrays.toString(Thread.currentThread().getStackTrace());
-        LOGGER.log(Level.INFO, "[stackTraceInfo="+stack1+"],event=get PWA manifest jason OK!");
+        LOGGER.log(Level.INFO, "[stackTraceInfo="+stack1+"];event=get PWA manifest jason OK!");
     }
 
     /**
@@ -167,7 +167,7 @@ public class BlogProcessor {
         jsonObject.put("skin", optionQueryService.getOptionById(Option.ID_C_SKIN_DIR_NAME).optString(Option.OPTION_VALUE));
         jsonObject.put("mobileSkin", optionQueryService.getOptionById(Option.ID_C_MOBILE_SKIN_DIR_NAME).optString(Option.OPTION_VALUE));
         String stack1 = Arrays.toString(Thread.currentThread().getStackTrace());
-        LOGGER.log(Level.INFO, "[stackTraceInfo="+stack1+"],event=get blog info OK!");
+        LOGGER.log(Level.INFO, "[stackTraceInfo="+stack1+"];event=get blog info OK!");
     }
 
     /**
@@ -176,8 +176,8 @@ public class BlogProcessor {
      * <pre>
      * {
      *     "data": [
-     *         ["tag1", "tag2", ....], // tags of one article
-     *         ["tagX", "tagY", ....], // tags of another article
+     *         ["tag1", "tag2", ....]; // tags of one article
+     *         ["tagX", "tagY", ....]; // tags of another article
      *         ....
      *     ]
      * }
@@ -230,6 +230,6 @@ public class BlogProcessor {
             }
         }
         String stack1 = Arrays.toString(Thread.currentThread().getStackTrace());
-        LOGGER.log(Level.INFO, "[stackTraceInfo="+stack1+"],event=get article tags");
+        LOGGER.log(Level.INFO, "[stackTraceInfo="+stack1+"];event=get article tags");
     }
 }

@@ -127,10 +127,10 @@ public class PageMgmtService {
 
             Statics.clear();
             String stack1 = Arrays.toString(Thread.currentThread().getStackTrace());
-            LOGGER.log(Level.DEBUG, "[stackTraceInfo="+stack1+"],event=Updated a page[id={}]", pageId);
+            LOGGER.log(Level.DEBUG, "[stackTraceInfo="+stack1+"];event=Updated a page[id={}]", pageId);
         } catch (final Exception e) {
             String stack1 = Arrays.toString(Thread.currentThread().getStackTrace());
-            LOGGER.log(Level.ERROR, "[stackTraceInfo="+stack1+"],event="+e.getMessage(), e);
+            LOGGER.log(Level.ERROR, "[stackTraceInfo="+stack1+"];event="+e.getMessage(), e);
             if (transaction.isActive()) {
                 transaction.rollback();
             }
@@ -157,7 +157,7 @@ public class PageMgmtService {
                 transaction.rollback();
             }
             String stack1 = Arrays.toString(Thread.currentThread().getStackTrace());
-            LOGGER.log(Level.ERROR, "[stackTraceInfo="+stack1+"],event=Removes a page[id=" + pageId + "] failed", e);
+            LOGGER.log(Level.ERROR, "[stackTraceInfo="+stack1+"];event=Removes a page[id=" + pageId + "] failed", e);
             throw new ServiceException(e);
         }
     }
@@ -197,7 +197,7 @@ public class PageMgmtService {
             return ret;
         } catch (final RepositoryException e) {
             String stack1 = Arrays.toString(Thread.currentThread().getStackTrace());
-            LOGGER.log(Level.ERROR, "[stackTraceInfo="+stack1+"],event="+e.getMessage(), e);
+            LOGGER.log(Level.ERROR, "[stackTraceInfo="+stack1+"];event="+e.getMessage(), e);
             if (transaction.isActive()) {
                 transaction.rollback();
             }
@@ -230,7 +230,7 @@ public class PageMgmtService {
                     transaction.rollback();
                 }
                 String stack1 = Arrays.toString(Thread.currentThread().getStackTrace());
-                LOGGER.log(Level.WARN, "[stackTraceInfo="+stack1+"],event=Cant not find the target page of source page[order={}]", srcPageOrder);
+                LOGGER.log(Level.WARN, "[stackTraceInfo="+stack1+"];event=Cant not find the target page of source page[order={}]", srcPageOrder);
                 return;
             }
 
@@ -247,7 +247,7 @@ public class PageMgmtService {
                 transaction.rollback();
             }
             String stack1 = Arrays.toString(Thread.currentThread().getStackTrace());
-            LOGGER.log(Level.ERROR, "[stackTraceInfo="+stack1+"],event=Changes page's order failed", e);
+            LOGGER.log(Level.ERROR, "[stackTraceInfo="+stack1+"];event=Changes page's order failed", e);
             throw new ServiceException(e);
         }
     }

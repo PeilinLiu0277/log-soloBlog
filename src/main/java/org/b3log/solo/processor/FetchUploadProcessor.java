@@ -72,7 +72,7 @@ public class FetchUploadProcessor {
         if (null == upload) {
             final String msg = "Gets upload token failed";
             String stack1 = Arrays.toString(Thread.currentThread().getStackTrace());
-            LOGGER.log(Level.ERROR, "[stackTraceInfo="+stack1+"],event="+msg);
+            LOGGER.log(Level.ERROR, "[stackTraceInfo="+stack1+"];event="+msg);
             result.put(Keys.MSG, msg);
             return;
         }
@@ -92,10 +92,10 @@ public class FetchUploadProcessor {
             bytes = res.bodyBytes();
             contentType = res.contentType();
             String stack1 = Arrays.toString(Thread.currentThread().getStackTrace());
-            LOGGER.log(Level.INFO,"[stackTraceInfo="+stack1+"],event=Fetch file [url=\" + originalURL + \"] OK!");
+            LOGGER.log(Level.INFO,"[stackTraceInfo="+stack1+"];event=Fetch file [url=\" + originalURL + \"] OK!");
         } catch (final Exception e) {
             String stack1 = Arrays.toString(Thread.currentThread().getStackTrace());
-            LOGGER.log(Level.ERROR, "[stackTraceInfo="+stack1+"],event="+"Fetch file [url=" + originalURL + "] failed", e);
+            LOGGER.log(Level.ERROR, "[stackTraceInfo="+stack1+"];event="+"Fetch file [url=" + originalURL + "] failed", e);
             result.put(Keys.MSG, "Fetch file [url=" + originalURL + "] failed");
             return;
         }
@@ -124,11 +124,11 @@ public class FetchUploadProcessor {
             final String key = succMap.keys().next();
             url = succMap.optString(key);
             String stack1 = Arrays.toString(Thread.currentThread().getStackTrace());
-            LOGGER.log(Level.INFO,"[stackTraceInfo="+stack1+"],event=Upload file to community OSS [url=\" + originalURL + \"] OK!");
+            LOGGER.log(Level.INFO,"[stackTraceInfo="+stack1+"];event=Upload file to community OSS [url=\" + originalURL + \"] OK!");
         } catch (final Exception e) {
             final String msg = "Upload file to community OSS [url=" + originalURL + "] failed";
             String stack1 = Arrays.toString(Thread.currentThread().getStackTrace());
-            LOGGER.log(Level.ERROR, "[stackTraceInfo="+stack1+"],event="+msg, e);
+            LOGGER.log(Level.ERROR, "[stackTraceInfo="+stack1+"];event="+msg, e);
             result.put(Keys.MSG, msg);
             return;
         }
@@ -158,7 +158,7 @@ public class FetchUploadProcessor {
             ret = StringUtils.substringBefore(ret, ";");
         }
         String stack1 = Arrays.toString(Thread.currentThread().getStackTrace());
-        LOGGER.log(Level.INFO,"[stackTraceInfo="+stack1+"],event=get suffix");
+        LOGGER.log(Level.INFO,"[stackTraceInfo="+stack1+"];event=get suffix");
         return ret;
     }
 }

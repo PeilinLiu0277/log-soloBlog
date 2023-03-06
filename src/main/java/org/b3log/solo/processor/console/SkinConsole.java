@@ -104,7 +104,7 @@ public class SkinConsole {
                 final String name = Latkes.getSkinName(dirName);
                 if (null == name) {
                     String stack1 = Arrays.toString(Thread.currentThread().getStackTrace());
-                    LOGGER.log(Level.WARN, "[stackTraceInfo="+stack1+"],event="+"The directory [{}] does not contain any skin, ignored it", dirName);
+                    LOGGER.log(Level.WARN, "[stackTraceInfo="+stack1+"];event="+"The directory [{}] does not contain any skin, ignored it", dirName);
                     continue;
                 }
 
@@ -116,9 +116,14 @@ public class SkinConsole {
             renderer.setJSONObject(ret);
             ret.put(Option.CATEGORY_C_SKIN, skin);
             ret.put(Keys.CODE, StatusCodes.SUCC);
+<<<<<<< HEAD
+=======
+            String stack1 = Arrays.toString(Thread.currentThread().getStackTrace());
+            LOGGER.log(Level.INFO, "[stackTraceInfo="+stack1+"];event="+"get skin OK!");
+>>>>>>> a638a09f1404432d07b4c698e7dc5861e1b5d249
         } catch (final Exception e) {
             String stack1 = Arrays.toString(Thread.currentThread().getStackTrace());
-            LOGGER.log(Level.ERROR, "[stackTraceInfo="+stack1+"],event="+e.getMessage(), e);
+            LOGGER.log(Level.ERROR, "[stackTraceInfo="+stack1+"];event="+e.getMessage(), e);
             final JSONObject jsonObject = new JSONObject().put(Keys.CODE, StatusCodes.ERR);
             renderer.setJSONObject(jsonObject);
             jsonObject.put(Keys.MSG, langPropsService.get("getFailLabel"));
@@ -153,9 +158,14 @@ public class SkinConsole {
             ret.put(Keys.CODE, StatusCodes.SUCC);
             ret.put(Keys.MSG, langPropsService.get("updateSuccLabel"));
             Statics.clear();
+<<<<<<< HEAD
+=======
+            String stack1 = Arrays.toString(Thread.currentThread().getStackTrace());
+            LOGGER.log(Level.INFO, "[stackTraceInfo="+stack1+"];event="+"update skin OK!");
+>>>>>>> a638a09f1404432d07b4c698e7dc5861e1b5d249
         } catch (final ServiceException e) {
             String stack1 = Arrays.toString(Thread.currentThread().getStackTrace());
-            LOGGER.log(Level.ERROR, "[stackTraceInfo="+stack1+"],event="+e.getMessage(), e);
+            LOGGER.log(Level.ERROR, "[stackTraceInfo="+stack1+"];event="+e.getMessage(), e);
             final JSONObject jsonObject = new JSONObject().put(Keys.CODE, StatusCodes.ERR);
             renderer.setJSONObject(jsonObject);
             jsonObject.put(Keys.MSG, langPropsService.get("updateFailLabel"));

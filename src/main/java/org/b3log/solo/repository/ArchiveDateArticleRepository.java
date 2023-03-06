@@ -69,7 +69,7 @@ public class ArchiveDateArticleRepository extends AbstractRepository {
             return articlesCountResult == null ? 0 : articlesCountResult.get(0).optInt("C");
         } catch (final Exception e) {
             String stack1 = Arrays.toString(Thread.currentThread().getStackTrace());
-            LOGGER.log(Level.ERROR, "[stackTraceInfo="+stack1+"],event="+"Gets archivedate [" + archiveDateId + "]'s published article count failed", e);
+            LOGGER.log(Level.ERROR, "[stackTraceInfo="+stack1+"];event="+"Gets archivedate [" + archiveDateId + "]'s published article count failed", e);
 
             return -1;
         }

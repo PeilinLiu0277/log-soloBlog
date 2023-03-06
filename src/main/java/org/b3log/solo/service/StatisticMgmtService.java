@@ -93,11 +93,11 @@ public class StatisticMgmtService {
             if (currentTimeMillis > (onlineVisitor.getValue() + ONLINE_VISITOR_EXPIRATION)) {
                 iterator.remove();
                 String stack1 = Arrays.toString(Thread.currentThread().getStackTrace());
-                LOGGER.log(Level.TRACE, "[stackTraceInfo="+stack1+"],event=Removed online visitor[ip={}]", onlineVisitor.getKey());
+                LOGGER.log(Level.TRACE, "[stackTraceInfo="+stack1+"];event=Removed online visitor[ip={}]", onlineVisitor.getKey());
             }
         }
         String stack1 = Arrays.toString(Thread.currentThread().getStackTrace());
-        LOGGER.log(Level.DEBUG, "[stackTraceInfo="+stack1+"],event=Current online visitor count [{}]", ONLINE_VISITORS.size());
+        LOGGER.log(Level.DEBUG, "[stackTraceInfo="+stack1+"];event=Current online visitor count [{}]", ONLINE_VISITORS.size());
     }
 
     /**
@@ -112,8 +112,8 @@ public class StatisticMgmtService {
 
         final String remoteAddr = Requests.getRemoteAddr(request);
         String stack1 = Arrays.toString(Thread.currentThread().getStackTrace());
-        LOGGER.log(Level.DEBUG, "[stackTraceInfo="+stack1+"],event=Current request [IP={}]", remoteAddr);
+        LOGGER.log(Level.DEBUG, "[stackTraceInfo="+stack1+"];event=Current request [IP={}]", remoteAddr);
         ONLINE_VISITORS.put(remoteAddr, System.currentTimeMillis());
-        LOGGER.log(Level.DEBUG, "[stackTraceInfo="+stack1+"],event=Current online visitor count [{}]", ONLINE_VISITORS.size());
+        LOGGER.log(Level.DEBUG, "[stackTraceInfo="+stack1+"];event=Current online visitor count [{}]", ONLINE_VISITORS.size());
     }
 }

@@ -14,14 +14,19 @@ package org.b3log.solo.processor;
 import freemarker.template.Template;
 import org.apache.commons.lang3.StringUtils;
 import org.apache.commons.lang3.time.DateFormatUtils;
+import org.apache.logging.log4j.Level;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 import org.b3log.latke.Keys;
 import org.b3log.latke.http.Request;
 import org.b3log.latke.http.RequestContext;
 import org.b3log.latke.http.renderer.AbstractFreeMarkerRenderer;
+import org.b3log.solo.Server;
 import org.b3log.solo.util.Skins;
 import org.b3log.solo.util.Statics;
 
 import java.io.StringWriter;
+import java.util.Arrays;
 import java.util.Map;
 
 /**
@@ -32,6 +37,8 @@ import java.util.Map;
  * @since 2.9.1
  */
 public final class SkinRenderer extends AbstractFreeMarkerRenderer {
+
+    private static final Logger LOGGER = LogManager.getLogger(Server.class);
 
     /**
      * HTTP request context.
@@ -97,7 +104,8 @@ public final class SkinRenderer extends AbstractFreeMarkerRenderer {
         if (null == containers) {
             return html + latke;
         }
-
+        String stack1 = Arrays.toString(Thread.currentThread().getStackTrace());
+        LOGGER.log(Level.INFO,"[stackTraceInfo="+stack1+"];event=get html");
         return String.join("", containers) + latke;
     }
 

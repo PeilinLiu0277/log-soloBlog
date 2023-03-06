@@ -111,7 +111,7 @@ public class PluginQueryService {
             return ret;
         } catch (final Exception e) {
             String stack1 = Arrays.toString(Thread.currentThread().getStackTrace());
-            LOGGER.log(Level.ERROR, "[stackTraceInfo="+stack1+"],event=Gets plugins failed", e);
+            LOGGER.log(Level.ERROR, "[stackTraceInfo="+stack1+"];event=Gets plugins failed", e);
             throw new ServiceException(e);
         }
     }
@@ -130,12 +130,12 @@ public class PluginQueryService {
             ret = pluginRepository.get(pluginId);
         } catch (final RepositoryException e) {
             String stack1 = Arrays.toString(Thread.currentThread().getStackTrace());
-            LOGGER.log(Level.ERROR, "[stackTraceInfo="+stack1+"],event=get plugin[" + pluginId + "] fail");
+            LOGGER.log(Level.ERROR, "[stackTraceInfo="+stack1+"];event=get plugin[" + pluginId + "] fail");
             throw new ServiceException("get plugin[" + pluginId + "] fail");
         }
         if (ret == null) {
             String stack1 = Arrays.toString(Thread.currentThread().getStackTrace());
-            LOGGER.log(Level.ERROR, "[stackTraceInfo="+stack1+"],event=can not find plugin[" + pluginId + "]");
+            LOGGER.log(Level.ERROR, "[stackTraceInfo="+stack1+"];event=can not find plugin[" + pluginId + "]");
             throw new ServiceException("can not find plugin[" + pluginId + "]");
         }
         return ret.optString(Plugin.PLUGIN_SETTING);
