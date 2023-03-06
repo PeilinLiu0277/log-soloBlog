@@ -115,8 +115,6 @@ public class PageConsole {
             ret.put(Keys.CODE, StatusCodes.SUCC);
             ret.put(Keys.MSG, langPropsService.get("updateSuccLabel"));
             renderer.setJSONObject(ret);
-            String stack1 = Arrays.toString(Thread.currentThread().getStackTrace());
-            LOGGER.log(Level.INFO, "[stackTraceInfo="+stack1+"],event="+"update page OK!");
         } catch (final ServiceException e) {
             String stack1 = Arrays.toString(Thread.currentThread().getStackTrace());
             LOGGER.log(Level.ERROR, "[stackTraceInfo="+stack1+"],event="+e.getMessage(), e);
@@ -152,8 +150,6 @@ public class PageConsole {
 
             jsonObject.put(Keys.CODE, StatusCodes.SUCC);
             jsonObject.put(Keys.MSG, langPropsService.get("removeSuccLabel"));
-            String stack1 = Arrays.toString(Thread.currentThread().getStackTrace());
-            LOGGER.log(Level.INFO, "[stackTraceInfo="+stack1+"],event="+"remove page OK!");
         } catch (final Exception e) {
             String stack1 = Arrays.toString(Thread.currentThread().getStackTrace());
             LOGGER.log(Level.ERROR, "[stackTraceInfo="+stack1+"],event="+e.getMessage(), e);
@@ -204,8 +200,6 @@ public class PageConsole {
             ret.put(Keys.MSG, langPropsService.get("addSuccLabel"));
             ret.put(Keys.CODE, StatusCodes.SUCC);
             renderer.setJSONObject(ret);
-            String stack1 = Arrays.toString(Thread.currentThread().getStackTrace());
-            LOGGER.log(Level.INFO, "[stackTraceInfo="+stack1+"],event="+"add page OK!");
         } catch (final ServiceException e) { // May be permalink check exception
             String stack1 = Arrays.toString(Thread.currentThread().getStackTrace());
             LOGGER.log(Level.WARN, "[stackTraceInfo="+stack1+"],event="+e.getMessage(), e);
@@ -246,13 +240,11 @@ public class PageConsole {
         try {
             final JSONObject requestJSONObject = context.requestJSON();
             final String linkId = requestJSONObject.getString(Keys.OBJECT_ID);
-            final String direction = requestJSONObject.getString(Common.DIRECTION);
-            pageMgmtService.changeOrder(linkId, direction);
+            final String direction = requestJSONObject.getString(Common.DIRECTION);  // correct code
+//            final String direction = requestJSONObject.getString(null);  // wrong code -- 3.5 argument change
             ret.put(Keys.CODE, StatusCodes.SUCC);
             ret.put(Keys.MSG, langPropsService.get("updateSuccLabel"));
             renderer.setJSONObject(ret);
-            String stack1 = Arrays.toString(Thread.currentThread().getStackTrace());
-            LOGGER.log(Level.INFO, "[stackTraceInfo="+stack1+"],event="+"change pages order OK!");
         } catch (final Exception e) {
             String stack1 = Arrays.toString(Thread.currentThread().getStackTrace());
             LOGGER.log(Level.ERROR, "[stackTraceInfo="+stack1+"],event="+e.getMessage(), e);
@@ -297,8 +289,6 @@ public class PageConsole {
             renderer.setJSONObject(result);
             result.put(Keys.CODE, StatusCodes.SUCC);
             result.put(Keys.MSG, langPropsService.get("getSuccLabel"));
-            String stack1 = Arrays.toString(Thread.currentThread().getStackTrace());
-            LOGGER.log(Level.INFO, "[stackTraceInfo="+stack1+"],event="+"get page OK!");
         } catch (final Exception e) {
             String stack1 = Arrays.toString(Thread.currentThread().getStackTrace());
             LOGGER.log(Level.ERROR, "[stackTraceInfo="+stack1+"],event="+e.getMessage(), e);
@@ -350,8 +340,6 @@ public class PageConsole {
 
             result.put(Keys.CODE, StatusCodes.SUCC);
             renderer.setJSONObject(result);
-            String stack1 = Arrays.toString(Thread.currentThread().getStackTrace());
-            LOGGER.log(Level.INFO, "[stackTraceInfo="+stack1+"],event="+"get pages OK!");
         } catch (final Exception e) {
             String stack1 = Arrays.toString(Thread.currentThread().getStackTrace());
             LOGGER.log(Level.ERROR, "[stackTraceInfo="+stack1+"],event="+e.getMessage(), e);

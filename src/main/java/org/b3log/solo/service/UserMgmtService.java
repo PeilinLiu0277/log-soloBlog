@@ -166,6 +166,8 @@ public class UserMgmtService {
      *                          "userGitHubId": "" // optional
      * @throws ServiceException service exception
      */
+    public void updateUserError (final JSONObject requestJSONObject) throws ServiceException{}
+
     public void updateUser(final JSONObject requestJSONObject) throws ServiceException {
         final Transaction transaction = userRepository.beginTransaction();
 

@@ -112,6 +112,7 @@ public class LinkMgmtService {
             throw new ServiceException(e);
         }
     }
+    public void updateLinkError(final JSONObject requestJSONObject) {}
 
     /**
      * Changes the order of a link specified by the given link id with the

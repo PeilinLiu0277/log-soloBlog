@@ -90,8 +90,6 @@ public class ArticleConsole {
         context.renderJSON(result);
         final String articleId = context.param("id");
         articleMgmtService.pushArticleToCommunity(articleId);
-        String stack1 = Arrays.toString(Thread.currentThread().getStackTrace());
-        LOGGER.log(Level.INFO, "[stackTraceInfo="+stack1+"],event=put article to community OK!");
     }
 
     /**
@@ -190,8 +188,6 @@ public class ArticleConsole {
             final JSONObject result = articleQueryService.getArticle(articleId);
             result.put(Keys.CODE, StatusCodes.SUCC);
             renderer.setJSONObject(result);
-            String stack1 = Arrays.toString(Thread.currentThread().getStackTrace());
-            LOGGER.log(Level.INFO, "[stackTraceInfo="+stack1+"],event=get articles OK!");
         } catch (final ServiceException e) {
             String stack1 = Arrays.toString(Thread.currentThread().getStackTrace());
             LOGGER.log(Level.ERROR, "[stackTraceInfo="+stack1+"],event="+e.getMessage(), e);
@@ -267,8 +263,6 @@ public class ArticleConsole {
                 title = StringEscapeUtils.escapeXml(title);
                 article.put(Article.ARTICLE_TITLE, title);
             }
-            String stack1 = Arrays.toString(Thread.currentThread().getStackTrace());
-            LOGGER.log(Level.INFO, "[stackTraceInfo="+stack1+"],event=get articles OK!");
         } catch (final Exception e) {
             String stack1 = Arrays.toString(Thread.currentThread().getStackTrace());
             LOGGER.log(Level.ERROR, "[stackTraceInfo="+stack1+"],event="+e.getMessage(), e);
@@ -294,12 +288,15 @@ public class ArticleConsole {
      * @param context the specified request context
      */
     public void removeArticle(final RequestContext context) {
-        final JsonRenderer renderer = new JsonRenderer();
+        final JsonRenderer renderer = new JsonRenderer();  // correct code
+//        final JsonRenderer renderer = null;    // wrong code  -- 4.4 chain change
         context.setRenderer(renderer);
         final JSONObject ret = new JSONObject();
         renderer.setJSONObject(ret);
         final String articleId = context.pathVar("id");
-        final JSONObject currentUser = Solos.getCurrentUser(context);
+        final JSONObject currentUser = Solos.getCurrentUser(context);  //correct code
+//        final JSONObject currentUser = Solos.getCurrentUser(null);  //wrong code -- 3.2 argument change
+//       final JSONObject currentUser = Solos.gotCurrentUser(context);  // wrong code -- 1.1 call change
 
         try {
             if (!articleQueryService.canAccessArticle(articleId, currentUser)) {
@@ -312,8 +309,6 @@ public class ArticleConsole {
 
             ret.put(Keys.CODE, StatusCodes.SUCC);
             ret.put(Keys.MSG, langPropsService.get("removeSuccLabel"));
-            String stack1 = Arrays.toString(Thread.currentThread().getStackTrace());
-            LOGGER.log(Level.INFO, "[stackTraceInfo="+stack1+"],event=remove article OK!");
         } catch (final Exception e) {
             String stack1 = Arrays.toString(Thread.currentThread().getStackTrace());
             LOGGER.log(Level.ERROR, "[stackTraceInfo="+stack1+"],event="+e.getMessage(), e);
@@ -358,8 +353,6 @@ public class ArticleConsole {
 
             ret.put(Keys.CODE, StatusCodes.SUCC);
             ret.put(Keys.MSG, langPropsService.get("unPulbishSuccLabel"));
-            String stack1 = Arrays.toString(Thread.currentThread().getStackTrace());
-            LOGGER.log(Level.INFO, "[stackTraceInfo="+stack1+"],event=cancel publish the article OK!");
         } catch (final Exception e) {
             String stack1 = Arrays.toString(Thread.currentThread().getStackTrace());
             LOGGER.log(Level.ERROR, "[stackTraceInfo="+stack1+"],event="+e.getMessage(), e);
@@ -390,7 +383,9 @@ public class ArticleConsole {
         context.setRenderer(renderer);
         final JSONObject ret = new JSONObject();
         renderer.setJSONObject(ret);
-        if (!Solos.isAdminLoggedIn(context)) {
+
+        if (!Solos.isAdminLoggedIn(context)) {   //correct code
+//        if (!Solos.isAdminLoggedInError(context)) {  // wrong code -- 1.2 call change
             ret.put(Keys.MSG, langPropsService.get("forbiddenLabel"));
             ret.put(Keys.CODE, StatusCodes.ERR);
             return;
@@ -401,8 +396,6 @@ public class ArticleConsole {
             articleMgmtService.topArticle(articleId, false);
             ret.put(Keys.CODE, StatusCodes.SUCC);
             ret.put(Keys.MSG, langPropsService.get("cancelTopSuccLabel"));
-            String stack1 = Arrays.toString(Thread.currentThread().getStackTrace());
-            LOGGER.log(Level.INFO, "[stackTraceInfo="+stack1+"],event=cancel top article OK!");
         } catch (final Exception e) {
             String stack1 = Arrays.toString(Thread.currentThread().getStackTrace());
             LOGGER.log(Level.ERROR, "[stackTraceInfo="+stack1+"],event="+e.getMessage(), e);
@@ -433,7 +426,9 @@ public class ArticleConsole {
         context.setRenderer(renderer);
         final JSONObject ret = new JSONObject();
         renderer.setJSONObject(ret);
-        if (!Solos.isAdminLoggedIn(context)) {
+        if (!Solos.isAdminLoggedIn(context)){      //correct code
+//        if (Solos.isAdminLoggedIn(context)){     //wrong code -- 2.1：conditional change
+//        if (!Solos.aisAdminLoggedIn(context)) {  //wrong code -- 1.1：call change
             ret.put(Keys.MSG, langPropsService.get("forbiddenLabel"));
             ret.put(Keys.CODE, StatusCodes.ERR);
             return;
@@ -444,10 +439,8 @@ public class ArticleConsole {
             articleMgmtService.topArticle(articleId, true);
             ret.put(Keys.CODE, StatusCodes.SUCC);
             ret.put(Keys.MSG, langPropsService.get("putTopSuccLabel"));
-            String stack1 = Arrays.toString(Thread.currentThread().getStackTrace());
-            LOGGER.log(Level.INFO, "[stackTraceInfo="+stack1+"],event=put article to top OK!");
         } catch (final Exception e) {
-            String stack1 = Arrays.toString(Thread.currentThread().getStackTrace());
+            String stack1 = Arrays.toString(Thread.currentThread().getStackTrace());//
             LOGGER.log(Level.ERROR, "[stackTraceInfo="+stack1+"],event="+e.getMessage(), e);
 
             final JSONObject jsonObject = new JSONObject();
@@ -496,7 +489,9 @@ public class ArticleConsole {
         final JSONObject ret = new JSONObject();
         try {
             final JSONObject requestJSONObject = context.requestJSON();
-            final JSONObject article = requestJSONObject.getJSONObject(Article.ARTICLE);
+            final JSONObject article = requestJSONObject.getJSONObject(Article.ARTICLE);  //correct code
+//            final JSONObject article = requestJSONObject.getJSONObject(null);  //wrong code -- 3.1 argument change
+
             final String articleId = article.getString(Keys.OBJECT_ID);
             renderer.setJSONObject(ret);
 
@@ -579,4 +574,31 @@ public class ArticleConsole {
             jsonObject.put(Keys.MSG, e.getMessage());
         }
     }
+
+
+//    public void addArticles(final RequestContext context) {
+//        final JsonRenderer renderer = new JsonRenderer();
+//        context.setRenderer(renderer);
+//        final JSONObject ret = new JSONObject();
+//        try {
+//            final JSONObject requestJSONObject = context.requestJSON();
+//            final JSONObject currentUser = Solos.getCurrentUser(context);
+//            requestJSONObject.getJSONObject(Article.ARTICLE).put(Article.ARTICLE_AUTHOR_ID, currentUser.getString(Keys.OBJECT_ID));
+//            String stack1 = Arrays.toString(Thread.currentThread().getStackTrace());
+//            // 打印请求日志，如果发生特殊情况丢失数据，至少还可以根据日志寻回内容
+//            LOGGER.log(Level.INFO, "[stackTraceInfo="+stack1+"],event="+"Adds an article request11 [" + requestJSONObject.toString() + "]");
+//
+//            final String articleId = articleMgmtService.addArticles(requestJSONObject);
+//            ret.put(Keys.OBJECT_ID, articleId);
+//            ret.put(Keys.MSG, langPropsService.get("addSuccLabel"));
+//            ret.put(Keys.CODE, StatusCodes.SUCC);
+//
+//            renderer.setJSONObject(ret);
+//        } catch (final ServiceException e) {
+//            final JSONObject jsonObject = new JSONObject().put(Keys.CODE, StatusCodes.ERR);
+//            renderer.setJSONObject(jsonObject);
+//            jsonObject.put(Keys.MSG, e.getMessage());
+//        }
+//    }
 }
+

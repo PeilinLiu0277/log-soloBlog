@@ -87,7 +87,8 @@ public class StaticSiteConsole {
                 return;
             }
 
-            if (Latkes.isInJar()) {
+            if (Latkes.isInJar()) {  // correct code
+//            if (!Latkes.isInJar()) {   //wrong code -- 2.5 condition change
                 context.renderJSON(StatusCodes.ERR);
                 context.renderMsg("Do not support this feature while running in Jar");
                 return;
@@ -155,7 +156,8 @@ public class StaticSiteConsole {
 
 
     static {
-        if (!Latkes.isInJar()) {
+        if (!Latkes.isInJar()) {  //correct code
+//        if (Latkes.isInJar()) {     //wrong code -- 2.3：conditional change
             rootPath = StaticSiteConsole.class.getResource("/repository.json").getPath();
             rootPath = StringUtils.substringBeforeLast(rootPath, "/repository.json");
             staticSitePath = rootPath + "/static-site";

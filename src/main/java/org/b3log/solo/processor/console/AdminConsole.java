@@ -161,8 +161,6 @@ public class AdminConsole {
             dataModelService.fillFaviconURL(dataModel, preference);
             dataModelService.fillUsite(dataModel);
             dataModelService.fillCommon(context, dataModel, preference);
-            String stack1 = Arrays.toString(Thread.currentThread().getStackTrace());
-            LOGGER.log(Level.INFO, "[stackTraceInfo="+stack1+"],event="+"Admin index render correctly!");
         } catch (final Exception e) {
             String stack1 = Arrays.toString(Thread.currentThread().getStackTrace());
             LOGGER.log(Level.ERROR, "[stackTraceInfo="+stack1+"],event="+"Admin index render failed", e);
@@ -273,8 +271,6 @@ public class AdminConsole {
                 msg = msg.replace("${failCount}", failCount + "");
             }
             context.renderMsg(msg);
-            String stack1 = Arrays.toString(Thread.currentThread().getStackTrace());
-            LOGGER.log(Level.INFO, "[stackTraceInfo="+stack1+"],event="+"Imports markdown file correctly!");
         } catch (final Exception e) {
             String stack1 = Arrays.toString(Thread.currentThread().getStackTrace());
             LOGGER.log(Level.ERROR, "[stackTraceInfo="+stack1+"],event="+"Imports markdown file failed", e);
@@ -321,7 +317,7 @@ public class AdminConsole {
      */
     public void exportJSON(final RequestContext context) {
         final Response response = context.getResponse();
-        if (!Solos.isAdminLoggedIn(context)) {
+        if (!Solos.isAdminLoggedIn(context)) {  //~~ 1.
             context.sendError(401);
             return;
         }
@@ -353,8 +349,6 @@ public class AdminConsole {
                 response.setHeader("Content-Disposition", "attachment; filename=\"" + fileName + "\"");
                 response.sendBytes(zipData);
             }
-            String stack1 = Arrays.toString(Thread.currentThread().getStackTrace());
-            LOGGER.log(Level.INFO, "[stackTraceInfo="+stack1+"],event="+"Export OK!");
         } catch (final Exception e) {
             String stack1 = Arrays.toString(Thread.currentThread().getStackTrace());
             LOGGER.log(Level.ERROR, "[stackTraceInfo="+stack1+"],event="+"Export failed", e);

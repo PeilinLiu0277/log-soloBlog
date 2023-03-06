@@ -89,8 +89,6 @@ public class PluginConsole {
         final JSONObject result = pluginMgmtService.setPluginStatus(pluginId, status);
         renderer.setJSONObject(result);
         Statics.clear();
-        String stack1 = Arrays.toString(Thread.currentThread().getStackTrace());
-        LOGGER.log(Level.ERROR, "[stackTraceInfo="+stack1+"],event="+"set plugin status OK!");
     }
 
     /**
@@ -132,8 +130,6 @@ public class PluginConsole {
             final JSONObject result = pluginQueryService.getPlugins(requestJSONObject);
             renderer.setJSONObject(result);
             result.put(Keys.CODE, StatusCodes.SUCC);
-            String stack1 = Arrays.toString(Thread.currentThread().getStackTrace());
-            LOGGER.log(Level.ERROR, "[stackTraceInfo="+stack1+"],event="+"get plugins OK!");
         } catch (final Exception e) {
             String stack1 = Arrays.toString(Thread.currentThread().getStackTrace());
             LOGGER.log(Level.ERROR, "[stackTraceInfo="+stack1+"],event="+e.getMessage(), e);
@@ -158,8 +154,6 @@ public class PluginConsole {
             Keys.fillRuntime(dataModel);
             dataModel.put(Plugin.PLUGIN_SETTING, setting);
             dataModel.put(Keys.OBJECT_ID, pluginId);
-            String stack1 = Arrays.toString(Thread.currentThread().getStackTrace());
-            LOGGER.log(Level.ERROR, "[stackTraceInfo="+stack1+"],event="+"toSetting OK!");
         } catch (final Exception e) {
             String stack1 = Arrays.toString(Thread.currentThread().getStackTrace());
             LOGGER.log(Level.ERROR, "[stackTraceInfo="+stack1+"],event="+e.getMessage(), e);

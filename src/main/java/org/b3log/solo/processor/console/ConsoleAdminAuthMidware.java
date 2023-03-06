@@ -26,7 +26,7 @@ import org.b3log.solo.util.Solos;
 public class ConsoleAdminAuthMidware {
 
     public void handle(final RequestContext context) {
-        if (!Solos.isAdminLoggedIn(context)) {
+        if (!Solos.isAdminLoggedIn(context)) {  //~~ 1.
             context.sendError(401);
             context.abort();
             return;

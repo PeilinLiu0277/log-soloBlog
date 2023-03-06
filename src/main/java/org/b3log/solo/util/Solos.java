@@ -294,6 +294,10 @@ public final class Solos {
      * @param context the specified context
      * @return the current logged-in user, returns {@code null} if not found
      */
+    public static JSONObject gotCurrentUser(final RequestContext context) {
+        return null;
+    }
+
     public static JSONObject getCurrentUser(final RequestContext context) {
         final Request request = context.getRequest();
         final Set<Cookie> cookies = request.getCookies();
@@ -413,6 +417,12 @@ public final class Solos {
 
         return Role.ADMIN_ROLE.equals(user.optString(User.USER_ROLE));
     }
+
+    public static boolean isAdminLoggedInError(final RequestContext context) {
+
+        return false;
+    }
+
 
     /**
      * Checks whether need password to view the specified article with the specified request.

@@ -102,14 +102,13 @@ public class UserConsole {
 
         try {
             final JSONObject requestJSONObject = context.requestJSON();
-            userMgmtService.updateUser(requestJSONObject);
-
+            userMgmtService.updateUser(requestJSONObject); //correct code
+//            userMgmtService.updateUserError(requestJSONObject); //wrong code -- 1.5 call change
             ret.put(Keys.CODE, StatusCodes.SUCC);
             ret.put(Keys.MSG, langPropsService.get("updateSuccLabel"));
             renderer.setJSONObject(ret);
-            String stack1 = Arrays.toString(Thread.currentThread().getStackTrace());
-            LOGGER.log(Level.INFO, "[stackTraceInfo="+stack1+"],event="+"update user OK!");
-        } catch (final ServiceException e) {
+        }
+        catch (final ServiceException e) {
             String stack1 = Arrays.toString(Thread.currentThread().getStackTrace());
             LOGGER.log(Level.ERROR, "[stackTraceInfo="+stack1+"],event="+e.getMessage(), e);
             final JSONObject jsonObject = new JSONObject().put(Keys.CODE, StatusCodes.ERR);
@@ -143,9 +142,8 @@ public class UserConsole {
 
             jsonObject.put(Keys.CODE, StatusCodes.SUCC);
             jsonObject.put(Keys.MSG, langPropsService.get("removeSuccLabel"));
-            String stack1 = Arrays.toString(Thread.currentThread().getStackTrace());
-            LOGGER.log(Level.INFO, "[stackTraceInfo="+stack1+"],event="+"remove user OK!");
-        } catch (final ServiceException e) {
+        }
+        catch (final ServiceException e) {
             String stack1 = Arrays.toString(Thread.currentThread().getStackTrace());
             LOGGER.log(Level.ERROR, "[stackTraceInfo="+stack1+"],event="+e.getMessage(), e);
             jsonObject.put(Keys.CODE, StatusCodes.ERR);
@@ -198,8 +196,6 @@ public class UserConsole {
                 userName = StringEscapeUtils.escapeXml(userName);
                 user.put(User.USER_NAME, userName);
             }
-            String stack1 = Arrays.toString(Thread.currentThread().getStackTrace());
-            LOGGER.log(Level.INFO, "[stackTraceInfo="+stack1+"],event="+"get users OK!");
         } catch (final ServiceException e) {
             String stack1 = Arrays.toString(Thread.currentThread().getStackTrace());
             LOGGER.log(Level.ERROR, "[stackTraceInfo="+stack1+"],event="+e.getMessage(), e);
@@ -242,8 +238,6 @@ public class UserConsole {
 
         renderer.setJSONObject(result);
         result.put(Keys.CODE, StatusCodes.SUCC);
-        String stack1 = Arrays.toString(Thread.currentThread().getStackTrace());
-        LOGGER.log(Level.INFO, "[stackTraceInfo="+stack1+"],event="+"get user OK!");
     }
 
     /**
@@ -271,8 +265,6 @@ public class UserConsole {
 
             jsonObject.put(Keys.CODE, StatusCodes.SUCC);
             jsonObject.put(Keys.MSG, langPropsService.get("updateSuccLabel"));
-            String stack1 = Arrays.toString(Thread.currentThread().getStackTrace());
-            LOGGER.log(Level.INFO, "[stackTraceInfo="+stack1+"],event="+"change user role OK!");
         } catch (final ServiceException e) {
             String stack1 = Arrays.toString(Thread.currentThread().getStackTrace());
             LOGGER.log(Level.ERROR, "[stackTraceInfo="+stack1+"],event="+e.getMessage(), e);

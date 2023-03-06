@@ -112,9 +112,6 @@ public class RepairConsole {
             preferenceMgmtService.updatePreference(preference);
 
             renderer.setContent("Restore signs succeeded.");
-
-            String stack1 = Arrays.toString(Thread.currentThread().getStackTrace());
-            LOGGER.log(Level.INFO, "[stackTraceInfo="+stack1+"],event="+"restore signs OK!");
         } catch (final Exception e) {
             String stack1 = Arrays.toString(Thread.currentThread().getStackTrace());
             LOGGER.log(Level.ERROR, "[stackTraceInfo="+stack1+"],event="+e.getMessage(), e);
@@ -171,9 +168,6 @@ public class RepairConsole {
             transaction.commit();
 
             renderer.setContent("Cleaned duplicated archive date articles");
-
-            String stack1 = Arrays.toString(Thread.currentThread().getStackTrace());
-            LOGGER.log(Level.INFO, "[stackTraceInfo="+stack1+"],event="+"clean archive data articles OK!");
         } catch (final Exception e) {
             if (transaction.isActive()) {
                 transaction.rollback();

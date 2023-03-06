@@ -104,8 +104,6 @@ public class PreferenceConsole {
             renderer.setJSONObject(ret);
             ret.put(Sign.SIGNS, signs);
             ret.put(Keys.CODE, StatusCodes.SUCC);
-            String stack1 = Arrays.toString(Thread.currentThread().getStackTrace());
-            LOGGER.log(Level.INFO, "[stackTraceInfo="+stack1+"],event="+"get signs OK!");
         } catch (final Exception e) {
             String stack1 = Arrays.toString(Thread.currentThread().getStackTrace());
             LOGGER.log(Level.ERROR, "[stackTraceInfo="+stack1+"],event="+e.getMessage(), e);
@@ -187,14 +185,13 @@ public class PreferenceConsole {
             if (null != opt) {
                 footerContent = opt.optString(Option.OPTION_VALUE);
             }
-            preference.put(Option.ID_C_FOOTER_CONTENT, footerContent);
+            preference.put(Option.ID_C_FOOTER_CONTENT, footerContent);  // correct code
+//            preference.put(null, footerContent);  // wrong code  --  3.3 argument change
 
             final JSONObject ret = new JSONObject();
             renderer.setJSONObject(ret);
             ret.put(Option.CATEGORY_C_PREFERENCE, preference);
             ret.put(Keys.CODE, StatusCodes.SUCC);
-            String stack1 = Arrays.toString(Thread.currentThread().getStackTrace());
-            LOGGER.log(Level.INFO, "[stackTraceInfo="+stack1+"],event="+"get preference OK!");
         } catch (final Exception e) {
             String stack1 = Arrays.toString(Thread.currentThread().getStackTrace());
             LOGGER.log(Level.ERROR, "[stackTraceInfo="+stack1+"],event="+e.getMessage(), e);
@@ -271,8 +268,6 @@ public class PreferenceConsole {
 
             ret.put(Keys.CODE, StatusCodes.SUCC);
             ret.put(Keys.MSG, langPropsService.get("updateSuccLabel"));
-            String stack1 = Arrays.toString(Thread.currentThread().getStackTrace());
-            LOGGER.log(Level.INFO, "[stackTraceInfo="+stack1+"],event="+"update preference OK!");
         } catch (final ServiceException e) {
             String stack1 = Arrays.toString(Thread.currentThread().getStackTrace());
             LOGGER.log(Level.ERROR, "[stackTraceInfo="+stack1+"],event="+e.getMessage(), e);
@@ -296,7 +291,8 @@ public class PreferenceConsole {
         errMsgBuilder.append(" - ");
 
         String input = preference.optString(Option.ID_C_EXTERNAL_RELEVANT_ARTICLES_DISPLAY_CNT);
-        if (!isNonNegativeInteger(input)) {
+//        if (isNonNegativeInteger(input)) {   //wrong code -- 2.2 condition change
+      if (!isNonNegativeInteger(input)) {  //correct code
             errMsgBuilder.append(langPropsService.get("externalRelevantArticlesDisplayCntLabel")).append("]  ")
                     .append(langPropsService.get("nonNegativeIntegerOnlyLabel"));
             responseObject.put(Keys.MSG, errMsgBuilder.toString());

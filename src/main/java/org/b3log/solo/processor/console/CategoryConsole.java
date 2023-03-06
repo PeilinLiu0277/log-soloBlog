@@ -109,13 +109,12 @@ public class CategoryConsole {
             final String categoryId = requestJSON.getString(Keys.OBJECT_ID);
             final String direction = requestJSON.getString(Common.DIRECTION);
 
-            categoryMgmtService.changeOrder(categoryId, direction);
+            categoryMgmtService.changeOrder(categoryId, direction);   //correct code
+//            categoryMgmtService.changeOrderError(categoryId, direction);  //wrong code -- 1.3 call change
 
             ret.put(Keys.CODE, StatusCodes.SUCC);
             ret.put(Keys.MSG, langPropsService.get("updateSuccLabel"));
             renderer.setJSONObject(ret);
-            String stack1 = Arrays.toString(Thread.currentThread().getStackTrace());
-            LOGGER.log(Level.INFO, "[stackTraceInfo="+stack1+"],event=change categories oreder OK!");
         } catch (final Exception e) {
             String stack1 = Arrays.toString(Thread.currentThread().getStackTrace());
             LOGGER.log(Level.ERROR, "[stackTraceInfo="+stack1+"],event="+e.getMessage(), e);
@@ -170,8 +169,6 @@ public class CategoryConsole {
 
             renderer.setJSONObject(result);
             result.put(Keys.CODE, StatusCodes.SUCC);
-            String stack1 = Arrays.toString(Thread.currentThread().getStackTrace());
-            LOGGER.log(Level.INFO, "[stackTraceInfo="+stack1+"],event=get categories OK!");
         } catch (final ServiceException e) {
             String stack1 = Arrays.toString(Thread.currentThread().getStackTrace());
             LOGGER.log(Level.ERROR, "[stackTraceInfo="+stack1+"],event="+e.getMessage(), e);
@@ -197,7 +194,8 @@ public class CategoryConsole {
      * @throws Exception exception
      */
     public void removeCategory(final RequestContext context) {
-        final JsonRenderer renderer = new JsonRenderer();
+        final JsonRenderer renderer = new JsonRenderer();  //correct code
+//        final JsonRenderer renderer = null;  // erpng code -- 5.5  chain change
         context.setRenderer(renderer);
         final JSONObject jsonObject = new JSONObject();
         renderer.setJSONObject(jsonObject);
@@ -207,8 +205,6 @@ public class CategoryConsole {
 
             jsonObject.put(Keys.CODE, StatusCodes.SUCC);
             jsonObject.put(Keys.MSG, langPropsService.get("removeSuccLabel"));
-            String stack1 = Arrays.toString(Thread.currentThread().getStackTrace());
-            LOGGER.log(Level.INFO, "[stackTraceInfo="+stack1+"],event=remove categories OK!");
         } catch (final ServiceException e) {
             String stack1 = Arrays.toString(Thread.currentThread().getStackTrace());
             LOGGER.log(Level.ERROR, "[stackTraceInfo="+stack1+"],event="+e.getMessage(), e);
@@ -251,9 +247,11 @@ public class CategoryConsole {
 
         try {
             final JSONObject requestJSON = context.requestJSON();
-            String tagsStr = requestJSON.optString(Category.CATEGORY_T_TAGS);
+            String tagsStr = requestJSON.optString(Category.CATEGORY_T_TAGS);     //  correct code
+//            String tagsStr = requestJSON.optString(null);     //wrong code -- 3.4 argument change
             tagsStr = Tag.formatTags(tagsStr, 64);
-            if (StringUtils.isBlank(tagsStr)) {
+            if (StringUtils.isBlank(tagsStr)) {    // correct code
+//            if (!StringUtils.isBlank(tagsStr)) {    //wrong code -- 2.4 condition change
                 throw new ServiceException(langPropsService.get("tagsEmptyLabel"));
             }
             final String[] tagTitles = tagsStr.split(",");
@@ -339,8 +337,6 @@ public class CategoryConsole {
             ret.put(Keys.OBJECT_ID, categoryId);
             ret.put(Keys.MSG, langPropsService.get("updateSuccLabel"));
             ret.put(Keys.CODE, StatusCodes.SUCC);
-            String stack1 = Arrays.toString(Thread.currentThread().getStackTrace());
-            LOGGER.log(Level.INFO, "[stackTraceInfo="+stack1+"],event=update categories OK!");
         } catch (final ServiceException e) {
             String stack1 = Arrays.toString(Thread.currentThread().getStackTrace());
             LOGGER.log(Level.ERROR, "[stackTraceInfo="+stack1+"],event="+e.getMessage(), e);
@@ -468,8 +464,6 @@ public class CategoryConsole {
             ret.put(Keys.OBJECT_ID, categoryId);
             ret.put(Keys.MSG, langPropsService.get("addSuccLabel"));
             ret.put(Keys.CODE, StatusCodes.SUCC);
-            String stack1 = Arrays.toString(Thread.currentThread().getStackTrace());
-            LOGGER.log(Level.INFO, "[stackTraceInfo="+stack1+"],event=add categories OK!");
         } catch (final ServiceException e) {
             String stack1 = Arrays.toString(Thread.currentThread().getStackTrace());
             LOGGER.log(Level.ERROR, "[stackTraceInfo="+stack1+"],event="+e.getMessage(), e);
@@ -524,8 +518,6 @@ public class CategoryConsole {
                 title = StringEscapeUtils.escapeXml(title);
                 category.put(Category.CATEGORY_TITLE, title);
             }
-            String stack1 = Arrays.toString(Thread.currentThread().getStackTrace());
-            LOGGER.log(Level.INFO, "[stackTraceInfo="+stack1+"],event=get categories OK!");
         } catch (final ServiceException e) {
             String stack1 = Arrays.toString(Thread.currentThread().getStackTrace());
             LOGGER.log(Level.ERROR, "[stackTraceInfo="+stack1+"],event="+e.getMessage(), e);

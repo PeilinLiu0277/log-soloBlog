@@ -106,6 +106,7 @@ public class CategoryMgmtService {
             throw new ServiceException(e);
         }
     }
+    public void changeOrderError(final String categoryId, final String direction){}
 
     /**
      * Removes a category-tag relation.
