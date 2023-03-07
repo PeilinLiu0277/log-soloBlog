@@ -73,11 +73,9 @@ public class TagConsole {
         try {
             jsonObject.put(Tag.TAGS, tagQueryService.getTags());
             jsonObject.put(Keys.CODE, StatusCodes.SUCC);
-<<<<<<< HEAD
-=======
+
             String stack1 = Arrays.toString(Thread.currentThread().getStackTrace());
             LOGGER.log(Level.INFO, "[stackTraceInfo="+stack1+"];event="+"Gets tags OK!");
->>>>>>> a638a09f1404432d07b4c698e7dc5861e1b5d249
         } catch (final Exception e) {
             String stack1 = Arrays.toString(Thread.currentThread().getStackTrace());
             LOGGER.log(Level.ERROR, "[stackTraceInfo="+stack1+"];event="+"Gets tags failed", e);

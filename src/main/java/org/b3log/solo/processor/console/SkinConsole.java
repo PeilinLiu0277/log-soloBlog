@@ -116,11 +116,9 @@ public class SkinConsole {
             renderer.setJSONObject(ret);
             ret.put(Option.CATEGORY_C_SKIN, skin);
             ret.put(Keys.CODE, StatusCodes.SUCC);
-<<<<<<< HEAD
-=======
             String stack1 = Arrays.toString(Thread.currentThread().getStackTrace());
             LOGGER.log(Level.INFO, "[stackTraceInfo="+stack1+"];event="+"get skin OK!");
->>>>>>> a638a09f1404432d07b4c698e7dc5861e1b5d249
+
         } catch (final Exception e) {
             String stack1 = Arrays.toString(Thread.currentThread().getStackTrace());
             LOGGER.log(Level.ERROR, "[stackTraceInfo="+stack1+"];event="+e.getMessage(), e);
@@ -158,11 +156,9 @@ public class SkinConsole {
             ret.put(Keys.CODE, StatusCodes.SUCC);
             ret.put(Keys.MSG, langPropsService.get("updateSuccLabel"));
             Statics.clear();
-<<<<<<< HEAD
-=======
             String stack1 = Arrays.toString(Thread.currentThread().getStackTrace());
             LOGGER.log(Level.INFO, "[stackTraceInfo="+stack1+"];event="+"update skin OK!");
->>>>>>> a638a09f1404432d07b4c698e7dc5861e1b5d249
+
         } catch (final ServiceException e) {
             String stack1 = Arrays.toString(Thread.currentThread().getStackTrace());
             LOGGER.log(Level.ERROR, "[stackTraceInfo="+stack1+"];event="+e.getMessage(), e);

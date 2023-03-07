@@ -98,11 +98,9 @@ public class OtherConsole {
             archiveDateMgmtService.removeUnusedArchiveDates();
             context.renderJSONValue(Keys.CODE, StatusCodes.SUCC).
                     renderMsg(langPropsService.get("removeSuccLabel"));
-<<<<<<< HEAD
-=======
+
             String stack1 = Arrays.toString(Thread.currentThread().getStackTrace());
             LOGGER.log(Level.INFO, "[stackTraceInfo="+stack1+"];event="+"Removes unused archives OK");
->>>>>>> a638a09f1404432d07b4c698e7dc5861e1b5d249
         } catch (final Exception e) {
             String stack1 = Arrays.toString(Thread.currentThread().getStackTrace());
             LOGGER.log(Level.ERROR, "[stackTraceInfo="+stack1+"];event="+"Removes unused archives failed", e);
@@ -129,11 +127,9 @@ public class OtherConsole {
             tagMgmtService.removeUnusedTags();
             context.renderJSONValue(Keys.CODE, StatusCodes.SUCC).
                     renderMsg(langPropsService.get("removeSuccLabel"));
-<<<<<<< HEAD
-=======
+
             String stack1 = Arrays.toString(Thread.currentThread().getStackTrace());
             LOGGER.log(Level.INFO, "[stackTraceInfo="+stack1+"];event="+"Removes unused tags OK!");
->>>>>>> a638a09f1404432d07b4c698e7dc5861e1b5d249
         } catch (final Exception e) {
             String stack1 = Arrays.toString(Thread.currentThread().getStackTrace());
             LOGGER.log(Level.ERROR, "[stackTraceInfo="+stack1+"];event="+"Removes unused tags failed", e);

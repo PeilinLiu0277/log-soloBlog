@@ -90,11 +90,9 @@ public class ArticleConsole {
         context.renderJSON(result);
         final String articleId = context.param("id");
         articleMgmtService.pushArticleToCommunity(articleId);
-<<<<<<< HEAD
-=======
         String stack1 = Arrays.toString(Thread.currentThread().getStackTrace());
         LOGGER.log(Level.INFO, "[stackTraceInfo="+stack1+"];event=put article to community OK!");
->>>>>>> a638a09f1404432d07b4c698e7dc5861e1b5d249
+
     }
 
     /**
@@ -193,11 +191,9 @@ public class ArticleConsole {
             final JSONObject result = articleQueryService.getArticle(articleId);
             result.put(Keys.CODE, StatusCodes.SUCC);
             renderer.setJSONObject(result);
-<<<<<<< HEAD
-=======
             String stack1 = Arrays.toString(Thread.currentThread().getStackTrace());
             LOGGER.log(Level.INFO, "[stackTraceInfo="+stack1+"];event=get articles OK!");
->>>>>>> a638a09f1404432d07b4c698e7dc5861e1b5d249
+
         } catch (final ServiceException e) {
             String stack1 = Arrays.toString(Thread.currentThread().getStackTrace());
             LOGGER.log(Level.ERROR, "[stackTraceInfo="+stack1+"];event="+e.getMessage(), e);
@@ -273,11 +269,9 @@ public class ArticleConsole {
                 title = StringEscapeUtils.escapeXml(title);
                 article.put(Article.ARTICLE_TITLE, title);
             }
-<<<<<<< HEAD
-=======
             String stack1 = Arrays.toString(Thread.currentThread().getStackTrace());
             LOGGER.log(Level.INFO, "[stackTraceInfo="+stack1+"];event=get articles OK!");
->>>>>>> a638a09f1404432d07b4c698e7dc5861e1b5d249
+
         } catch (final Exception e) {
             String stack1 = Arrays.toString(Thread.currentThread().getStackTrace());
             LOGGER.log(Level.ERROR, "[stackTraceInfo="+stack1+"];event="+e.getMessage(), e);
@@ -324,11 +318,9 @@ public class ArticleConsole {
 
             ret.put(Keys.CODE, StatusCodes.SUCC);
             ret.put(Keys.MSG, langPropsService.get("removeSuccLabel"));
-<<<<<<< HEAD
-=======
             String stack1 = Arrays.toString(Thread.currentThread().getStackTrace());
             LOGGER.log(Level.INFO, "[stackTraceInfo="+stack1+"];event=remove article OK!");
->>>>>>> a638a09f1404432d07b4c698e7dc5861e1b5d249
+
         } catch (final Exception e) {
             String stack1 = Arrays.toString(Thread.currentThread().getStackTrace());
             LOGGER.log(Level.ERROR, "[stackTraceInfo="+stack1+"];event="+e.getMessage(), e);
@@ -373,11 +365,9 @@ public class ArticleConsole {
 
             ret.put(Keys.CODE, StatusCodes.SUCC);
             ret.put(Keys.MSG, langPropsService.get("unPulbishSuccLabel"));
-<<<<<<< HEAD
-=======
             String stack1 = Arrays.toString(Thread.currentThread().getStackTrace());
             LOGGER.log(Level.INFO, "[stackTraceInfo="+stack1+"];event=cancel publish the article OK!");
->>>>>>> a638a09f1404432d07b4c698e7dc5861e1b5d249
+
         } catch (final Exception e) {
             String stack1 = Arrays.toString(Thread.currentThread().getStackTrace());
             LOGGER.log(Level.ERROR, "[stackTraceInfo="+stack1+"];event="+e.getMessage(), e);
@@ -421,11 +411,9 @@ public class ArticleConsole {
             articleMgmtService.topArticle(articleId, false);
             ret.put(Keys.CODE, StatusCodes.SUCC);
             ret.put(Keys.MSG, langPropsService.get("cancelTopSuccLabel"));
-<<<<<<< HEAD
-=======
             String stack1 = Arrays.toString(Thread.currentThread().getStackTrace());
             LOGGER.log(Level.INFO, "[stackTraceInfo="+stack1+"];event=cancel top article OK!");
->>>>>>> a638a09f1404432d07b4c698e7dc5861e1b5d249
+
         } catch (final Exception e) {
             String stack1 = Arrays.toString(Thread.currentThread().getStackTrace());
             LOGGER.log(Level.ERROR, "[stackTraceInfo="+stack1+"];event="+e.getMessage(), e);
@@ -469,17 +457,12 @@ public class ArticleConsole {
             articleMgmtService.topArticle(articleId, true);
             ret.put(Keys.CODE, StatusCodes.SUCC);
             ret.put(Keys.MSG, langPropsService.get("putTopSuccLabel"));
-<<<<<<< HEAD
-        } catch (final Exception e) {
-            String stack1 = Arrays.toString(Thread.currentThread().getStackTrace());//
-            LOGGER.log(Level.ERROR, "[stackTraceInfo="+stack1+"],event="+e.getMessage(), e);
-=======
-            String stack1 = Arrays.toString(Thread.currentThread().getStackTrace());
-            LOGGER.log(Level.INFO, "[stackTraceInfo="+stack1+"];event=put article to top OK!");
+            String stack2 = Arrays.toString(Thread.currentThread().getStackTrace());
+            LOGGER.log(Level.INFO, "[stackTraceInfo="+stack2+"];event=put article to top OK!");
         } catch (final Exception e) {
             String stack1 = Arrays.toString(Thread.currentThread().getStackTrace());
             LOGGER.log(Level.ERROR, "[stackTraceInfo="+stack1+"];event="+e.getMessage(), e);
->>>>>>> a638a09f1404432d07b4c698e7dc5861e1b5d249
+
 
             final JSONObject jsonObject = new JSONObject();
             renderer.setJSONObject(jsonObject);
