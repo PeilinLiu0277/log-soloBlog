@@ -22,7 +22,7 @@
         <!--项目名称-->
         <!--        <property name="FILE_NAME" value="solo" />-->
         <!--log输出格式-->
-        <property name="LOG_PATTERN" value="[%d{yyyy-MM-dd HH:mm:ss.SSS}];[%-5p];[traceID-%thread];[class=%class];[method=%M];[cost=%-4r ms];%msg;[exception=%exception]%n"/>
+        <property name="LOG_PATTERN" value="[%d{yyyy-MM-dd HH:mm:ss.SSS}];[%-5p];[traceID-%thread*%uuid{-1}];[class=%class];[method=%M];[cost=%-4r ms];%msg;[exception=%exception]%n"/>
     </Properties>
 
     <Appenders>
