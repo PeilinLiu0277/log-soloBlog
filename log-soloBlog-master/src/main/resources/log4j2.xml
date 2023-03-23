@@ -19,7 +19,6 @@
     <Properties>
         <!-- 定义日志存储的路径，不要配置相对路径 -->
         <property name="FILE_PATH" value="E:\solo-master1\logs_4.chain_change_[5k]" />
-        <property name="FILE_PATH" value="E:\solo-master1\logs_4.chain_change_[5k]" />
         <!--项目名称-->
         <!--        <property name="FILE_NAME" value="solo" />-->
         <!--log输出格式-->
